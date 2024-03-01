@@ -1,0 +1,106 @@
+header {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 30px;
+}
+header .headersearch {
+  width: 90%;
+  height: 40px;
+  border: 1px solid #bce3c9;
+  margin: 15px 18px;
+  padding: 10px 15px;
+  border-radius: 3px;
+}
+header .headersearch .selectDropWrapper {
+  width: 145px;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+header .headersearch .selectDropWrapper:after {
+  width: 1px;
+  height: 30px;
+  background: rgb(0, 0, 0, 0.1);
+  top: 0px;
+  right: 0px;
+  /* position: absolute; */
+}
+header .headersearch .search {
+  width: 71%;
+  padding-left: 0px;
+  position: relative;
+}
+header .headersearch .search input {
+  width: 100%;
+  border: 0px;
+  outline: none !important;
+  font-size: 18px;
+}
+header .headersearch .search .searchIcon {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  opacity: 0.4;
+  font-size: 25px !important;
+}
+
+header .second-dropdown {
+  margin-top: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  width: 214px;
+  padding: 5px;
+  margin-left: 10px;
+}
+header .headerTabs li {
+  position: relative;
+}
+header .headerTabs {
+  padding-left: 40px;
+}
+header .headerTabs li span {
+  font-size: 20px;
+  cursor: pointer;
+}
+header .headerTabs li span img {
+  margin-right: 10px;
+}
+header .headerTabs li span.badge {
+  height: 30px;
+  width: 30px;
+  font-weight: 400;
+  position: absolute;
+  top: -20px;
+  left: 10px;
+}
+.dropdownMenu {
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  width: 180px;
+  height: auto;
+  box-shadow: 0 3px 6px rgba(183, 90, 90, 0.2);
+  background-color: #fcfcfc;
+}
+.dropdownMenu li {
+  width: 100%;
+  list-style: none;
+}
+.dropdownMenu li button {
+  width: 100% !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+  color: #000 !important;
+  text-transform: capitalize !important;
+  font-size: 16px !important;
+}
+.dropdownMenu li button svg{
+  opacity:0.7;
+  margin-right:8px !important;
+}
+.dropdownMenu li button :hover{
+  background:#f1f1f1 !important ;
+}

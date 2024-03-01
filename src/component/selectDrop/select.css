@@ -1,0 +1,52 @@
+.selectDrop {
+  width: 226px;
+  height: 300px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 33px;
+  left: -15px;
+  z-index: 91;
+  box-shadow: 0 3px 6px rgba(183, 90, 90, 0.2);
+  padding: 3px;
+}
+.searchField input {
+  width: 219px;
+  height: 34px;
+  border: 1 px solid #71bd8b;
+  outline: none;
+  padding: 0px 15px;
+}
+.selectDrop .searchResults {
+  width: 220px;
+  margin: 0px;
+  margin-top: 10px;
+  padding: 10px 0px;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.selectDrop .searchResults::-webkit-scrollbar {
+  width: 10px !important;
+}
+.selectDrop .searchResults::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+}
+.selectDrop .searchResults li {
+  list-style: none;
+  font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 7px;
+}
+.selectDrop .searchResults li:hover {
+  background: #3bb77e;
+  color: #fff;
+}
+.selectDrop .searchResults li.active {
+  background-color: #d0c6c6;
+  color: #000000 !important;
+}
+.downArrow {
+  position: absolute;
+  top: 0px;
+}

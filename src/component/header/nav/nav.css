@@ -1,0 +1,113 @@
+.nav {
+  width: 100%;
+  height: 80px;
+  margin: auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav.catTab {
+  padding: 8px 20px !important;
+  font-size: 20px !important;
+  text-transform: capitalize !important;
+}
+
+.nav nav ul li button {
+  text-transform: capitalize !important;
+  padding: 21px 25px !important;
+  color: #3bb77e !important;
+}
+
+.nav nav ul li {
+  position: relative;
+}
+
+.nav nav ul li button a {
+  text-decoration: none !important;
+  color: rgba(8, 7, 7, 0.8) !important;
+  font-size: 20px !important;
+
+}
+
+/* .nav nav ul li button:hover{
+  background-color: #3bb77e;
+} */
+.nav .part3 .phNo svg {
+  font-size: 45px !important;
+  opacity: 0.8;
+}
+
+.nav .part3 .phNo h3 {
+  font-size: 32px !important;
+  line-height: 35px !important;
+}
+
+.nav .part3 .phNo p {
+  font-size: 16px !important;
+}
+
+.col-sm-1 part3 d-flex align-items-center {
+  margin-left: auto;
+}
+
+.nav .dropdow {
+  position: absolute;
+  top: 150%;
+  left: 0px;
+  width: 300px;
+  height: auto;
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 10px 0px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  color: #3bb77e !important;
+}
+
+.dropdow li {
+  width: 100%;
+  list-style: none;
+}
+
+.nav .dropdow li button {
+  width: 100% !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+  /* color: #000 !important; */
+  text-transform: capitalize !important;
+  font-size: 16px !important;
+  padding: 10px 15px !important;
+  color: #3bb77e !important;
+}
+
+.dropdow li button svg {
+  opacity: 0.7;
+  margin-right: 8px !important;
+}
+
+.nav .dropdow li button:hover {
+  background: #f1f1f1 !important;
+}
+
+.nav li:hover .dropdow {
+  top: 100%;
+  opacity: 1;
+  visibility: inherit;
+}
+
+.megaMenu {
+  height: auto !important;
+  padding:30px 45px !important;
+
+}
+.megaMenu .col ul li{
+  margin-bottom: 10px !important;
+  display: block;
+}
+.megaMenu .col ul li a{
+  color: rgba(0, 0, 0, 0.8);
+  font-size:20px;
+  text-decoration: none;
+}
