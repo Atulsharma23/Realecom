@@ -1,91 +1,126 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css");
 
 .homeSlider {
-    padding: 30px 20px;
+  padding: 30px 20px;
 }
 
 .home_slider_main {
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
 }
 
 .slick-arrow {
-    position: absolute;
-    top: 47%;
-    width: 60px !important;
-    height: 60px !important;
-    border-radius: 50% !important;
-    background-color: #F2F3F4 !important;
-    z-index: 1000 !important;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
+  position: absolute;
+  top: 47%;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  background-color: #f2f3f4 !important;
+  z-index: 1000 !important;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .slick-arrow.slick-next {
-    right: 2% !important;
-
+  right: 2% !important;
 }
 
 .slick-arrow.slick-prev {
-    left: 2% !important;
-
+  left: 2% !important;
 }
 
 .slick-prev:before {
-    content: "\f104" !important;
-    font-family: FontAwesome !important;
-    font-size: 30px !important;
-    color: #000 !important;
+  content: "\f104" !important;
+  font-family: FontAwesome !important;
+  font-size: 30px !important;
+  color: #000 !important;
 }
 
 .slick-next:before {
-    content: "\f105" !important;
-    font-family: FontAwesome !important;
-    font-size: 30px !important;
-    color: #000 !important;
+  content: "\f105" !important;
+  font-family: FontAwesome !important;
+  font-size: 30px !important;
+  color: #000 !important;
 }
 
 .slick-arrow:hover {
-    background: #3bb77e !important;
+  background: #3bb77e !important;
 }
 
 .slick-arrow:hover::before {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .home_slider_main .slick-dots {
-    position: absolute;
-    margin-bottom: 32px !important;
+  position: absolute;
+  margin-bottom: 32px !important;
 }
 
 .home_slider_main .slick-dots button::before {
-    width: 10px !important;
-    height: 10px !important;
-    font-size: 16px !important;
+  width: 10px !important;
+  height: 10px !important;
+  font-size: 16px !important;
 }
 
 .slick-active button::before {
-    color: #3bb77e !important;
+  color: #3bb77e !important;
 }
-.home_slider_main .item{
-    position: relative;
+.home_slider_main .item {
+  position: relative;
 }
-.home_slider_main .item .Info{
+.home_slider_main .item .Info {
+  position: absolute;
+  top: 15%;
+  left: 7%;
+  z-index: 100;
+}
+.home_slider_main .item .Info h2 {
+  font-size: 90px;
+  font-weight: bolder;
+  color: rgba(0, 0, 0, 0.7);
+}
+.home_slider_main .item .Info p {
+  font-size: 35px;
+  font-weight: 500;
+  color: #7e7e7e;
+}
+.homeSlider .newsLetterBanner {
+  width: 600px;
+  height: 80px;
+  position: absolute;
+  bottom: 220px;
+  left: 9%;
+  z-index: 10;
+}
+.homeSlider .newsLetterBanner input {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 60px;
+  border: 0px;
+  outline: none !important;
+  padding-left: 60px;
+  font-size: 20px;
+  padding-right: 210px;
+}
+.homeSlider .newsLetterBanner button {
+  padding: 10px 50px !important;
+  border-radius: 50px !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  position: absolute;
+  height: 80px;
+  width: 200px;
+  right: 1px;
+  text-transform: capitalize;
+font-weight: 400 !important;
+}
+.homeSlider .newsLetterBanner svg{
     position: absolute;
-    top:15%;
-    left:7%;
-    z-index:100;
-}
-.home_slider_main .item .Info h2{
-    font-size: 90px;
-    font-weight: bolder;
-    color: rgba(0,0,0,0.7);
-}
-.home_slider_main .item .Info p{
-    font-size: 35px;
-    font-weight: 500;
-    color:#7E7E7E;
+    margin-top: 26px;
+    margin-left: 29px;
+    font-size: 30px !important;
+    transform: rotate(-31deg); opacity:0.5;
 }

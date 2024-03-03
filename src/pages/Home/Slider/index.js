@@ -1,5 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
+import Button from "@mui/material/Button";
+import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import "./index.css";
 import slider1 from "../../../assets/images/slider1.png";
 import slider2 from "../../../assets/images/slider2.png";
@@ -40,6 +42,11 @@ const HomeSlider = () => {
             </div>
           </div>
         </Slider>
+      </div>
+      <div className="newsLetterBanner">
+        <SendOutlinedIcon />{" "}
+        <input type="text" placeholder="Your Email Address" />
+        <Button className="bg-g">Subscribe</Button>
       </div>
     </section>
   );
