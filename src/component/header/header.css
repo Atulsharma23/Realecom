@@ -84,6 +84,7 @@ header .headerTabs li span.badge {
   height: auto;
   box-shadow: 0 3px 6px rgba(183, 90, 90, 0.2);
   background-color: #fcfcfc;
+  z-index: 1;
 }
 .dropdownMenu li {
   width: 100%;

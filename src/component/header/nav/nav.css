@@ -25,8 +25,7 @@
 .nav nav ul li button a {
   text-decoration: none !important;
   color: rgba(8, 7, 7, 0.8) !important;
-  font-size: 20px !important;
-
+  font-size: 21px !important;
 }
 
 /* .nav nav ul li button:hover{
@@ -51,7 +50,7 @@
 }
 
 .nav .dropdow {
-  position: absolute;
+  position: absolute; 
   top: 150%;
   left: 0px;
   width: 300px;
@@ -99,15 +98,14 @@
 
 .megaMenu {
   height: auto !important;
-  padding:30px 45px !important;
-
+  padding: 30px 45px !important;
 }
-.megaMenu .col ul li{
+.megaMenu .col ul li {
   margin-bottom: 10px !important;
   display: block;
 }
-.megaMenu .col ul li a{
+.megaMenu .col ul li a {
   color: rgba(0, 0, 0, 0.8);
-  font-size:20px;
+  font-size: 20px;
   text-decoration: none;
 }

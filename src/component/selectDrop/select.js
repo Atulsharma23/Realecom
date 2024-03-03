@@ -22,7 +22,7 @@ const Select = (props) => {
     const list = listData2.filter((item) => {
       return item.toLowerCase().includes(keyword);
     });
-    const list2 = list.filter((item, index) => list.indexOf(item) === index)
+    const list2 = list.filter((item, index) => list.indexOf(item) === index);
     setlistData(list2);
   };
 
@@ -31,7 +31,10 @@ const Select = (props) => {
       <div className="selectDropWrapper position-relative">
         {props.icon}
         <span className="openSelect" onClick={openSelect}>
-          {selectedItem.length > 14 ? selectedItem.substr(0, 14) + '...' : selectedItem} <ArrowDropDownIcon className="downArrow" />
+          {selectedItem.length > 14
+            ? selectedItem.substr(0, 14) + "..."
+            : selectedItem}{" "}
+          <ArrowDropDownIcon className="downArrow" />
         </span>
         {isOpenSelect === true && (
           <div className="selectDrop">
