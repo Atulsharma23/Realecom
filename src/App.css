@@ -30,3 +30,6 @@ body{
   font-weight: 600;
   margin-bottom: 25px;
 }
+.transition{
+  transform: all 0.3s ease-in-out;
+}

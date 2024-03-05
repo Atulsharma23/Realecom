@@ -6,10 +6,10 @@ const CatSlider = () => {
   const [itemBg, setitemBg] = useState([
     "#ecffec",
     "#f2fce4",
-    "#fffceb",
+    "#BCE3C9",
     "#ecffec",
     "#feefea",
-    "#fff3eb",
+    "#F4F6FA",
     "#f4f6fa",
     "#feefea",
     "#fffceb",
@@ -45,8 +45,11 @@ const CatSlider = () => {
               itemBg.map((item, index) => {
                 return (
                   <div className="item">
-                    <div className="info" style={{ background:item }}>
-                      <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-13.png"  alt="urd"/>
+                    <div className="info" style={{ background: item }}>
+                      <img
+                        src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-13.png"
+                        alt="urd"
+                      />
                       <h5>Cake & Milk</h5>
                       <p>26 items</p>
                     </div>
@@ -204,8 +207,7 @@ const CatSlider = () => {
           </Slider>
         </div>
       </div>
-      <br /> <br />
-      <br /> <br /> <br />
+     
     </>
   );
 };

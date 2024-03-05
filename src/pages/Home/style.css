@@ -1,0 +1,40 @@
+.home-products {
+    margin-bottom: 200px;
+    padding: 20px 0px;
+}
+
+.filtertab {
+    display: flex;
+}
+
+.newww {
+    justify-content: space-between;
+}
+
+.filtertab li {
+    position: relative;
+    margin-left: 10px;
+
+}
+
+.filtertab li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.filtertab li a:hover {
+    color: #3BB77E;
+    transition: all 0.3s ease-in-out;
+
+
+}
+.home-products .productRow{
+    display: flex;
+    padding: 20px 0px;
+}
+.home-products .productRow .item{
+    width:20%;
+    padding: 0px 15px;
+}
