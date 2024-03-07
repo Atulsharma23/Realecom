@@ -55,6 +55,21 @@ const Home = () => {
             <div className="item">
               <Product />
             </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
           </div>
         </div>
       </section>

@@ -5,20 +5,104 @@
     overflow: hidden;
     border-radius: 5px;
     padding: 15px;
+    transition: all 0.3s ease-in-out;
 }
+
+.productthumb:hover {
+    box-shadow: 0 3px 6px rgba(183, 90, 90, 0.8);
+}
+
+.productthumb .imageWrapper {
+    position: relative;
+    /* Add this to make the overlay position correctly */
+    width: 100%;
+    height: 100%;
+    /* Add this to make sure the overlay fills the imageWrapper */
+    overflow: hidden;
+    display: flex;
+    /* Add this */
+    justify-content: center;
+    /* Add this */
+    align-items: center;
+    /* Add this */
+}
+
+.productthumb .imageWrapper .overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(58, 53, 53, 0.1);
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.productthumb .imageWrapper .overlay ul {
+    background: #fff;
+    width: 140px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #BCE3C9;
+}
+
+.productthumb .imageWrapper .overlay ul li {
+    margin-right: 0px !important;
+    border-right: 1px solid #BCE3C9;
+}
+
+.productthumb .imageWrapper .overlay ul li a {
+    display: block;
+    padding: 10px;
+}
+
+.productthumb .imageWrapper .overlay ul li a svg {
+    color: #3bb77e !important;
+}
+
+.productthumb .imageWrapper .overlay ul li a svg:hover {
+    color: #000 !important;
+    opacity: 0.7;
+}
+
+.productthumb .imageWrapper img {
+    transition: all 0.3s ease-in-out;
+}
+
+.productthumb:hover .imageWrapper img {
+    transform: scale(1.2);
+}
+
 .rice {
     margin-left: 247px;
     padding: 4px 18px 5px 16px;
     border-radius: 4px;
-    color: #3BB77E;
-    background-color: #DEF9EC;
+    color: #3bb77e;
+    background-color: #def9ec;
     font-size: 16px;
     font-weight: 700;
     position: absolute;
     margin-bottom: 12px;
     transition: all 0.3s ease-in-out;
+    border: none;
 }
-.rice:hover{
-    background-color: #3BB77E;
-    color:white ;
+
+.rice:hover {
+    background-color: #3bb77e;
+    color: white;
+}
+
+.productthumb .price {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.productthumb .oldprice {
+    font-size: 17px;
+    text-decoration-line: line-through;
+    opacity: 0.6;
+    font-weight: bold;
+    margin-left: 15px;
 }
