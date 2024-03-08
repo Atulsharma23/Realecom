@@ -4,6 +4,14 @@ header {
   margin: auto;
   padding: 30px;
 }
+
+.headerWrapper {
+  position: sticky;
+  background-color: #fff;
+  top: 0px;
+  z-index: 1000;
+}
+
 header .headersearch {
   width: 90%;
   height: 40px;
@@ -12,6 +20,7 @@ header .headersearch {
   padding: 10px 15px;
   border-radius: 3px;
 }
+
 header .headersearch .selectDropWrapper {
   width: 145px;
   font-size: 15px;
@@ -21,6 +30,7 @@ header .headersearch .selectDropWrapper {
   display: flex;
   align-items: center;
 }
+
 header .headersearch .selectDropWrapper:after {
   width: 1px;
   height: 30px;
@@ -29,17 +39,20 @@ header .headersearch .selectDropWrapper:after {
   right: 0px;
   /* position: absolute; */
 }
+
 header .headersearch .search {
   width: 71%;
   padding-left: 0px;
   position: relative;
 }
+
 header .headersearch .search input {
   width: 100%;
   border: 0px;
   outline: none !important;
   font-size: 18px;
 }
+
 header .headersearch .search .searchIcon {
   position: absolute;
   right: 2px;
@@ -55,19 +68,24 @@ header .second-dropdown {
   padding: 5px;
   margin-left: 10px;
 }
+
 header .headerTabs li {
   position: relative;
 }
+
 header .headerTabs {
   padding-left: 40px;
 }
+
 header .headerTabs li span {
   font-size: 20px;
   cursor: pointer;
 }
+
 header .headerTabs li span img {
   margin-right: 10px;
 }
+
 header .headerTabs li span.badge {
   height: 30px;
   width: 30px;
@@ -76,6 +94,7 @@ header .headerTabs li span.badge {
   top: -20px;
   left: 10px;
 }
+
 .dropdownMenu {
   position: absolute;
   top: 40px;
@@ -86,10 +105,12 @@ header .headerTabs li span.badge {
   background-color: #fcfcfc;
   z-index: 1;
 }
+
 .dropdownMenu li {
   width: 100%;
   list-style: none;
 }
+
 .dropdownMenu li button {
   width: 100% !important;
   text-align: left !important;
@@ -98,10 +119,12 @@ header .headerTabs li span.badge {
   text-transform: capitalize !important;
   font-size: 16px !important;
 }
-.dropdownMenu li button svg{
-  opacity:0.7;
-  margin-right:8px !important;
+
+.dropdownMenu li button svg {
+  opacity: 0.7;
+  margin-right: 8px !important;
 }
-.dropdownMenu li button :hover{
-  background:#f1f1f1 !important ;
+
+.dropdownMenu li button :hover {
+  background: #f1f1f1 !important;
 }

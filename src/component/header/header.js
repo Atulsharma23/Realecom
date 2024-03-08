@@ -14,7 +14,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LogoutIcon from "@mui/icons-material/Logout";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
-import Nav from "./nav/nav"
+import Nav from "./nav/nav";
 import Select from "../selectDrop/select";
 import axios from "axios";
 const Header = () => {
@@ -55,122 +55,130 @@ const Header = () => {
 
   return (
     <>
-      <header>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-sm-2">
-              <img src={Logo} alt="logo" />
-            </div>
-            <div className="col-sm-5">
-              <div className="headersearch d-flex align-items-center">
-                <div>
-                  <Select
-                    data={categories}
-                    placeholder={"All Categories"}
-                    icon={false}
-                  />
-                </div>
+      <div className="headerWrapper">
+        <header>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm-2">
+                <img src={Logo} alt="logo" />
+              </div>
+              <div className="col-sm-5">
+                <div className="headersearch d-flex align-items-center">
+                  <div>
+                    <Select
+                      data={categories}
+                      placeholder={"All Categories"}
+                      icon={false}
+                    />
+                  </div>
 
-                <div className="search">
-                  <input type="text" placeholder="search for items..." />
-                  <SearchIcon className="searchIcon cursor" />
+                  <div className="search">
+                    <input type="text" placeholder="search for items..." />
+                    <SearchIcon className="searchIcon cursor" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-sm-5 d-flex align-items-center">
-              <div className="ml-auto d-flex align-items-center">
-                <div className="second-dropdown">
-                  <Select
-                    data={countriesList}
-                    placeholder={"Your Location"}
-                    icon={<FmdGoodIcon />}
-                  />
+              <div className="col-sm-5 d-flex align-items-center">
+                <div className="ml-auto d-flex align-items-center">
+                  <div className="second-dropdown">
+                    <Select
+                      data={countriesList}
+                      placeholder={"Your Location"}
+                      icon={<FmdGoodIcon />}
+                    />
+                  </div>
+                  <ClickAwayListener
+                    onClickAway={() => setisOpenDropDown(false)}
+                  >
+                    <ul className="list list-inline mb-0 headerTabs">
+                      <li className="list-inline-item">
+                        <span>
+                          {" "}
+                          <img src={IconCompare} alt="test" />
+                          <span className="badge bg-success rounded-circle">
+                            3
+                          </span>
+                          compare
+                        </span>
+                      </li>
+                      <li className="list-inline-item">
+                        <span>
+                          {" "}
+                          <img src={IconHeart} alt="test" />
+                          <span className="badge bg-success rounded-circle">
+                            3
+                          </span>
+                          Wishlist
+                        </span>
+                      </li>
+                      <li className="list-inline-item">
+                        <span>
+                          {" "}
+                          <img src={IconCart} alt="test" />
+                          <span className="badge bg-success rounded-circle">
+                            3
+                          </span>
+                          Cart
+                        </span>
+                      </li>
+                      <li className="list-inline-item">
+                        <span
+                          onClick={() => setisOpenDropDown(!isOpenDropDown)}
+                        >
+                          {" "}
+                          <img src={IconUser} alt="test" />
+                          Account
+                        </span>
+
+                        {isOpenDropDown !== false && (
+                          <ul className="dropdownMenu">
+                            <li>
+                              <Button className="align-items-center">
+                                {" "}
+                                <PersonIcon />
+                                My Account
+                              </Button>
+                            </li>
+                            <li>
+                              <Button className="align-items-center">
+                                {" "}
+                                <PlaceIcon />
+                                Order Tracking
+                              </Button>
+                            </li>
+                            <li>
+                              <Button className="align-items-center">
+                                {" "}
+                                <FavoriteBorderIcon />
+                                My Wishlist
+                              </Button>
+                            </li>{" "}
+                            <li>
+                              <Button className="align-items-center">
+                                {" "}
+                                <SettingsIcon />
+                                Setting
+                              </Button>
+                            </li>{" "}
+                            <li>
+                              <Button className="align-items-center">
+                                {" "}
+                                <LogoutIcon />
+                                Sign out
+                              </Button>
+                            </li>
+                          </ul>
+                        )}
+                      </li>
+                    </ul>
+                  </ClickAwayListener>
                 </div>
-                <ClickAwayListener
-                      onClickAway={() => setisOpenDropDown(false)}
-                    >
-                <ul className="list list-inline mb-0 headerTabs">
-                  <li className="list-inline-item">
-                    <span>
-                      {" "}
-                      <img src={IconCompare} alt="test" />
-                      <span className="badge bg-success rounded-circle">3</span>
-                      compare
-                    </span>
-                  </li>
-                  <li className="list-inline-item">
-                    <span>
-                      {" "}
-                      <img src={IconHeart} alt="test"/>
-                      <span className="badge bg-success rounded-circle">3</span>
-                      Wishlist
-                    </span>
-                  </li>
-                  <li className="list-inline-item">
-                    <span>
-                      {" "}
-                      <img src={IconCart}  alt="test"/>
-                      <span className="badge bg-success rounded-circle">3</span>
-                      Cart
-                    </span>
-                  </li>
-                  <li className="list-inline-item">
-                   
-                      <span onClick={() => setisOpenDropDown(!isOpenDropDown)}>
-                        {" "}
-                        <img src={IconUser} alt="test" />
-                        Account
-                      </span>
-
-                      {isOpenDropDown !== false && (
-                        <ul className="dropdownMenu">
-                          <li>
-                            <Button className="align-items-center">
-                              {" "}
-                              <PersonIcon />
-                              My Account
-                            </Button>
-                          </li>
-                          <li>
-                            <Button className="align-items-center">
-                              {" "}
-                              <PlaceIcon />
-                              Order Tracking
-                            </Button>
-                          </li>
-                          <li>
-                            <Button className="align-items-center">
-                              {" "}
-                              <FavoriteBorderIcon />
-                              My Wishlist
-                            </Button>
-                          </li>{" "}
-                          <li>
-                            <Button className="align-items-center">
-                              {" "}
-                              <SettingsIcon />
-                              Setting
-                            </Button>
-                          </li>{" "}
-                          <li>
-                            <Button className="align-items-center">
-                              {" "}
-                              <LogoutIcon />
-                              Sign out
-                            </Button>
-                          </li>
-                        </ul>
-                      )}
-                  </li>
-                </ul>
-                </ClickAwayListener>
-
               </div>
             </div>
           </div>
-        </div>
-      </header>
-      <Nav/>
+        </header>
+        <Nav />
+      </div>
     </>
   );
 };

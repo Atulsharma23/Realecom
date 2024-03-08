@@ -16,7 +16,7 @@ const Product = (props) => {
       <Link>
         <div className="imageWrapper">
           <img
-            src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-3-2.jpg"
+            src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-2-2.jpg"
             className="w-100"
             alt="dd"
           />
