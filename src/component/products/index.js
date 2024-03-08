@@ -7,9 +7,12 @@ import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 import { Link } from "react-router-dom";
-const Product = () => {
+const Product = (props) => {
   return (
     <div className="productthumb">
+      {props.tag !== null && props.tag !== undefined && (
+        <span className={`badge ${props.tag}`}>{props.tag}</span>
+      )}
       <Link>
         <div className="imageWrapper">
           <img
@@ -18,7 +21,7 @@ const Product = () => {
             alt="dd"
           />
 
-          <div className="overlay">
+          <div className="overlay transition">
             <ul className="list list-inline mb-0">
               <li className="list-inline-item">
                 <a className="cursor" tooltip="Add to Wishlist">

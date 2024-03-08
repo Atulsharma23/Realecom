@@ -14,7 +14,7 @@ const Home = () => {
         <div className="container-fluid">
           <div className="d-flex align-items-center newww ">
             <h2 className="hd mb-0 mt-0 ">Popular Products</h2>
-            <ul className="list list-inline filtertab">
+            <ul className="list list-inline filtertab   mb-0">
               <li className="list-inline-item">
                 <a className="cursor">All</a>
               </li>
@@ -41,34 +41,34 @@ const Home = () => {
 
           <div className="row productRow">
             <div className="item">
-              <Product />
+              <Product tag="hot" />
+            </div>
+            <div className="item">
+              <Product tag="sale" />
+            </div>
+            <div className="item">
+              <Product tag="new" />
             </div>
             <div className="item">
               <Product />
             </div>
             <div className="item">
-              <Product />
+              <Product tag="best" />
+            </div>
+            <div className="item">
+              <Product tag="new"/>
             </div>
             <div className="item">
               <Product />
             </div>
             <div className="item">
+              <Product tag="sale"/>
+            </div>
+            <div className="item" >
               <Product />
             </div>
             <div className="item">
-              <Product />
-            </div>
-            <div className="item">
-              <Product />
-            </div>
-            <div className="item">
-              <Product />
-            </div>
-            <div className="item">
-              <Product />
-            </div>
-            <div className="item">
-              <Product />
+              <Product tag="best" />
             </div>
           </div>
         </div>

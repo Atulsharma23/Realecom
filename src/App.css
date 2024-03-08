@@ -57,7 +57,7 @@ body {
 [tooltip]::after {
   text-transform: none;
   /* opinion 2 */
-  font-size: 0.9em;
+  font-size: 1em;
   /* opinion 3 */
   line-height: 1;
   user-select: none;
@@ -118,7 +118,7 @@ body {
 [tooltip][flow^="up"]::before {
   bottom: 100%;
   border-bottom-width: 0;
-  border-top-color: #333;
+  border-top-color: #3bb77e;
 }
 
 [tooltip]:not([flow])::after,
@@ -155,7 +155,7 @@ body {
 [tooltip][flow^="left"]::before {
   top: 50%;
   border-right-width: 0;
-  border-left-color: #333;
+  border-left-color: #3bb77e;
   left: calc(0em - 5px);
   transform: translate(-0.5em, -50%);
 }
@@ -170,7 +170,7 @@ body {
 [tooltip][flow^="right"]::before {
   top: 50%;
   border-left-width: 0;
-  border-right-color: #333;
+  border-right-color: #3bb77e;
   right: calc(0em - 5px);
   transform: translate(0.5em, -50%);
 }
