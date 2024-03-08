@@ -21,19 +21,18 @@ const Product = () => {
           <div className="overlay">
             <ul className="list list-inline mb-0">
               <li className="list-inline-item">
-                
-                <a className="cursor">
+                <a className="cursor" tooltip="Add to Wishlist">
                   <FavoriteBorderIcon />
                 </a>
               </li>
 
               <li className="list-inline-item">
-                <a className="cursor">
+                <a className="cursor" tooltip="Compare">
                   <CompareArrowsIcon />
                 </a>
               </li>
               <li className="list-inline-item">
-                <a className="cursor">
+                <a className="cursor" tooltip="Quickview">
                   <RemoveRedEyeIcon />
                 </a>
               </li>
