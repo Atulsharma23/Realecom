@@ -12,18 +12,16 @@ const Banners = () => {
           <div className="col">
             <div className="box">
               <img src={Banner1} alt="banner1" className="W-100 transition" />
-             
             </div>
           </div>
           <div className="col">
             <div className="box">
-            <img src={Banner2} alt="banner2" className="W-100 transition"/>
-             
+              <img src={Banner2} alt="banner2" className="W-100 transition" />
             </div>
           </div>
           <div className="col">
             <div className="box">
-            <img src={Banner3} alt="banner3" className="W-100 transition"/>             
+              <img src={Banner3} alt="banner3" className="W-100 transition" />
             </div>
           </div>
         </div>
@@ -32,4 +30,3 @@ const Banners = () => {
   );
 };
 export default Banners;
-

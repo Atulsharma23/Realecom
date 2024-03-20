@@ -1,5 +1,4 @@
 .home-products {
-  margin-bottom: 200px;
   padding: 20px 0px;
 }
 
@@ -27,12 +26,26 @@
   color: #3bb77e;
   transition: all 0.3s ease-in-out;
 }
+
 .home-products .productRow {
   display: flex;
   padding: 20px 0px;
 }
+
 .home-products .productRow .item {
   width: 20%;
   padding: 0px 15px;
   margin-top: 25px;
+}
+
+.row .hu {
+  height: 600px;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+
+.row productRow .item{
+  padding: 20px !important;
 }
