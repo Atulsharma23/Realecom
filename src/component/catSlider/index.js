@@ -27,7 +27,7 @@ const CatSlider = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 10,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     fade: false,
     arrows: true,
   };

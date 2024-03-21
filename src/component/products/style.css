@@ -135,12 +135,12 @@
 }
 
 .productthumb .price {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
 }
 
 .productthumb .oldprice {
-    font-size: 17px;
+    font-size: 15px;
     text-decoration-line: line-through;
     opacity: 0.6;
     font-weight: bold;

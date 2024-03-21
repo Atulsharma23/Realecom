@@ -39,7 +39,7 @@
 }
 
 .row .hu {
-  height: 600px;
+  height: 620px;
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
@@ -48,4 +48,7 @@
 
 .row productRow .item{
   padding: 20px !important;
+}
+.topProductsSection{
+  padding: 35px 0px;
 }

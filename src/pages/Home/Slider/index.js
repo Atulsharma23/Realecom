@@ -15,6 +15,9 @@ const HomeSlider = () => {
     slidesToScroll: 1,
     fade: true,
     arrows: true,
+    autoplay:1000,
+    centerMode:true
+
   };
   return (
     <section className="homeSlider">

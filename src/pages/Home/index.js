@@ -6,6 +6,7 @@ import "./style.css";
 import Product from "../../component/products";
 import banner4 from "../../assets/images/banner4.jpg";
 import Slider from "react-slick";
+import TopProducts from "./TopProducts";
 
 const Home = () => {
   var settings = {
@@ -16,6 +17,8 @@ const Home = () => {
     slidesToScroll: 1,
     fade: false,
     arrows: true,
+    autoplay: 1000,
+    centerMode: true,
   };
   return (
     <div>
@@ -86,7 +89,6 @@ const Home = () => {
         </div>
       </section>
       <br />
-
       <section className="home-products pt-0" h>
         <div className="container-fluid">
           <div className="d-flex align-items-center newww ">
@@ -124,6 +126,28 @@ const Home = () => {
                   <Product tag="hot" className="yyyy" />
                 </div>
               </Slider>
+            </div>
+          </div>
+        </div>
+      </section>
+      <br /> <br />
+      <br />
+      <section className="topProductsSection">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col">
+              <TopProducts title="Top-Selling" />{" "}
+            </div>
+            <div className="col">
+              <TopProducts title="Trending Products" />{" "}
+            </div>
+
+            <div className="col">
+              <TopProducts title="Recently Added" />{" "}
+            </div>
+
+            <div className="col">
+              <TopProducts title="Top-Rated" />{" "}
             </div>
           </div>
         </div>
