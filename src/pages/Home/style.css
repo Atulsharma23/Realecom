@@ -46,9 +46,46 @@
 }
 
 
-.row productRow .item{
+.row productRow .item {
   padding: 20px !important;
 }
-.topProductsSection{
+
+.topProductsSection {
   padding: 35px 0px;
+}
+
+.newsLetterSection {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.newsLetterSection .box {
+  background: url(../../assets/images/banner-10.png);
+  width: 100%;
+  height: 540px;
+  margin-top: -60px;
+  margin-bottom: 40px;
+  padding: 40px;
+}
+
+.newsLetterSection .box .info {
+  width: 60%;
+
+}
+
+.newsLetterSection .box .info h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-left: 71px;
+}
+
+.newsLetterSection .box .info p {
+  margin-left: 10%;
+  font-size: 1.4rem;
+  color: #7E7E7E;
+}
+
+.newsLetterSection .box .img {
+  width: 40%;
 }

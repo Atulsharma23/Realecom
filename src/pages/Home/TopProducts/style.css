@@ -49,24 +49,33 @@
 
 .topselling_box .info a {
     text-decoration: none;
-    color:#000;
+    color: #000;
 
 }
-.topselling_box .info h4{
-    font-weight:bold !important;
+
+.topselling_box .info h4 {
+    font-weight: bold !important;
     opacity: 0.85;
     font-size: 1.15rem;
 
 }
-.topselling_box .items{
+
+.topselling_box .items {
     position: relative;
     transition: all 0.3s ease-in-out;
+
+}
+
+.topselling_box .items:hover {
+    transform: translateY(-10px);
+
 }
 
 .price {
     font-size: 20px;
     font-weight: bold;
 }
+
 .oldprice {
     font-size: 15px;
     text-decoration-line: line-through;

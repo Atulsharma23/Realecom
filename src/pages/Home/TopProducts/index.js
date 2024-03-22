@@ -35,7 +35,6 @@ const TopProducts = (props) => {
           </div>
         </div>
       </div>
-      
 
       <div className="items d-flex align-items-center">
         <div className="img">
@@ -90,9 +89,6 @@ const TopProducts = (props) => {
           </div>
         </div>
       </div>
-
-      
-
     </div>
   );
 };

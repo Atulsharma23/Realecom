@@ -27,7 +27,9 @@ const CatSlider = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 10,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
+    autoplay: true, // Enable autoplay
+    autoplaySpeed: 1000, // Set autoplay speed to 3 seconds (3000 milliseconds)
     fade: false,
     arrows: true,
   };
@@ -207,7 +209,6 @@ const CatSlider = () => {
           </Slider>
         </div>
       </div>
-     
     </>
   );
 };

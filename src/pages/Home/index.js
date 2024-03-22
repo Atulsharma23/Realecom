@@ -7,6 +7,8 @@ import Product from "../../component/products";
 import banner4 from "../../assets/images/banner4.jpg";
 import Slider from "react-slick";
 import TopProducts from "./TopProducts";
+import NewsLetter from "../../component/NewsLetter";
+import banner9 from "../../assets/images/banner9.png";
 
 const Home = () => {
   var settings = {
@@ -148,6 +150,20 @@ const Home = () => {
 
             <div className="col">
               <TopProducts title="Top-Rated" />{" "}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="newsLetterSection">
+        <div className="container-fluid">
+          <div className="box d-flex">
+            <div className="info">
+              <h2>Stay home & get your daily<br/> needs from our shop</h2>
+              <p>Start You'r Daily Shopping with Nest Mart</p>
+              <NewsLetter />
+            </div>
+            <div className="img">
+              <img src={banner9} alt="hsu" className="w-100" />
             </div>
           </div>
         </div>
