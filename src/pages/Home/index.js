@@ -9,7 +9,7 @@ import Slider from "react-slick";
 import TopProducts from "./TopProducts";
 import NewsLetter from "../../component/NewsLetter";
 import banner9 from "../../assets/images/banner9.png";
-
+import Footer from "../../component/footer/footer";
 const Home = () => {
   var settings = {
     dots: true,
@@ -168,6 +168,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

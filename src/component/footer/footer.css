@@ -1,0 +1,38 @@
+.footerWrapper {
+    padding: 45px 0px;
+    width: 100%;
+}
+
+.footerWrapper .footerBoxes .box:hover {
+    box-shadow: 0 3px 6px rgba(183, 90, 90, 0.8);
+}
+
+.footerWrapper .footerBoxes .box {
+    background-color: #F4F6FA;
+    padding: 45px 45px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.footerWrapper .footerBoxes .box img:hover {
+    transform:translateY(-15px);
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+.footerWrapper .footerBoxes .box .info-footer {
+    margin-left: 44px !important;
+}
+
+.footerWrapper .footerBoxes .box .info-footer h4 {
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+.footerWrapper .footerBoxes .box .info-footer p{
+    margin-bottom:0px;
+    font-size: 1rem;
+
+}
