@@ -17,11 +17,9 @@
 }
 
 .footerWrapper .footerBoxes .box img:hover {
-    transform:translateY(-15px);
+    transform: translateY(-15px);
     transition: all 0.3s ease-in-out;
 }
-
-
 
 .footerWrapper .footerBoxes .box .info-footer {
     margin-left: 44px !important;
@@ -31,8 +29,125 @@
     font-weight: 400;
     font-size: 1.4rem;
 }
-.footerWrapper .footerBoxes .box .info-footer p{
-    margin-bottom:0px;
+
+.footerWrapper .footerBoxes .box .info-footer p {
+    margin-bottom: 0px;
     font-size: 1rem;
 
+}
+
+footer p,
+footer a {
+    font-size: 1.4rem;
+    text-decoration: none;
+
+}
+
+footer {
+    padding: 40px 0px;
+}
+
+footer .part1 svg {
+    color: #3bb77e !important;
+}
+
+footer .part2 h3 {
+    color: #000;
+    font-weight: 600;
+}
+
+footer .part2 li {
+    text-decoration: none;
+    list-style: none;
+    margin-bottom: 10px;
+
+}
+
+footer .part2 li a {
+    color: #000;
+    opacity: 0.9;
+    font-size: 1.4rem;
+}
+
+footer .part2 li a:hover {
+    color: #3BB77E;
+    margin-left: 12px;
+    transition: all .3s ease-in-out 0s;
+}
+
+footer .part3 img {
+    width: 160px;
+    height: 55px;
+    margin-left: 15px;
+    transform: scale(1);
+}
+
+footer .part3 .payment {
+    width: 350px;
+    margin-top: 10px;
+    transform: translateY(-20px);
+    /* Transform the image upwards on hover */
+    transition: transform 0.3s ease;
+    /* Apply transition effect on transform */
+
+}
+
+.store-link:hover img {
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+}
+
+footer .lastStrip {
+    padding: 15px 0px;
+}
+
+.phNo svg {
+    font-size: 45px !important;
+    opacity: 0.8;
+}
+
+.phNo h3 {
+    font-size: 32px !important;
+    line-height: 35px !important;
+}
+
+.phNo p {
+    font-size: 20px !important;
+}
+
+footer .col-sm-1 part3 d-flex align-items-center {
+    margin-left: auto;
+}
+
+footer .lastStrip .part3 h5 {
+    margin-bottom: 0px;
+    font-size: 27px;
+}
+
+footer .lastStrip .part3 ul {
+    margin-bottom: 0px;
+    padding-left: 25px;
+}
+
+footer .lastStrip .part3 ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #3bb77e;
+    border: 1px solid #3bb77e;
+    border-radius: 50%;
+}
+
+footer .lastStrip .part3 ul li a svg {
+    color: #fff !important;
+}
+
+footer .lastStrip .part3 ul li a:hover {
+    transform: translateY(-18px);
+    /* Transform the image upwards on hover */
+    transition: transform 0.3s ease;
+    background-color: red;
+    border: 1px solid red;
 }
