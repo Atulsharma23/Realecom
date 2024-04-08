@@ -259,3 +259,106 @@ aside a {
   display: inline-block;
   padding: 0.4em 1em;
 }
+
+.listingPage {
+  width: 100%;
+  height: auto;
+  padding: 45px 0px;
+}
+
+.breadcrumb {
+  width: 100%;
+  height: auto;
+  padding: 45px 45px;
+  background: #d8f1e5;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.breadcrumb h1 {
+  color: #000;
+  opacity: 0.8;
+  font-size: 50px;
+  list-style: none;
+}
+
+.breadcrumb ul li {
+  font-size: 20px;
+  opacity: 0.5;
+  margin-right: 15px !important;
+}
+
+.breadcrumb ul li a {
+  color: #000;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.SidebarWrapper h3 {
+  font-size: 32px;
+  font-weight: 600;
+  padding-bottom: 20px;
+  position: relative;
+  margin-left: 59px;
+  margin-bottom: 20px;
+}
+
+.SidebarWrapper h3:after {
+  content: '';
+  width: 80%;
+  height: 3px;
+  background: #f0f0f0;
+  bottom: 0px;
+  left: 0px;
+  position: absolute;
+  margin-left: 20px;
+}
+
+.SidebarWrapper h3:before {
+  content: '';
+  width: 30%;
+  height: 3px;
+  background-color: aquamarine;
+  bottom: 0px;
+  left: 0px;
+  z-index: 10;
+  position: absolute;
+
+}
+
+.SidebarWrapper .sidebar .card {
+  padding: 25px;
+  border-radius: 10px !important;
+  margin-bottom: 63px;
+}
+
+.catItem h4 {
+  margin-left: 18px;
+}
+
+.SidebarWrapper .sidebar .card .catList .catItem {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin: 10px 0px;
+}
+
+.SidebarWrapper .sidebar .card .catList .catItem h4 {
+  color: #000;
+  font-size: 18px;
+}
+
+.SidebarWrapper .sidebar .card .catList .catItem:hover {
+  border: 1px solid #3bb77e;
+}
+
+.rounded-circle {
+  background: #BCE3C9;
+  width: 40px;
+  height: 40px;
+}
+
+.number {
+  margin-left: auto;
+}

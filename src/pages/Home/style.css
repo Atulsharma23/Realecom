@@ -87,4 +87,6 @@
 
 .newsLetterSection .box .img {
   width: 40%;
-}
+  position: absolute;
+  right: 50px;
+  bottom: 0;}

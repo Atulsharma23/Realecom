@@ -20,8 +20,25 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import NewsLetter from "../../component/NewsLetter";
+import banner9 from "../../assets/images/banner9.png";
 const Footer = () => {
   return (
+    <>
+    <section className="newsLetterSection">
+    <div className="container-fluid">
+      <div className="box d-flex">
+        <div className="info">
+          <h2>Stay home & get your daily<br/> needs from our shop</h2>
+          <p>Start You'r Daily Shopping with Nest Mart</p>
+          <NewsLetter />
+        </div>
+        <div className="img">
+          <img src={banner9} alt="hsu" className="w-100" />
+        </div>
+      </div>
+    </div>
+  </section>
     <div className="footerWrapper">
       <div className="footerBoxes">
         <div className="container-fluid">
@@ -224,10 +241,13 @@ const Footer = () => {
             </div>
             <div className="col-md-3 part3">
               <h3>
-                <strong>Install App</strong>
+                <strong>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Install
+                  App
+                </strong>
               </h3>
               <br />
-              <p>From App Store or Google Play</p>
+              <p>&nbsp;&nbsp;&nbsp;From App Store or Google Play</p>
               <div className="d-flex">
                 <Link to="" className="store-link">
                   <img src={appStore} />
@@ -237,7 +257,7 @@ const Footer = () => {
                 </Link>
               </div>
               <br />
-              <p>Secured Payment Gateways</p>
+              <p>&nbsp;&nbsp; &nbsp;&nbsp; Secured Payment Gateways</p>
 
               <img className="payment" src={paymentMethod} />
             </div>
@@ -320,6 +340,7 @@ const Footer = () => {
         </div>
       </footer>
     </div>
+    </>
   );
 };
 export default Footer;

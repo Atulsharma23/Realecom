@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./component/header/header";
 import Home from "./pages/Home/index";
 import About from "./pages/About/index";
+import Listing from "./pages/Listing";
+import Footer from "./component/footer/footer";
 function App() {
   return (
     <div className="App">
@@ -13,7 +15,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
+          <Route path="/listing" element={<Listing />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
