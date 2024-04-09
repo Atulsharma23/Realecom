@@ -38,7 +38,7 @@ const Listing = () => {
               <div className="col-md-3 SidebarWrapper">
                 <Sidebar />
               </div>
-              <div className="col-md-9"></div>
+              <div className="col-md-9 rightContent"></div>
             </div>
           </div>
         </div>

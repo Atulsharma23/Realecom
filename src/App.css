@@ -337,11 +337,21 @@ aside a {
   margin-left: 18px;
 }
 
+.SidebarWrapper {
+  max-width: 20%;
+}
+
+.rightContent {
+  max-width: 80%;
+}
+
 .SidebarWrapper .sidebar .card .catList .catItem {
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   margin: 10px 0px;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
 }
 
 .SidebarWrapper .sidebar .card .catList .catItem h4 {
@@ -361,4 +371,101 @@ aside a {
 
 .number {
   margin-left: auto;
+}
+
+.right-area {
+  margin-left: auto;
+}
+
+.range-area {
+  margin-top: 13px;
+}
+
+.priceRange span {
+  font-size: 18px;
+}
+
+.filters {
+  padding: 25px 0px;
+}
+
+.Range-selector {
+  margin-left: 75px;
+}
+
+.filters ul li {
+  width: 100%;
+  margin-bottom: 10px;
+  list-style: none;
+  font-size: 20px;
+}
+
+.filters ul {
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.filters ul::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+.filters ul::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+}
+
+.filters h5 {
+  font-weight: 200;
+  font-size: 25px;
+  margin-left: 25px;
+
+}
+
+.filters-two {
+  margin-bottom: 10px;
+}
+
+.filters-two h5 {
+  font-weight: 200;
+  font-size: 25px;
+  margin-left: 25px;
+
+}
+
+.filters-two ul li {
+  list-style: none;
+  width: 100%;
+  margin-bottom: 10px;
+  list-style: none;
+  font-size: 20px;
+  max-height: 200px;
+}
+
+.filters-two ul {
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.filters-two ul::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+.filters-two ul::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+}
+.filter-button {
+  font-size: 19px;
+  font-weight: 100;
+  width: 125px;
+  height: 50px;
+  border-radius: 5px;
+  margin-left: 150px;
+  background-color: #3bb77e;
+  color: #f0f0f0;
+  border: none;
+}
+.filter-button:hover{
+  background-color: #a39b24;
+  width:134px;
+  transition: all 0.3s ease-in;
+  
 }
