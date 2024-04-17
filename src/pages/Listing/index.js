@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Sidebar from "../../component/Sidebar";
+import Product from "../../component/products";
+
 const Listing = () => {
   return (
     <section>
@@ -38,7 +40,73 @@ const Listing = () => {
               <div className="col-md-3 SidebarWrapper">
                 <Sidebar />
               </div>
-              <div className="col-md-9 rightContent"></div>
+              <div className="col-md-9 rightContent home-products pt-0">
+                <div className="row productRow pl-4 pl-3">
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+                  <div className="item">
+                    <Product />
+                  </div>
+
+
+
+                </div>
+              </div>
             </div>
           </div>
         </div>

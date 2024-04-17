@@ -331,6 +331,18 @@ aside a {
   padding: 25px;
   border-radius: 10px !important;
   margin-bottom: 63px;
+
+}
+
+.SidebarWrapper .sidebar .card-two {
+  padding: 25px;
+  border-radius: 10px !important;
+  margin-bottom: 63px;
+  background: url(https://wp.alithemes.com/html/nest/demo/assets/imgs/banner/fillter-widget-bg.png);
+  background-repeat: no-repeat;
+  background-position: bottom right; /* Position the background image at the bottom end (bottom right) */
+
+
 }
 
 .catItem h4 {
@@ -339,10 +351,17 @@ aside a {
 
 .SidebarWrapper {
   max-width: 20%;
+  flex:0 0 20%;
 }
 
 .rightContent {
   max-width: 80%;
+  flex:0 0 80%;
+
+}
+.SidebarWrapper .sidebar{
+  position: sticky;
+  top:110px;
 }
 
 .SidebarWrapper .sidebar .card .catList .catItem {
@@ -363,6 +382,24 @@ aside a {
   border: 1px solid #3bb77e;
 }
 
+.SidebarWrapper .sidebar .card-two .catList .catItem {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin: 10px 0px;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.SidebarWrapper .sidebar .card-two .catList .catItem h4 {
+  color: #000;
+  font-size: 18px;
+}
+
+.SidebarWrapper .sidebar .card-two .catList .catItem:hover {
+  border: 1px solid #3bb77e;
+}
+
 .rounded-circle {
   background: #BCE3C9;
   width: 40px;
@@ -379,6 +416,8 @@ aside a {
 
 .range-area {
   margin-top: 13px;
+  width: 100%;
+  margin-left:10%;
 }
 
 .priceRange span {
@@ -390,7 +429,8 @@ aside a {
 }
 
 .Range-selector {
-  margin-left: 75px;
+  margin-left: 35px;
+  width: 100%;
 }
 
 .filters ul li {
@@ -422,6 +462,8 @@ aside a {
 
 .filters-two {
   margin-bottom: 10px;
+  
+
 }
 
 .filters-two h5 {
@@ -452,20 +494,24 @@ aside a {
 .filters-two ul::-webkit-scrollbar-thumb {
   background: #ccc !important;
 }
+
+
 .filter-button {
   font-size: 19px;
   font-weight: 100;
-  width: 125px;
+  width: 150px;
   height: 50px;
   border-radius: 5px;
-  margin-left: 150px;
+  margin-left: -1px;
   background-color: #3bb77e;
   color: #f0f0f0;
   border: none;
 }
-.filter-button:hover{
-  background-color: #a39b24;
-  width:134px;
-  transition: all 0.3s ease-in;
-  
+
+
+.filter-button:hover {
+  background-color: #fdc52c;
+  width: 134px;
+  transition: all 0.2s ease-in;
+
 }

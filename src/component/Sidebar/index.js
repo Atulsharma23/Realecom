@@ -3,6 +3,11 @@ import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import FilterAltOffIcon from "@mui/icons-material/FilterAltOff";
+import Banner1 from '../../assets/images/Banner1.jpg'
+
+
+
+
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function valuetext(value) {
@@ -88,8 +93,9 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-      <div className="card border-0 shadow   ">
+      <div className="card-two border-0 shadow   ">
         <h3>Fill by price</h3>
+
         <div className="Range-selector">
           <Box className="range-area" sx={{ width: 300 }}>
             <Slider
@@ -265,8 +271,11 @@ const Sidebar = () => {
             </li>
           </ul>
         </div>
-        <button className="filter-button"><FilterAltOffIcon/>Filters</button>
+        <button className="filter-button"><FilterAltOffIcon />Filters</button>
       </div>
+      <img src={Banner1} className="w-100" />
+
+
     </div>
   );
 };

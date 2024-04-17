@@ -5,7 +5,6 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-
 import { Link } from "react-router-dom";
 const Product = (props) => {
   return (
