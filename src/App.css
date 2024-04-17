@@ -340,7 +340,8 @@ aside a {
   margin-bottom: 63px;
   background: url(https://wp.alithemes.com/html/nest/demo/assets/imgs/banner/fillter-widget-bg.png);
   background-repeat: no-repeat;
-  background-position: bottom right; /* Position the background image at the bottom end (bottom right) */
+  background-position: bottom right;
+  /* Position the background image at the bottom end (bottom right) */
 
 
 }
@@ -351,17 +352,18 @@ aside a {
 
 .SidebarWrapper {
   max-width: 20%;
-  flex:0 0 20%;
+  flex: 0 0 20%;
 }
 
 .rightContent {
   max-width: 80%;
-  flex:0 0 80%;
+  flex: 0 0 80%;
 
 }
-.SidebarWrapper .sidebar{
+
+.SidebarWrapper .sidebar {
   position: sticky;
-  top:110px;
+  top: 110px;
 }
 
 .SidebarWrapper .sidebar .card .catList .catItem {
@@ -417,7 +419,7 @@ aside a {
 .range-area {
   margin-top: 13px;
   width: 100%;
-  margin-left:10%;
+  margin-left: 10%;
 }
 
 .priceRange span {
@@ -462,7 +464,7 @@ aside a {
 
 .filters-two {
   margin-bottom: 10px;
-  
+
 
 }
 
@@ -514,4 +516,59 @@ aside a {
   width: 134px;
   transition: all 0.2s ease-in;
 
+}
+
+.top-strip p {
+  font-size: 1.5rem;
+  /* Adjust font size to a responsive unit */
+}
+
+.rightContent .top-strip {
+  padding: 0 1rem;
+  /* Reduced padding */
+}
+
+.top-strip {
+  display: flex;
+  flex-wrap: nowrap;
+  /* Removed max-height */
+}
+
+.top-strip .tab_ {
+  margin-left: 80rem;
+  /* Adjusted margin to push the element to the right */
+  border: 1px solid rgb(174, 165, 165);
+}
+
+.top-strip .tab_1 {
+  border: 1px solid rgb(174, 165, 165);
+  margin-left: 16px;
+}
+
+.top-strip .tab_ .Short {
+  width: 6rem;
+  margin-right: 10px;
+}
+
+
+  .top-strip .tab_1 .Short {
+    width: 15rem;
+}
+
+.top-strip .tab_ .dropdownMenu{
+  margin-top: 20px;
+  height: 220px;
+  z-index: 100;
+  width: 100%;
+  background-color: #d1dcd5;
+  cursor: pointer;
+}
+.top-strip .tab_1 .dropdownMenu {
+  margin-top: 22px;
+  margin-left: 20px;
+  z-index: 100;
+  width: 100%;
+  height: 220px;
+  background-color: #d1dcd5;
+  cursor: pointer;
 }
