@@ -6,6 +6,7 @@ import Home from "./pages/Home/index";
 import About from "./pages/About/index";
 import Listing from "./pages/Listing";
 import Footer from "./component/footer/footer";
+import Notfound from "./pages/Notfound";
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
           <Route path="/listing" element={<Listing />} />
+          <Route path="*" element={<Notfound />} />
+
         </Routes>
         <Footer />
       </Router>
