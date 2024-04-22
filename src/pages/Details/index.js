@@ -3,10 +3,24 @@ import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import Rating from "@mui/material/Rating";
 import InnerImageZoom from 'react-inner-image-zoom';
+import Slider from "react-slick";
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 
 
 const Details = () => {
+    var settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        fade: false,
+        arrows: true,
+        autoplay: true, // Set autoplay to true or false
+        centerMode: true
+    };
+
+
     return (
         <section className='ProductDetails'>
             <div className="breadcrumbwrapper">
@@ -21,10 +35,28 @@ const Details = () => {
             <div className="container-fluid">
                 <div className="row ">
                     <div className='col-md-9 part1 d-flex'>
-                        <div className='col-md-5 productZoom'>
-                            <InnerImageZoom src='https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-16-2.jpg' />
+                        <div className='col-md-5'>
+                            <div className="productZoom">
+                                <InnerImageZoom zoomType="hover" src='https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-16-2.jpg' />
+                            </div>
+                            <Slider {...settings} className="ZoomSlider">
+                                <div className="itemnew">
+                                    <img src='https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-4.jpg' alt="cppa" className='w-100' />
+                                </div>
+                                <div className="itemnew">
+                                    <img src='https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-5.jpg' alt="cppa" className='w-100' />
+                                </div>
+                                <div className="itemnew">
+                                    <img src='https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-3.jpg' alt="cppa" className='w-100' />
+                                </div>
+                                <div className="itemnew">
+                                    <img src='https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-8.jpg' alt="cppa" className='w-100' />
+                                </div>
+                            
 
+                            </Slider>
                         </div>
+
                         <div className='col-md-7 productInfo'>
                             <h1>Seeds of Change <br />Organic Quinoa, Brown</h1>
                             <div className='d-flex align-items-center mb-4'>

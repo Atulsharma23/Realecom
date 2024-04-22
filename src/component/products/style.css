@@ -83,7 +83,7 @@
 .productthumb .imageWrapper .overlay ul {
     background: #fff;
     width: 142px;
-        height: auto;
+    height: auto;
     border-radius: 10px;
     border: 1px solid #BCE3C9;
 }
@@ -146,3 +146,11 @@
     font-weight: bold;
     margin-left: 15px;
 }
+
+.productthumb .adjustment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box; /* Add this line */
+}
+

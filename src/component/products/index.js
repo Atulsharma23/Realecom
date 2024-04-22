@@ -59,11 +59,13 @@ const Product = (props) => {
         </span>
         <div className="d-flex align-items-center mt-3">
           <div className="d-flex align-items-center">
-            <span className="price text-g font-weight-bold"> $29.44 </span>{" "}
-            <span className="oldprice"> $32.33</span>
-            <button className="rice">
-              <AddShoppingCartIcon /> Add
-            </button>
+            <div className="adjustment"> <span className="price text-g font-weight-bold"> $29.44 </span>{" "}
+
+              <span className="oldprice"> $32.33</span><button className="rice">
+                <AddShoppingCartIcon /> Add
+              </button> </div>
+
+
           </div>
         </div>
       </div>
