@@ -443,8 +443,10 @@ aside a {
 }
 
 .Range-selector {
-  margin-left: 35px;
+  display: flex;
   width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .filters ul li {
@@ -668,11 +670,13 @@ aside a {
 
 .productZoom {
   border: 1px solid rgb(0, 0, 0, 0.1);
-  border-radius: 4px;
+  border-radius: 13px;
   width: 100%;
-  height: auto;
+  height: 668px;
   padding: 0px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .ZoomSlider {
@@ -680,15 +684,164 @@ aside a {
   /* Remove margin from the left */
   padding-left: 10px;
   padding-top: 30px;
+
 }
 
 .ZoomSlider .itemnew {
   padding-left: 17px;
   overflow: hidden;
+  outline: none !important;
+  cursor: pointer;
 }
 
 .ZoomSlider .itemnew :hover {
 
   border: 2px solid #a2d2c9;
   border-radius: 15px;
+}
+
+.detailsContainer {
+  max-width: 90%;
+}
+
+.ProductSize {
+  width: 100%;
+  height: auto;
+  padding: 25px 0px;
+}
+
+.ProductSize ul li {
+  margin-right: 10px !important;
+}
+
+.ProductSize ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none !important;
+  border: 1px solid rgba(29, 27, 27, 0.1);
+  padding: 7px !important;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #000;
+  font-size: 16px !important;
+  transition: all 0.1s ease-in-out;
+
+}
+
+.ProductSize ul li a.active {
+  background-color: #3bb77e !important;
+  color: #fff !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.addCartSection {
+  width: 100%;
+  height: auto;
+}
+
+.addCartSection .counterSection {
+  width: 80px;
+  height: 50px;
+  border: 1px solid #3bb77e;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.addCartSection .counterSection input {
+  width: 60px;
+  height: 40px;
+  border: 0px;
+  outline: none !important;
+  font-size: 20px;
+  text-align: center;
+}
+
+.addCartSection .counterSection {
+  position: relative;
+}
+
+.addCartSection .counterSection .arrow {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.addCartSection .counterSection .arrow.plus {
+  top: -2px;
+  right: 1px;
+}
+
+.addCartSection .counterSection .arrow.minus {
+  bottom: -2px;
+  right: 1px;
+
+}
+
+button.btn-add {
+  width: 190px;
+  margin-left: 24px;
+  padding: 10px;
+  background: #3bb77e !important;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  font-weight: 700;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+button.btn-add:hover {
+  background-color: #29A56C !important;
+}
+
+button.btn-add.fav {
+  width: 50px;
+  background-color: white !important;
+  color: #000;
+  border: 1px solid #aaa7a7;
+}
+
+button.btn-add.compare {
+  width: 50px;
+  background-color: white !important;
+  color: #000;
+  border: 1px solid #837f7f;
+}
+
+button.btn-add.fav:hover {
+  background: #3bb77e !important;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-8px);
+
+}
+
+button.btn-add.compare:hover {
+  background: #3bb77e !important;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-8px);
+
+}
+
+button.btn-add.fav svg {
+  font-size: 25px;
+  opacity: 0.5;
+}
+
+button.btn-add.compare svg {
+  font-size: 25px;
+  opacity: 0.5;
+
 }
