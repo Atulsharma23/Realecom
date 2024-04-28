@@ -672,11 +672,11 @@ aside a {
   border: 1px solid rgb(0, 0, 0, 0.1);
   border-radius: 13px;
   width: 100%;
-  height: 668px;
+  height: 600px;
   padding: 0px;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
 }
 
 .ZoomSlider {
@@ -843,5 +843,23 @@ button.btn-add.fav svg {
 button.btn-add.compare svg {
   font-size: 25px;
   opacity: 0.5;
+}
 
+.col-md-7.productInfo {
+  margin-left: 80px;
+  width: 100%;
+}
+
+.productInfo .priceSec-details {
+  width: 80%;
+}
+
+
+/* .productZoom .slick-slide .ZoomSliderBig .iiz__img   {
+width: 100% !important;
+} */
+.ZoomSliderBig {
+  height: 100%;
+  width: auto;
+  margin: auto;
 }
