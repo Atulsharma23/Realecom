@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../header/header.css";
 import Logo from "../../assets/images/logo.svg";
 import IconCompare from "../../assets/images/icon-compare.svg";
@@ -53,7 +53,7 @@ const Header = () => {
     }
   };
 
- 
+
 
   return (
     <>

@@ -5,7 +5,6 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-
 import { Link } from "react-router-dom";
 const Product = (props) => {
   return (
@@ -60,11 +59,13 @@ const Product = (props) => {
         </span>
         <div className="d-flex align-items-center mt-3">
           <div className="d-flex align-items-center">
-            <span className="price text-g font-weight-bold"> $29.44 </span>{" "}
-            <span className="oldprice"> $32.33</span>
-            <button className="rice">
-              <AddShoppingCartIcon /> Add
-            </button>
+            <div className="adjustment"> <span className="price text-g font-weight-bold"> $29.44 </span>{" "}
+
+              <span className="oldprice"> $32.33</span><button className="rice">
+                <AddShoppingCartIcon /> Add
+              </button> </div>
+
+
           </div>
         </div>
       </div>
