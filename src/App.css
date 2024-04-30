@@ -672,11 +672,10 @@ aside a {
   border: 1px solid rgb(0, 0, 0, 0.1);
   border-radius: 13px;
   width: 100%;
-  height: 600px;
+  height: 790px;
   padding: 0px;
   overflow: hidden;
-  /* display: flex; */
-  /* justify-content: center; */
+
 }
 
 .ZoomSlider {
@@ -862,4 +861,139 @@ width: 100% !important;
   height: 100%;
   width: auto;
   margin: auto;
+}
+
+.ZoomSliderBig .slick-slider {
+  width: 100% !important;
+}
+
+.detailspageTab {
+  border-radius: 25px !important;
+}
+
+.detailspageTab .customTabs .ifo {
+  display: flex;
+  padding: 13px 24px !important;
+  text-align: center;
+  font-weight: 700;
+  font-family: "Quicksand", sans-serif;
+  text-transform: none;
+  font-size: 25px;
+  border-radius: 30px;
+  border: 1px solid #ececec;
+  background: #fff;
+  color: #7E7E7E;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.detailspageTab .customTabs .ifo:hover {
+  color: #f9fffc;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-8px);
+  background-color: #29A56C;
+}
+
+.detailspageTab .customTabs .tabContent p {
+  font-size: 30px;
+  padding: 39px;
+  margin: 15px;
+}
+
+.detailspageTab .customTabs .tabContent .productdetailsList {
+  margin-left: 60px;
+  font-size: 18px;
+  color: #7E7E7E;
+  padding: 20px;
+}
+
+.detailspageTab .customTabs .tabContent .productdetailsList li {
+  margin-top: 5%;
+  font-size: 30px;
+  font: inherit;
+}
+
+.detailspageTab .customTabs .tabContent h2 {
+  margin-left: 50px;
+  font-size: 39px;
+}
+
+.detailspageTab .customTabs .tabContent h3 {
+  margin-left: 2rem;
+  font-size: 39px;
+}
+
+
+.detailspageTab .customTabs .tabContent ul.productdetailsList-second {
+  display: flex;
+  flex-direction: column;
+  margin-left: 60px;
+  font-size: 18px;
+  color: #7E7E7E;
+  padding: 20px;
+}
+
+.detailspageTab .customTabs .tabContent ul.productdetailsList-second li {
+  margin-top: 2.5%;
+  font-size: 30px;
+  list-style: none;
+  font: inherit;
+}
+
+.product-infolistr {
+  display: flex;
+}
+
+.tabContent .table-responsive .table-content th {
+  font-size: 30px;
+  padding: 9px;
+  margin: 5px;
+}
+
+.tabContent .table-responsive .table-content p {
+  font-size: 30px;
+  padding: 9px;
+  margin: 5px;
+}
+
+.tabContent .table-responsive .table-content th {
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.vendor-hai {
+  display: flex;
+  margin-left: 62px;
+  margin-top: 39px;
+}
+
+.vendor-info {
+  margin-left: 12px;
+}
+
+.vendor-rating {
+  display: flex;
+  padding: 6px;
+  margin: 2px 42px;
+}
+
+.vendor-rating .see {
+  margin: 10px;
+  padding: 10px;
+}
+
+.vendor-rating .see h5 {
+  color: #3bb77e;
+}
+
+.vendor-address {
+  padding: 21px;
+  margin: 30px 46px;
+
+}
+
+.vendor-address h6 {
+  font-size: 20px
 }
