@@ -151,7 +151,6 @@ const Details = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className='card  p-5 detailspageTab'>
                     <div className="customTabs">
 
@@ -159,13 +158,8 @@ const Details = () => {
                             <li className='list-inline-items ifo' onClick={() => setActiveTabs(0)} >Description</li>
                             <li className='list-inline-items ifo' onClick={() => setActiveTabs(1)}>Additional info</li>
                             <li className='list-inline-items ifo' onClick={() => setActiveTabs(2)}>Vendor</li>
-                            <li className='list-inline-items ifo'>Reviews({Math.floor(Math.random() * 10) + 1})</li>
-
-
-
+                            <li className='list-inline-items ifo' onClick={() => setActiveTabs(3)}>Reviews({Math.floor(Math.random() * 10) + 1})</li>
                         </ul>
-
-
                         {
                             activeTabs === 0 &&
                             <div className="tabContent">
@@ -200,23 +194,17 @@ const Details = () => {
                                     </ul>
                                 </div>
                                 <p>Laconic overheard dear woodchuck wow this outrageously taut beaver hey hello far meadowlark imitatively egregiously hugged that yikes minimally unanimous pouted flirtatiously as beaver beheld above forward energetic across this jeepers beneficently cockily less a the raucously that magic upheld far so the this where crud then below after jeez enchanting drunkenly more much wow callously irrespective limpet.
-
                                 </p>
                                 <h2>Packaging & Delivery
                                 </h2>
                                 <p>Less lion goodness that euphemistically robin expeditiously bluebird smugly scratched far while thus cackled sheepishly rigid after due one assenting regarding censorious while occasional or this more crane went more as this less much amid overhung anathematic because much held one exuberantly sheep goodness so where rat wry well concomitantly.
-
                                 </p>
                                 <p>Scallop or far crud plain remarkably far by thus far iguana lewd precociously and and less rattlesnake contrary caustic wow this near alas and next and pled the yikes articulate about as less cackled dalmatian in much less well jeering for the thanks blindly sentimental whimpered less across objectively fanciful grimaced wildly some wow and rose jeepers outgrew lugubrious luridly irrationally attractively dachshund.
-
                                 </p>
                                 <h3>Suggested Use
                                 </h3>
                                 <p>Refrigeration not necessary.<br />
                                     Stir before serving</p>
-
-
-
                                 <h2>Other Ingredients
                                 </h2>
                                 <p>Organic raw pecans, organic raw cashews.<br />
@@ -226,12 +214,8 @@ const Details = () => {
                                 <h2>Warnings</h2>
                                 <p>Oil separation occurs naturally. May contain pieces of shell.
                                 </p>
-
-
                             </div>
-
                         }
-
                         {activeTabs === 1 &&
                             <div className="tabContent">
                                 <div className='table-responsive'>
@@ -360,7 +344,6 @@ const Details = () => {
                                     </div>
                                     <div className="see">
                                         <h5>Chat response
-
                                         </h5>
                                         <h4>89%</h4>
                                     </div>
@@ -369,24 +352,90 @@ const Details = () => {
                             <div className="vendor-shopaddress">
                                 <p>Noodles & Company is an American fast-casual restaurant that offers international and American noodle dishes and pasta in addition to soups and salads. Noodles & Company was founded in 1995 by Aaron Kennedy and is headquartered in Broomfield, Colorado. The company went public in 2013 and recorded a $457 million revenue in 2017.In late 2018, there were 460 Noodles & Company locations across 29 states and Washington, D.C.</p>
                             </div>
-
                         </div>}
+                        {activeTabs === 3 && <div className="tabContent">
+                            <div className="reviews">
+                                <div className="col-md-3 profiles" >
+                                    <h4>Customer questions & answers
+                                    </h4>
+
+                                    <div className="real-reviews">
+                                        <div className="left-image">
+                                            <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/blog/author-2.png" alt='profilr pic' />
+                                            <h5>sienna</h5>
+                                        </div>
+                                        <div className="right-comments">
+                                            <div className="date">
+                                                <h6>December 4, 2022 at 3:12 pm
+                                                </h6>
+                                                <Rating
+                                                    name="half-rating-read"
+                                                    defaultValue={5}
+                                                    precision={0.5}
+                                                    readOnly
+                                                />
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <div className='comment'>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="real-reviews">
+                                        <div className="left-image">
+                                            <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/blog/author-3.png" alt='profilr pic' />
+                                            <h5>Chummi</h5>
+                                        </div>
+                                        <div className="right-comments">
+                                            <div className="date">
+                                                <h6>December 4, 2022 at 3:12 pm
+                                                </h6>
+                                                <Rating
+                                                    name="half-rating-read"
+                                                    defaultValue={4}
+                                                    precision={0.5}
+                                                    readOnly
+                                                />
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <div className='comment'>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="real-reviews">
+                                <div className="left-image">
+                                    <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/blog/author-4.png" alt='profilr pic' />
+                                    <h5>Gemma</h5>
+                                </div>
+                                <div className="right-comments">
+                                    <div className="date">
+                                        <h6>December 4, 2022 at 3:12 pm
+                                        </h6>
+                                        <Rating
+                                            name="half-rating-read"
+                                            defaultValue={3}
+                                            precision={0.5}
+                                            readOnly
+                                        />
+                                        <br />
+                                        <br />
+                                    </div>
+                                    <div className='comment'>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
 
                     </div>
-
-
-
-
-
-
-
-
-
                 </div>
-
-
-
-
             </div>
         </section >
     )
