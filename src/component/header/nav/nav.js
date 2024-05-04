@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./nav.css";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -7,12 +7,17 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 // import ClickAwayListener from "@mui/material/ClickAwayListener";
 
-const Nav = () => {
-  // const [showDropdown, setShowDropdown] = useState(false);
-  // function dropPage() {
-  //     setShowDropdown(!showDropdown);
-  //     console.log(showDropdown, "this is state");
-  // }
+const Nav = (props) => {
+
+
+  const [NavData, SetNavData] = useState([]);
+
+
+
+  useEffect(() => {
+    SetNavData(props.data)
+    console.log(props.data, "Navigation data hai yr")
+  })
   return (
     <div className="nav d-flex align-items-center">
       <div className="container-fluid ">
@@ -25,24 +30,42 @@ const Nav = () => {
           </div>
           <div className="col-sm-8 part2 position-static">
             <nav>
+
               <ul className="list list-inline mb-0">
                 <li className="list-inline-item">
                   <Button>
-                    <Link to="/">Home</Link>
+                    <Link to={"/"}>Home</Link>
                   </Button>
                 </li>
-                <li className="list-inline-item">
-                  <Button>
-                    <Link to="/about">About</Link>
-                  </Button>
-                </li>
-                <li className="list-inline-item">
-                  <Button>
-                    <Link>
-                      Shop <ExpandMoreIcon />
-                    </Link>
-                  </Button>
-                </li>
+                {NavData.length !== 0 && NavData.map((item, index) => {
+                  return (
+                    <li className="list-inline-item" key={index}>
+                      <Button>
+                        <Link to={`/cat/${item.cat_name}`}>{item.cat_name}</Link>
+                      </Button>
+                      {item.items && item.items.length !== 0 && (
+                        <div className="dropdow">
+                          <ul>
+                            {item.items.map((item, itemIndex) => {
+
+                              return (
+                                <li key={itemIndex}>
+                                  <Button>
+                                    <Link to={`/cat/${item.cat_name.replace(/\s/g, '-').toLowerCase()}`}>
+                                      {item.cat_name}
+                                    </Link>
+                                  </Button>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
+
+
                 <li className="list-inline-item">
                   <Button>
                     <Link>Vendors</Link>
@@ -108,21 +131,25 @@ const Nav = () => {
                     </ul>
                   </div>
                 </li>
+
                 <li className="list-inline-item position-static">
                   <Button>
                     <Link>
                       Mega menu <ExpandMoreIcon />
                     </Link>
                   </Button>
+
+
                   <div className="dropdow megaMenu w-100">
                     <div className="row">
                       <div className="col">
                         <h3 className="text-g">Fruit & Vegetable</h3>
+                        <ul className="mt-3 mb-0" >
 
-                        <ul className="mt-3 mb-0">
-                          <li>
-                            <Link to="">Meat & Poultry</Link>
+                          <li >
+                            <Link to=""> Vegetables  </Link>
                           </li>
+
                           <li>
                             <Link to="">Fresh Vegetables</Link>
                           </li>
@@ -198,6 +225,9 @@ const Nav = () => {
                       </div>
                     </div>
                   </div>
+                  )
+
+
                 </li>
                 <li className="list-inline-item">
                   <Button>
@@ -296,7 +326,7 @@ const Nav = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 export default Nav;

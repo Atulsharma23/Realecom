@@ -8,16 +8,36 @@ import Listing from "./pages/Listing";
 import Footer from "./component/footer/footer";
 import Notfound from "./pages/Notfound";
 import Details from "./pages/Details"
+import { useEffect, useState } from "react";
+import axios from 'axios';
 function App() {
+  const [productData, setProductData] = useState([]);
+  useEffect(() => {
+    getProducts();
+  }, [])
+  const getProducts = async () => {
+    try {
+      await axios.get('http://localhost:3000/productData').then((response) => {
+        console.log(response.data, "data get successfully")
+        setProductData(response.data)
+      })
+    }
+    catch (error) {
+      alert(error, "error in getting product")
+    }
+  }
   return (
+    productData.length !== 0 &&
+
+
     <div className="App">
       <Router>
-        <Header />
+        <Header data={productData} />
 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
-          <Route path="/listing" element={<Listing />} />
+          <Route path="/cat/:id" element={<Listing />} />
           <Route path="*" element={<Notfound />} />
           <Route path="products/Details" element={<Details />} />
 
