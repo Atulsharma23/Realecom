@@ -10,7 +10,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ShoppingCartSharpIcon from '@mui/icons-material/ShoppingCartSharp';
 import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
 import CompareArrowsSharpIcon from '@mui/icons-material/CompareArrowsSharp';
-
+import Product from '../../component/products';
 const Details = () => {
     const settings = {
         dots: false,
@@ -34,7 +34,17 @@ const Details = () => {
         autoplay: true,
         centerMode: true,
     };
-
+    var related = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        fade: false,
+        arrows: true,
+        autoplay: 1000,
+        centerMode: true,
+    };
     const zoomSliderBigRef = useRef(null);
 
     const [activeSize, setActiveSize] = useState(0);
@@ -354,8 +364,8 @@ const Details = () => {
                             </div>
                         </div>}
                         {activeTabs === 3 && <div className="tabContent">
-                            <div className="reviews">
-                                <div className="col-md-3 profiles" >
+                            <div className="reviews col-md-12">
+                                <div className="col-md-12 profiles" >
                                     <h4>Customer questions & answers
                                     </h4>
 
@@ -378,7 +388,7 @@ const Details = () => {
                                                 <br />
                                             </div>
                                             <div className='comment'>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?</p>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?</p>
                                             </div>
                                         </div>
                                     </div>
@@ -401,40 +411,113 @@ const Details = () => {
                                                 <br />
                                             </div>
                                             <div className='comment'>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?</p>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?</p>
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="real-reviews">
+                                        <div className="left-image">
+                                            <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/blog/author-4.png" alt='profilr pic' />
+                                            <h5>Gemma</h5>
+                                        </div>
+                                        <div className="right-comments">
+                                            <div className="date">
+                                                <h6>December 4, 2022 at 3:12 pm
+                                                </h6>
+                                                <Rating
+                                                    name="half-rating-read"
+                                                    defaultValue={3}
+                                                    precision={0.5}
+                                                    readOnly
+                                                />
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <div className='comment'>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?</p>
+                                            </div>
 
-                                </div>
-                            </div>
-                            <div className="real-reviews">
-                                <div className="left-image">
-                                    <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/blog/author-4.png" alt='profilr pic' />
-                                    <h5>Gemma</h5>
-                                </div>
-                                <div className="right-comments">
-                                    <div className="date">
-                                        <h6>December 4, 2022 at 3:12 pm
-                                        </h6>
-                                        <Rating
+                                        </div>
+
+
+                                    </div>
+                                    <form className='review-form'>
+                                        <h4>Add a review</h4>
+                                        <Rating className='rate'
                                             name="half-rating-read"
-                                            defaultValue={3}
+                                            defaultValue={0}
                                             precision={0.5}
                                             readOnly
                                         />
-                                        <br />
-                                        <br />
-                                    </div>
-                                    <div className='comment'>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt?</p>
-                                    </div>
+                                        <div className="row">
+                                            <div className="form-group col-md-6">
+                                                <textarea className='form-control' placeholder='Write a review'></textarea>
+
+                                            </div>
+
+
+
+                                            <div className='col-md-6'>
+                                                <div className="form-group">
+                                                    <input type='text' className='form-control' placeholder='Name' />
+                                                </div>
+                                            </div>
+                                            <div className='col-md-6'>
+                                                <div className="form-group">
+                                                    <input type='text' className='form-control' placeholder='Email' />
+                                                </div>
+
+
+
+
+                                            </div>
+                                            <div className='col-md-6'>
+                                                <div className="form-group">
+                                                    <input type='text' className='form-control' placeholder='Website' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button className='review-button' >Submit Review</button>
+
+                                    </form>
+
+
+
                                 </div>
+
+
+
                             </div>
+
+
                         </div>
+
+
+
+
                         }
 
                     </div>
+                </div>
+                <br/>
+                <div className="relatedproduts pt-5 pb-4">
+            
+                    <h3><strong>Related products</strong></h3>
+                    <br/>
+                    <Slider {...related} className="row productRow">
+                        <div className="item">
+                            <Product tag="sale" className="yyyy" />
+                        </div>
+                        <div className="item">
+                            <Product tag="new" className="yyyy" />
+                        </div>
+                        <div className="item">
+                            <Product tag="best" className="yyyy" />
+                        </div>
+                        <div className="item">
+                            <Product tag="hot" className="yyyy" />
+                        </div>
+                    </Slider>
                 </div>
             </div>
         </section >
