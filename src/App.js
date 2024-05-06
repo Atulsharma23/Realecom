@@ -35,11 +35,13 @@ function App() {
         <Header data={productData} />
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home data={productData} />} />
           <Route path="/About" element={<About />} />
-          <Route path="/cat/:id" element={<Listing />} />
+          <Route path="/cat/:id" element={<Listing data={productData} single={true} />} />
+          <Route path="/cat/:id/:id" element={<Listing data={productData} single={false} />} />
+
           <Route path="*" element={<Notfound />} />
-          <Route path="products/Details" element={<Details />} />
+          <Route path="products/Details" element={<Details data={productData} />} />
 
 
 

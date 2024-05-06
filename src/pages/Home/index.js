@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomeSlider from "./Slider/index";
 import CatSlider from "../../component/catSlider";
 import Banners from "../../component/banners";
@@ -8,7 +8,15 @@ import banner4 from "../../assets/images/banner4.jpg";
 import Slider from "react-slick";
 import TopProducts from "./TopProducts";
 
-const Home = () => {
+const Home = (props) => {
+
+  const [productData, setProductData] = useState(props.data);
+  const [catArray, setCatArray] = useState([]);
+  const [activeTab, setactiveTab] = useState();
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [activeTabData, setactiveTabData] = useState([]);
+
+
   var settings = {
     dots: true,
     infinite: true,
@@ -20,6 +28,44 @@ const Home = () => {
     autoplay: 1000,
     centerMode: true,
   };
+  const catArr = [];
+
+  useEffect(() => {
+    productData.length !== 0 && productData.map((item) => {
+
+      item.items && item.items.length !== 0 &&
+        item.items.map((item_) => {
+          catArr.push(item_.cat_name)
+        })
+    })
+    //catArr have duplicate array in it so here is line of code to remove the duplicate array 
+    const list2 = catArr.filter((item, index) =>
+      catArr.indexOf(item) === index
+    );
+
+    setCatArray(list2);
+    setactiveTab(list2[0])
+  }, [])
+
+
+  useEffect(() => {
+    const arr = [];
+    setactiveTabData(arr);
+    if (productData && productData.length !== 0) {
+      productData.map((item, index) => {
+        if (item.items && item.items.length !== 0) {
+          item.items.map((item_, index) => {
+            if (item_.cat_name === activeTab) {
+              setactiveTabData(item_.products);
+            }
+          });
+        }
+      });
+    }
+  }, []);
+  console.log(activeTabData, "these are products");
+
+
   return (
     <div>
       <HomeSlider />
@@ -30,61 +76,41 @@ const Home = () => {
           <div className="d-flex align-items-center newww ">
             <h2 className="hd mb-0 mt-0 ">Popular Products</h2>
             <ul className="list list-inline filtertab   mb-0">
-              <li className="list-inline-item">
-                <a className="cursor">All</a>
-              </li>
-              <li className="list-inline-item">
-                <a className="cursor">Milk and Diaries</a>
-              </li>
-              <li className="list-inline-item">
-                <a className="cursor">Coffes and Teas</a>
-              </li>
-              <li className="list-inline-item">
-                <a className="cursor">Pet Foods</a>
-              </li>
-              <li className="list-inline-item">
-                <a className="cursor">Meats</a>
-              </li>
-              <li className="list-inline-item">
-                <a className="cursor">Vegetables</a>
-              </li>
-              <li className="list-inline-item">
-                <a className="cursor">Fruits</a>
-              </li>
+
+
+              {
+                catArray.length !== 0 && catArray.map((item, index) => {
+                  return (
+
+
+                    <li className="list-inline-item" key={index}>
+                      <a className={`cursor text-capitalize ${activeTabIndex === index ? 'act' : ''}`} onClick={() => setActiveTabIndex(index)}>{item}</a>
+                    </li>
+                  )
+                })
+              }
+
+
+
             </ul>
           </div>
 
           <div className="row productRow">
-            <div className="item">
-              <Product tag="hot" />
-            </div>
-            <div className="item">
-              <Product tag="sale" />
-            </div>
-            <div className="item">
-              <Product tag="new" />
-            </div>
-            <div className="item">
-              <Product />
-            </div>
-            <div className="item">
-              <Product tag="best" />
-            </div>
-            <div className="item">
-              <Product tag="new" />
-            </div>
-            <div className="item">
-              <Product />
-            </div>
-            <div className="item">
-              <Product tag="sale" />
-            </div>
-            <div className="item">
-              <Product />
-            </div>
-            <div className="item">
-              <Product tag="best" />
-            </div>
+
+            {activeTabData.length !== 0 &&
+              activeTabData.map((item, index) => {
+                return (
+                  <div className="item">
+                    <Product tag={item.type} item={item} />
+                  </div>
+                )
+
+              })}
+
+
+
+
+
           </div>
         </div>
       </section>
@@ -152,7 +178,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-     
+
     </div>
   );
 };
