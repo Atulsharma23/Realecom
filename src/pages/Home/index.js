@@ -7,16 +7,12 @@ import Product from "../../component/products";
 import banner4 from "../../assets/images/banner4.jpg";
 import Slider from "react-slick";
 import TopProducts from "./TopProducts";
-
 const Home = (props) => {
-
   const [productData, setProductData] = useState(props.data);
   const [catArray, setCatArray] = useState([]);
   const [activeTab, setactiveTab] = useState();
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [activeTabData, setactiveTabData] = useState([]);
-
-
   var settings = {
     dots: true,
     infinite: true,
@@ -29,7 +25,6 @@ const Home = (props) => {
     centerMode: true,
   };
   const catArr = [];
-
   useEffect(() => {
     productData.length !== 0 && productData.map((item) => {
 
@@ -42,12 +37,9 @@ const Home = (props) => {
     const list2 = catArr.filter((item, index) =>
       catArr.indexOf(item) === index
     );
-
     setCatArray(list2);
-    setactiveTab(list2[0])
+    setactiveTab(list2[0]);
   }, [])
-
-
   useEffect(() => {
     const arr = [];
     setactiveTabData(arr);
@@ -62,10 +54,8 @@ const Home = (props) => {
         }
       });
     }
-  }, []);
+  }, [activeTab, activeTabData]);
   console.log(activeTabData, "these are products");
-
-
   return (
     <div>
       <HomeSlider />
@@ -77,43 +67,40 @@ const Home = (props) => {
             <h2 className="hd mb-0 mt-0 ">Popular Products</h2>
             <ul className="list list-inline filtertab   mb-0">
 
-
               {
                 catArray.length !== 0 && catArray.map((item, index) => {
                   return (
-
-
                     <li className="list-inline-item" key={index}>
-                      <a className={`cursor text-capitalize ${activeTabIndex === index ? 'act' : ''}`} onClick={() => setActiveTabIndex(index)}>{item}</a>
+                      <a className={`cursor text-capitalize ${activeTabIndex === index ? 'act' : ''}`}
+                        onClick={() => {
+                          setActiveTabIndex(index)
+
+                          setactiveTab(item)
+
+                        }}>{item}</a>
                     </li>
                   )
                 })
               }
-
-
-
             </ul>
           </div>
-
           <div className="row productRow">
-
             {activeTabData.length !== 0 &&
-              activeTabData.map((item, index) => {
+              activeTabData.slice(0, 8).map((item, index) => {
+                const tag = ["new", "hot", "sale", "best"]; // Tags array without repetition
+
                 return (
-                  <div className="item">
-                    <Product tag={item.type} item={item} />
+                  <div className="item" key={index}>
+                    <Product tag={tag[index % tag.length]} item={item} /> {/* Use modulo to cycle through tags */}
                   </div>
-                )
-
+                );
               })}
-
-
-
-
-
           </div>
+
+
+
         </div>
-      </section>
+      </section >
       <br />
       <section className="home-products pt-0" h>
         <div className="container-fluid">
@@ -167,19 +154,16 @@ const Home = (props) => {
             <div className="col">
               <TopProducts title="Trending Products" />{" "}
             </div>
-
             <div className="col">
               <TopProducts title="Recently Added" />{" "}
             </div>
-
             <div className="col">
               <TopProducts title="Top-Rated" />{" "}
             </div>
           </div>
         </div>
       </section>
-
-    </div>
+    </div >
   );
 };
 export default Home;

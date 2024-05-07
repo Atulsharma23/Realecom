@@ -41,6 +41,11 @@ body {
   text-decoration: none;
 }
 
+.text-p {
+  color: #3bb77e;
+  text-decoration: none;
+}
+
 .text-org {
   color: #FDC040 !important;
 }
