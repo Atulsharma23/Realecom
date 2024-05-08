@@ -18,7 +18,6 @@ function App() {
   const getProducts = async () => {
     try {
       await axios.get('http://localhost:3000/productData').then((response) => {
-        console.log(response.data, "data get successfully")
         setProductData(response.data)
       })
     }

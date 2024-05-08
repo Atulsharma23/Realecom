@@ -10,7 +10,6 @@ const Nav = (props) => {
   const [NavData, SetNavData] = useState([]);
   useEffect(() => {
     SetNavData(props.data)
-    console.log(props.data, "Navigation data hai yr")
   })
   return (
     <div className="nav d-flex align-items-center">

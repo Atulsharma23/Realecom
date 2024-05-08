@@ -13,11 +13,12 @@ const Home = (props) => {
   const [activeTab, setactiveTab] = useState();
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [activeTabData, setactiveTabData] = useState([]);
+  const [bestsell, setBestsells] = useState([]);
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     fade: false,
     arrows: true,
@@ -40,6 +41,7 @@ const Home = (props) => {
     setCatArray(list2);
     setactiveTab(list2[0]);
   }, [])
+
   useEffect(() => {
     const arr = [];
     setactiveTabData(arr);
@@ -55,18 +57,40 @@ const Home = (props) => {
       });
     }
   }, [activeTab, activeTabData]);
-  console.log(activeTabData, "these are products");
+
+  const Bestarr = [];
+  useEffect(() => {
+
+    productData.length !== 0 &&
+      productData.map((item) => {
+        console.log(item.cat_name, "item h vewer")
+        if (item.cat_name === "Fashion") {
+          item.items.length !== 0 &&
+            item.items.map((item_) => {
+
+              item_.products.length !== 0 &&
+                item_.products.map((product, productIndex) => {
+                  Bestarr.push(product);
+                })
+
+            })
+        }
+      })
+    setBestsells(Bestarr);
+  }, [])
+
+
+
   return (
     <div>
       <HomeSlider />
-      <CatSlider />
+      <CatSlider data={productData} />
       <Banners />
       <section className="home-products">
         <div className="container-fluid">
           <div className="d-flex align-items-center newww ">
             <h2 className="hd mb-0 mt-0 ">Popular Products</h2>
             <ul className="list list-inline filtertab   mb-0">
-
               {
                 catArray.length !== 0 && catArray.map((item, index) => {
                   return (
@@ -74,9 +98,7 @@ const Home = (props) => {
                       <a className={`cursor text-capitalize ${activeTabIndex === index ? 'act' : ''}`}
                         onClick={() => {
                           setActiveTabIndex(index)
-
                           setactiveTab(item)
-
                         }}>{item}</a>
                     </li>
                   )
@@ -96,9 +118,6 @@ const Home = (props) => {
                 );
               })}
           </div>
-
-
-
         </div>
       </section >
       <br />
@@ -107,7 +126,7 @@ const Home = (props) => {
           <div className="d-flex align-items-center newww ">
             <h2 className="hd mb-0 mt-0 ">Daily Best Sells</h2>
             <ul className="list list-inline filtertab   mb-0">
-              <li className="list-inline-item">
+              {/* <li className="list-inline-item">
                 <a className="cursor">Featured</a>
               </li>
               <li className="list-inline-item">
@@ -115,7 +134,7 @@ const Home = (props) => {
               </li>
               <li className="list-inline-item">
                 <a className="cursor">New added</a>
-              </li>
+              </li> */}
             </ul>
           </div>
           <br /> <br /> <br />
@@ -124,12 +143,22 @@ const Home = (props) => {
               <img src={banner4} className="hu" />
             </div>
 
+
             <div className="col-md-9 tree">
               <Slider {...settings} className="row productRow">
-                <div className="item">
-                  <Product tag="sale" className="yyyy" />
-                </div>
-                <div className="item">
+
+                {bestsell.length !== 0 &&
+                  bestsell.map((item, index) => {
+                    return (
+                      <div className="item">
+                        <Product tag="hot" item={item} className="yyyy" />
+                      </div>
+                    )
+                  })
+
+                }
+
+                {/* <div className="item">
                   <Product tag="new" className="yyyy" />
                 </div>
                 <div className="item">
@@ -137,7 +166,7 @@ const Home = (props) => {
                 </div>
                 <div className="item">
                   <Product tag="hot" className="yyyy" />
-                </div>
+                </div> */}
               </Slider>
             </div>
           </div>

@@ -23,7 +23,7 @@ const Product = (props) => {
         productData !== undefined && <>
           <Link>
             <div className="imageWrapper" >
-              <duv className="p-4">
+              <duv className="p-4 wrapper">
                 <img
                   src={productData.catImg + '?im=Resize=(420,420)'}
                   className="w-100"
