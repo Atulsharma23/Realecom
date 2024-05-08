@@ -24,6 +24,8 @@
     border-radius: 16px;
     transition: all 0.1s ease-in-out;
     position: relative;
+
+    height: 220px;
 }
 
 .cat_slider_main .item .info h5 {
@@ -32,12 +34,14 @@
 }
 
 .cat_slider_main .item .info p {
-    font-weight: 18px;
+    font-weight:700;
     opacity: 0.8;
     color: #000;
     font-size: 20px;
 }
-
+.cat_slider_main a {
+    text-decoration: none; /* Remove underline from links within the slider */
+  }
 .cat_slider_main .slick-arrow {
     zoom: 80%;
 }

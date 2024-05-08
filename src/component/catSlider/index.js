@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-
 import "./index.css";
-const CatSlider = () => {
+import { Link } from "react-router-dom";
+const CatSlider = (props) => {
+  const [allData, setAllData] = useState(props.data);
+  const [totalLength, setTotalLength] = useState([]);
   const [itemBg, setitemBg] = useState([
     "#ecffec",
     "#f2fce4",
@@ -22,194 +24,57 @@ const CatSlider = () => {
     "#fffceb",
     "#fffceb",
   ]);
+
   var settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 10,
+    slidesToShow: 6, // Change this to 10 to display 10 items at a time
     slidesToScroll: 1,
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 1000, // Set autoplay speed to 3 seconds (3000 milliseconds)
+    autoplay: false,
+    autoplaySpeed: 10000,
     fade: false,
     arrows: true,
   };
+
+  useEffect(() => {
+    const lengthArr = allData.map((item) => {
+      if (item.items && item.items.length > 0) {
+        return item.items.reduce((total, item_) => total + item_.products.length, 0);
+      } else {
+        return 0; // If item.items is undefined or empty, set the length to 0
+      }
+    });
+    const uniqueLengths = Array.from(new Set(lengthArr)); // Remove duplicates
+    setTotalLength(uniqueLengths);
+  }, [allData]);
+
+
   return (
     <>
       <div className="catSliderSection">
         <div className="container-fluid">
           <h2 className="hd">Feature Categories</h2>
-          <Slider
-            {...settings}
-            className="cat_slider_main"
-            id="cat_slider_main"
-          >
-            {itemBg.length !== 0 &&
-              itemBg.map((item, index) => {
-                return (
-                  <div className="item">
-                    <div className="info" style={{ background: item }}>
-                      <img
-                        src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-13.png"
-                        alt="urd"
-                      />
-                      <h5>Cake & Milk</h5>
-                      <p>26 items</p>
-                    </div>
+          <Slider {...settings} className="cat_slider_main" id="cat_slider_main">
+            {allData.length !== 0 &&
+              allData.map((item, index) => (
+                item.image && (
+                  <div className="item" key={index}>
+                    <Link to={`/cat/${item.cat_name.toLowerCase()}`}>
+                      <div className="info" style={{ background: itemBg[index] }}>
+                        <img src={item.image} width="80" alt={item.cat_name} />
+                        <h5 className="text-capitalize mt-3">{item.cat_name}</h5>
+                        <p >{totalLength[index]}</p>
+                      </div>
+                    </Link>
                   </div>
-                );
-              })}
-
-            {/* <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-12.png" />
-                <h5>Oganic Kiwi</h5>
-                <p>28 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-11.png" />
-                <h5>Peach</h5>
-                <p>44 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-9.png" />
-                <h5>Red Apple</h5>
-                <p>66 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-3.png" />
-                <h5>Snack</h5>
-                <p>32 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-1.png" />
-                <h5>Vegetables</h5>
-                <p>26 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-2.png" />
-                <h5>Strawberry</h5>
-                <p>26 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-4.png" />
-                <h5>Black Pulm</h5>
-                <p>26 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-5.png" />
-                <h5>Custurd apple</h5>
-                <p>75 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-14.png" />
-                <h5>Coffee and Tea</h5>
-                <p>76 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-15.png" />
-                <h5>Headphone</h5>
-                <p>87 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-13.png" />
-                <h5>Cake & Milk</h5>
-                <p>26 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-12.png" />
-                <h5>Oganic Kiwi</h5>
-                <p>28 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-11.png" />
-                <h5>Peach</h5>
-                <p>44 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-9.png" />
-                <h5>Red Apple</h5>
-                <p>66 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-3.png" />
-                <h5>Snack</h5>
-                <p>32 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-1.png" />
-                <h5>Vegetables</h5>
-                <p>26 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-2.png" />
-                <h5>Strawberry</h5>
-                <p>26 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-4.png" />
-                <h5>Black Pulm</h5>
-                <p>26 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-5.png" />
-                <h5>Custurd apple</h5>
-                <p>75 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-14.png" />
-                <h5>Coffee and Tea</h5>
-                <p>76 items</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/cat-15.png" />
-                <h5>Headphone</h5>
-                <p>87 items</p>
-              </div>
-            </div> */}
+                )
+              ))}
           </Slider>
         </div>
       </div>
     </>
   );
 };
+
 export default CatSlider;

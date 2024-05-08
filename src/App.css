@@ -37,6 +37,12 @@ body {
 
 .text-g {
   color: #3bb77e;
+  margin-left: 46px;
+  text-decoration: none;
+}
+
+.text-p {
+  color: #3bb77e;
   text-decoration: none;
 }
 

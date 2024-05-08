@@ -17,7 +17,7 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Nav from "./nav/nav";
 import Select from "../selectDrop/select";
 import axios from "axios";
-const Header = () => {
+const Header = (props) => {
   const [isOpenDropDown, setisOpenDropDown] = useState(false);
   const [categories, setCategories] = useState([
     "Wines and Drinks",
@@ -179,7 +179,7 @@ const Header = () => {
             </div>
           </div>
         </header>
-        <Nav />
+        <Nav data={props.data} />
       </div>
     </>
   );

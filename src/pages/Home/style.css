@@ -22,7 +22,8 @@
   font-weight: 600;
 }
 
-.filtertab li a:hover {
+
+.filtertab li .act {
   color: #3bb77e;
   transition: all 0.3s ease-in-out;
 }
@@ -89,4 +90,5 @@
   width: 40%;
   position: absolute;
   right: 50px;
-  bottom: 0;}
+  bottom: 0;
+}

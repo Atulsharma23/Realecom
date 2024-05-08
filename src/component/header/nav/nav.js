@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./nav.css";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -6,13 +6,11 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 // import ClickAwayListener from "@mui/material/ClickAwayListener";
-
-const Nav = () => {
-  // const [showDropdown, setShowDropdown] = useState(false);
-  // function dropPage() {
-  //     setShowDropdown(!showDropdown);
-  //     console.log(showDropdown, "this is state");
-  // }
+const Nav = (props) => {
+  const [NavData, SetNavData] = useState([]);
+  useEffect(() => {
+    SetNavData(props.data)
+  })
   return (
     <div className="nav d-flex align-items-center">
       <div className="container-fluid ">
@@ -25,24 +23,40 @@ const Nav = () => {
           </div>
           <div className="col-sm-8 part2 position-static">
             <nav>
+
               <ul className="list list-inline mb-0">
                 <li className="list-inline-item">
                   <Button>
-                    <Link to="/">Home</Link>
+                    <Link to={"/"}>Home</Link>
                   </Button>
                 </li>
-                <li className="list-inline-item">
-                  <Button>
-                    <Link to="/about">About</Link>
-                  </Button>
-                </li>
-                <li className="list-inline-item">
-                  <Button>
-                    <Link>
-                      Shop <ExpandMoreIcon />
-                    </Link>
-                  </Button>
-                </li>
+                {NavData.length !== 0 && NavData.map((item, index) => {
+                  return (
+                    <li className="list-inline-item" key={index}>
+                      <Button>
+                        <Link to={`/cat/${item.cat_name}`}>{item.cat_name}</Link>
+                      </Button>
+                      {item.items && item.items.length !== 0 && (
+                        <div className="dropdow">
+                          <ul>
+                            {item.items.map((item, itemIndex) => {
+
+                              return (
+                                <li key={itemIndex}>
+                                  <Button>
+                                    <Link to={`/cat/${item.cat_name.replace(/\s/g, '-').toLowerCase()}`}>
+                                      {item.cat_name}
+                                    </Link>
+                                  </Button>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
                 <li className="list-inline-item">
                   <Button>
                     <Link>Vendors</Link>
@@ -108,7 +122,7 @@ const Nav = () => {
                     </ul>
                   </div>
                 </li>
-                <li className="list-inline-item position-static">
+                <li className="list-inline-item position-static" >
                   <Button>
                     <Link>
                       Mega menu <ExpandMoreIcon />
@@ -116,80 +130,26 @@ const Nav = () => {
                   </Button>
                   <div className="dropdow megaMenu w-100">
                     <div className="row">
-                      <div className="col">
-                        <h3 className="text-g">Fruit & Vegetable</h3>
+                      {
+                        props.data.length !== 0 && props.data.map((item, index) => {
+                          return (
+                            <div className="col" >
 
-                        <ul className="mt-3 mb-0">
-                          <li>
-                            <Link to="">Meat & Poultry</Link>
-                          </li>
-                          <li>
-                            <Link to="">Fresh Vegetables</Link>
-                          </li>
-
-                          <li>
-                            <Link to="">Herbs & Seasonings</Link>
-                          </li>
-                          <li>
-                            <Link to="">Cuts & Sproutes</Link>
-                          </li>
-                          <li>
-                            <Link to="">Exotic Fruits & Veggies</Link>
-                          </li>
-                          <li>
-                            <Link to="">Packaged Products</Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col">
-                        <h3 className="text-g">Breakfast & Dairy</h3>
-                        <ul className="mt-3 mb-0">
-                          <li>
-                            <Link to="">Milk and Flavoured Milk</Link>
-                          </li>
-                          <li>
-                            <Link to="">Butter and Margarine</Link>
-                          </li>
-
-                          <li>
-                            <Link to="">Eggs and Substitutes</Link>
-                          </li>
-                          <li>
-                            <Link to="">Marmalades</Link>
-                          </li>
-                          <li>
-                            <Link to="">Sour Cream</Link>
-                          </li>
-                          <li>
-                            <Link to="">Cheese</Link>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <div className="col">
-                        <h3 className="text-g">Meat & Seafood</h3>
-                        <ul className="mt-3 mb-0">
-                          <li>
-                            <Link to="">Breakfast Sausage</Link>
-                          </li>
-                          <li>
-                            <Link to="">Dinner Sausage</Link>
-                          </li>
-
-                          <li>
-                            <Link to="">Chicken</Link>
-                          </li>
-                          <li>
-                            <Link to="">Sliced Deli Meat</Link>
-                          </li>
-                          <li>
-                            <Link to="">Wild Caught Fillets</Link>
-                          </li>
-                          <li>
-                            <Link to="">Crab and Shellfish</Link>
-                          </li>
-                        </ul>
-                      </div>
+                              <Link to={`/cat/${item.cat_name}`}> <h3 className="text-g" key={index}>{item.cat_name}</h3></Link>
+                              <ul className="mt-3 mb-0" >
+                                {item.items && item.items.map((item_, index_) => {
+                                  return (
+                                    <li key={index_} >
+                                      <Link to={`/cat/${item.cat_name.toLowerCase()}/${item_.cat_name.replace(/\s/g, '-').toLowerCase()}`}> {item_.cat_name} </Link>
+                                    </li>
+                                  )
+                                })
+                                }
+                              </ul>
+                            </div>
+                          )
+                        })
+                      }
                       <div className="col">
                         <img
                           src="https://wp.alithemes.com/html/nest/demo/assets/imgs/banner/banner-menu.png"
@@ -198,6 +158,7 @@ const Nav = () => {
                       </div>
                     </div>
                   </div>
+
                 </li>
                 <li className="list-inline-item">
                   <Button>
@@ -296,7 +257,7 @@ const Nav = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 export default Nav;
