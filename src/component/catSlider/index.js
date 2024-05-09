@@ -64,7 +64,7 @@ const CatSlider = (props) => {
                       <div className="info" style={{ background: itemBg[index] }}>
                         <img src={item.image} width="80" alt={item.cat_name} />
                         <h5 className="text-capitalize mt-3">{item.cat_name}</h5>
-                        <p >{totalLength[index]}</p>
+                        <p >{totalLength[index]}items</p>
                       </div>
                     </Link>
                   </div>

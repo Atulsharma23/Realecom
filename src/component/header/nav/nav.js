@@ -34,7 +34,7 @@ const Nav = (props) => {
                   return (
                     <li className="list-inline-item" key={index}>
                       <Button>
-                        <Link to={`/cat/${item.cat_name}`}>{item.cat_name}</Link>
+                        <a href={`/cat/${item.cat_name}`}>{item.cat_name}</a>
                       </Button>
                       {item.items && item.items.length !== 0 && (
                         <div className="dropdow">
@@ -44,9 +44,9 @@ const Nav = (props) => {
                               return (
                                 <li key={itemIndex}>
                                   <Button>
-                                    <Link to={`/cat/${item.cat_name.replace(/\s/g, '-').toLowerCase()}`}>
+                                    <a href={`/cat/${item.cat_name.replace(/\s/g, '-').toLowerCase()}`}>
                                       {item.cat_name}
-                                    </Link>
+                                    </a>
                                   </Button>
                                 </li>
                               );
@@ -135,12 +135,12 @@ const Nav = (props) => {
                           return (
                             <div className="col" >
 
-                              <Link to={`/cat/${item.cat_name}`}> <h3 className="text-g" key={index}>{item.cat_name}</h3></Link>
+                              <a href={`/cat/${item.cat_name}`}> <h3 className="text-g" key={index}>{item.cat_name}</h3></a>
                               <ul className="mt-3 mb-0" >
                                 {item.items && item.items.map((item_, index_) => {
                                   return (
                                     <li key={index_} >
-                                      <Link to={`/cat/${item.cat_name.toLowerCase()}/${item_.cat_name.replace(/\s/g, '-').toLowerCase()}`}> {item_.cat_name} </Link>
+                                      <a href={`/cat/${item.cat_name.toLowerCase()}/${item_.cat_name.replace(/\s/g, '-').toLowerCase()}`}> {item_.cat_name} </a>
                                     </li>
                                   )
                                 })

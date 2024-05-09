@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Sidebar from "../../component/Sidebar";
@@ -8,10 +8,36 @@ import Button from "@mui/material/Button";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CategoryIcon from '@mui/icons-material/Category';
 import GridViewIcon from '@mui/icons-material/GridView';
-const Listing = () => {
+const Listing = (props) => {
   const [isOpenDropDown, setisOpenDropDown] = useState(false);
   const [isOpenDropDown1, setisOpenDropDown1] = useState(false);
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+  var itemsData = [];
+  useEffect(() => {
+    props.data.length !== 0 && props.data.map((item) => {
+      if (props.single === true && item.cat_name) {
+        if (item.cat_name.toLowerCase() === id.toLowerCase()) {
+          item.items.length !== 0 && item.items.map((item_) => {
+            item_.products.length !== 0 && item_.products.map((product) => {
+              itemsData.push(product);
+            })
+          })
+        }
+      }
+      //double category//
+      else {
+        if (item.items && item.item.length !== 0) {
+          item.items.map((item_, index_) => {
+            console.log(item_.cat_name, "bhbhbhb")
+          })
+        }
+      }
 
+    })
+    const list2 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
+    setData(list2);
+  }, [])
   return (
     <section>
       <div className="listingPage">
@@ -59,31 +85,36 @@ const Listing = () => {
                       {isOpenDropDown !== false && (
                         <ul className="dropdownMenu">
                           <li>
-                            <Button className="align-items-center" onClick={() => setisOpenDropDown(false)}>
+                            <Button className="align-items-center"
+                              onClick={() => setisOpenDropDown(false)}>
                               {" "}
                               50
                             </Button>
                           </li>
                           <li>
-                            <Button className="align-items-center" onClick={() => setisOpenDropDown(false)}>
+                            <Button className="align-items-center"
+                              onClick={() => setisOpenDropDown(false)}>
                               {" "}
                               100
                             </Button>
                           </li>
                           <li>
-                            <Button className="align-items-center" onClick={() => setisOpenDropDown(false)}>
+                            <Button className="align-items-center"
+                              onClick={() => setisOpenDropDown(false)}>
                               {" "}
                               150
                             </Button>
                           </li>{" "}
                           <li>
-                            <Button className="align-items-center" onClick={() => setisOpenDropDown(false)}>
+                            <Button className="align-items-center"
+                              onClick={() => setisOpenDropDown(false)}>
                               {" "}
                               200
                             </Button>
                           </li>{" "}
                           <li>
-                            <Button className="align-items-center" onClick={() => setisOpenDropDown(false)}>
+                            <Button className="align-items-center"
+                              onClick={() => setisOpenDropDown(false)}>
                               {" "}
                               All
                             </Button>
@@ -93,38 +124,44 @@ const Listing = () => {
                     </div>
                     <div className="tab_1 ml-5 position-relative">
 
-                      <Button variant="text" className="Short" onClick={() => setisOpenDropDown1(!isOpenDropDown1)}> <GridViewIcon />Short By Featured</Button>
+                      <Button variant="text" className="Short"
+                        onClick={() => setisOpenDropDown1(!isOpenDropDown1)}> <GridViewIcon />Short By Featured</Button>
                       <KeyboardArrowDownIcon />
                       {isOpenDropDown1 !== false && (
 
                         <ul className="dropdownMenu">
                           <li>
-                            <Button className="align-items-center" onClick={() => setisOpenDropDown1(false)}>
+                            <Button className="align-items-center"
+                              onClick={() => setisOpenDropDown1(false)}>
                               {" "}
                               Featured
                             </Button>
                           </li>
                           <li>
-                            <Button className="align-items-center" onClick={() => setisOpenDropDown1(false)}>
+                            <Button className="align-items-center"
+                              onClick={() => setisOpenDropDown1(false)}>
                               {" "}
                               Price:Low to High
                             </Button>
                           </li>
                           <li>
-                            <Button className="align-items-center" onClick={() => setisOpenDropDown1(false)}>
+                            <Button className="align-items-center"
+                              onClick={() => setisOpenDropDown1(false)}>
                               {" "}
                               Price:High to Low
 
                             </Button>
                           </li>{" "}
                           <li>
-                            <Button className="align-items-center" onClick={() => setisOpenDropDown1(false)}>
+                            <Button className="align-items-center"
+                              onClick={() => setisOpenDropDown1(false)}>
                               {" "}
                               Release Date
                             </Button>
                           </li>{" "}
                           <li>
-                            <Button className="align-items-center" onClick={() => setisOpenDropDown1(false)}>
+                            <Button className="align-items-center"
+                              onClick={() => setisOpenDropDown1(false)}>
                               {" "}
                               Avg:Rating
                             </Button>
@@ -135,69 +172,14 @@ const Listing = () => {
 
                   </div>
                 </div>
-
-
                 <div className="row productRow pl-4 pl-3">
-                  <div className="item">
-                    <Product tag="best" />
-                  </div>
-                  <div className="item">
-                    <Product tag="sale" />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product tag="best" />
-                  </div>
-                  <div className="item">
-                    <Product tag="best" />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product tag="sale" />
-                  </div>
-                  <div className="item">
-                    <Product tag="best" />
-                  </div>
-                  <div className="item">
-                    <Product tag="best" />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product tag="sale" />
-                  </div>
-                  <div className="item">
-                    <Product tag="sale" />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product tag="sale" />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product tag="hot" />
-                  </div>
-                  <div className="item">
-                    <Product tag="hot" />
-                  </div>
-                  <div className="item">
-                    <Product tag="hot" />
-                  </div>
+                  {
+                    data.length !== 0 && data.map((item, index) => {
+                      return (<div className="item" key={index}>
+                        <Product tag="best" item={item} />
+                      </div>)
+                    })
+                  }
                 </div>
               </div>
             </div>
