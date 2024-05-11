@@ -44,9 +44,10 @@ const Nav = (props) => {
                               return (
                                 <li key={itemIndex}>
                                   <Button>
-                                    <a href={`/cat/${item.cat_name.replace(/\s/g, '-').toLowerCase()}`}>
+                                    <a href={`/cat/${item.cat_name.toLowerCase().replace(/\s/g, '-')}/${item.cat_name.toLowerCase().replace(/\s/g, '-')}`}>
                                       {item.cat_name}
                                     </a>
+
                                   </Button>
                                 </li>
                               );

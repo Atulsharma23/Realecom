@@ -21,23 +21,30 @@ const Listing = (props) => {
           item.items.length !== 0 && item.items.map((item_) => {
             item_.products.length !== 0 && item_.products.map((product) => {
               itemsData.push(product);
+              console.log(product, "single category products")
             })
           })
         }
       }
-      //double category//
       else {
-        if (item.items && item.item.length !== 0) {
-          item.items.map((item_, index_) => {
-            console.log(item_.cat_name, "bhbhbhb")
-          })
-        }
+        item.items && item.items.length !== 0 && item.items.map((item_) => {
+
+          console.log("item_")
+          if (item_.cat_name.split(' ').join('-').toLowerCase() === id.toLowerCase()) {
+            item_.products.length !== 0 && item_.products.map((product) => {
+              itemsData.push(product);
+              console.log(product, "double category products")
+
+            })
+          }
+        })
       }
+
 
     })
     const list2 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
     setData(list2);
-  }, [])
+  }, [id])
   return (
     <section>
       <div className="listingPage">
@@ -70,13 +77,16 @@ const Listing = (props) => {
           <div className="listingdata">
             <div className="row">
               <div className="col-md-3 SidebarWrapper">
-                <Sidebar />
+                {
+                  data.length !== 0 && <Sidebar data={props.data} currentCatData={data} />
+                }
+
               </div>
               <div className="col-md-9 rightContent home-products pt-0">
 
 
                 <div className="top-strip d-flex align-items-center">
-                  <p className="mb-0">We found <span className="text-success">29</span> items for you!</p>
+                  <p className="mb-0">We found <span className="text-success">{data.length}</span> items for you!</p>
                   <div className="ml-auto d-flex align-items-center">
                     <div className="tab_ position-relative">
 
