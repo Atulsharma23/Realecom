@@ -383,7 +383,9 @@ aside a {
   position: sticky;
   top: 110px;
 }
-
+.SidebarWrapper .sidebar .card *{
+  text-decoration: none;
+}
 .SidebarWrapper .sidebar .card .catList .catItem {
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);

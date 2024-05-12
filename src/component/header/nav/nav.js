@@ -34,7 +34,8 @@ const Nav = (props) => {
                   return (
                     <li className="list-inline-item" key={index}>
                       <Button>
-                        <a href={`/cat/${item.cat_name}`}>{item.cat_name}</a>
+                        <a href={`/cat/${item.cat_name}`}
+                          onClick={() => sessionStorage.setItem('cat', item.cat_name.toLowerCase())}>{item.cat_name}</a>
                       </Button>
                       {item.items && item.items.length !== 0 && (
                         <div className="dropdow">
@@ -43,8 +44,10 @@ const Nav = (props) => {
 
                               return (
                                 <li key={itemIndex}>
-                                  <Button>
-                                    <a href={`/cat/${item.cat_name.toLowerCase().replace(/\s/g, '-')}/${item.cat_name.toLowerCase().replace(/\s/g, '-')}`}>
+                                  <Button >
+                                    <a
+                                      href={`/cat/${item.cat_name.toLowerCase().replace(/\s/g, '-')}/${item.cat_name.toLowerCase().replace(/\s/g, '-')}`}
+                                      onClick={() => sessionStorage.setItem('cat', item.cat_name.toLowerCase())} >
                                       {item.cat_name}
                                     </a>
 

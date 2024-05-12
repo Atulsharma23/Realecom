@@ -1,5 +1,6 @@
-import React , { useEffect, useState } from "react";
-import Slider from "@mui/material/Slider";
+import React, { useEffect, useState } from "react";
+import RangeSlider from 'react-range-slider-input';
+import 'react-range-slider-input/dist/style.css';
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import FilterAltOffIcon from "@mui/icons-material/FilterAltOff";
@@ -10,18 +11,16 @@ import { Link } from "react-router-dom";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-function valuetext(value) {
-  return `${value}°C`;
-}
+
+
+
 
 const Sidebar = (props) => {
-  const [value, setValue] = React.useState([20, 37]);
   const [totalLength, setTotalLength] = useState([]);
   const [allData, setAllData] = useState(props.data);
+  const [value, setValue] = useState([0, 6000]);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const [value2, setValue2] = useState(0);
 
   useEffect(() => {
     const lengthArr = allData.map((item) => {
@@ -34,6 +33,31 @@ const Sidebar = (props) => {
     const uniqueLengths = Array.from(new Set(lengthArr)); // Remove duplicates
     setTotalLength(uniqueLengths);
   }, [allData]);
+
+  useEffect(() => {
+    var price = 0;
+    props.currentCatData.length !== 0 &&
+      props.currentCatData.map((item, index) => {
+        let prodPrice = parseInt(item.price.toString().replace(/,/g, ""));
+        if (prodPrice > price) {
+          price = prodPrice
+        }
+
+      })
+    setValue2(price)
+  }, [props.currentCatData])
+
+
+
+
+
+
+
+  useEffect(() => {
+    props.filterByPrice(value[0], value[1])
+
+  }, [value])
+
   return (
     <div className="sidebar">
       <div className="card border-0 shadow ">
@@ -56,7 +80,7 @@ const Sidebar = (props) => {
                     </span>
                     <h4 className="mb-0 ml-3 mr-3">{item.cat_name}</h4>
                     <span className="number d-flex align-items-center justify-content-center rounded-circle ml-auto">
-                    {totalLength[index]}
+                      {totalLength[index]}
                     </span>
                   </div>
                 </Link>
@@ -72,26 +96,16 @@ const Sidebar = (props) => {
 
         <div className="Range-selector">
           <Box className="range-area" sx={{ width: 300 }}>
-            <Slider
-              min={0}
-              step={1}
-              max={1000}
-              getAriaLabel={() => "Temperature range"}
-              value={value}
-              onChange={handleChange}
-              valueLabelDisplay="auto"
-              getAriaValueText={valuetext}
-              color="success"
-            />
+            <RangeSlider value={value} onInput={setValue} min={0} max={6000} step={5} />
           </Box>
         </div>
 
         <div className="d-flex pt-2 pb-2 priceRange">
           <span>
-            From:<strong className="text-success">${value[0]}</strong>
+            From:<strong className="text-success">Rs:{value[0]}</strong>
           </span>
           <span className="right-area">
-            To:<strong className="text-success">${value[1]}</strong>
+            To:<strong className="text-success">Rs:{value[1]}</strong>
           </span>
         </div>
 

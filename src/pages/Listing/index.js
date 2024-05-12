@@ -8,12 +8,16 @@ import Button from "@mui/material/Button";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CategoryIcon from '@mui/icons-material/Category';
 import GridViewIcon from '@mui/icons-material/GridView';
+
+
 const Listing = (props) => {
   const [isOpenDropDown, setisOpenDropDown] = useState(false);
   const [isOpenDropDown1, setisOpenDropDown1] = useState(false);
   const [data, setData] = useState([]);
   const { id } = useParams();
   var itemsData = [];
+
+
   useEffect(() => {
     props.data.length !== 0 && props.data.map((item) => {
       if (props.single === true && item.cat_name) {
@@ -21,7 +25,6 @@ const Listing = (props) => {
           item.items.length !== 0 && item.items.map((item_) => {
             item_.products.length !== 0 && item_.products.map((product) => {
               itemsData.push(product);
-              console.log(product, "single category products")
             })
           })
         }
@@ -39,38 +42,65 @@ const Listing = (props) => {
           }
         })
       }
-
-
     })
     const list2 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
     setData(list2);
   }, [id])
+
+
+  const filterByPrice = (minValue, maxValue) => {
+    console.log(minValue, maxValue)
+    props.data.length !== 0 && props.data.map((item) => {
+      if (props.single === true) {
+        if (item.cat_name && id.toLowerCase() === item.cat_name.toLowerCase()) {
+          item.items.length !== 0 && item.items.map((item_) => {
+            item_.products.length !== 0 && item_.products.map((product) => {
+              let price = parseInt(product.price.toString().replace(/,/g, ""))
+              if (minValue <= price && maxValue >= price) {
+                itemsData.push(product);
+              }
+            })
+          })
+        }
+      }
+    })
+    const list2 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
+    setData(list2);
+  }
   return (
     <section>
       <div className="listingPage">
         <div className="container-fluid">
           <div className="breadcrumb flex-column">
-            <h1>Snack</h1>
+            <h1 className="text-capitalize">{sessionStorage.getItem('cat')}</h1>
             <div>
               {" "}
               <ul className=" list list-inline mb-0">
                 <li className="list-inline-item first  ">
-                  <Link to={""}>
+                  <Link to={'/'}>
                     <HomeIcon /> Home
                   </Link>
                 </li>
+
+
                 <li className="list-inline-item">
-                  <Link to={""}>
+                  <Link to={`/cat/${sessionStorage.getItem('cat')}`} className="text-capitalize">
                     <KeyboardArrowRightIcon />
-                    Shop
+                    {sessionStorage.getItem('cat')}
                   </Link>
                 </li>
-                <li className="list-inline-item">
-                  <Link to={""}>
-                    <GridViewIcon />
-                    Snack
-                  </Link>
-                </li>
+
+
+                {props.single === false &&
+                  <li className="list-inline-item">
+                    <Link to={`/cat/${id}`} className="text-capitalize">
+                      <KeyboardArrowRightIcon />
+                      {id}
+                    </Link>
+                  </li>
+                }
+
+
               </ul>
             </div>
           </div>
@@ -78,7 +108,7 @@ const Listing = (props) => {
             <div className="row">
               <div className="col-md-3 SidebarWrapper">
                 {
-                  data.length !== 0 && <Sidebar data={props.data} currentCatData={data} />
+                  <Sidebar data={props.data} currentCatData={data} filterByPrice={filterByPrice} />
                 }
 
               </div>
