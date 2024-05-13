@@ -63,6 +63,21 @@ const Listing = (props) => {
           })
         }
       }
+      else {
+       item.items  && item.items.length !== 0 && item.items.map((item_, index_) => {
+          if (item_.cat_name.replace(/[^A-Za-z]/g, "-").toLowerCase() == id.replace(/[^A-Za-z]/g, "-").toLowerCase()) {
+            item_.products.map((product) => {
+
+              let price = parseInt(product.price.toString().replace(/,/g, ""))
+              if (minValue <= price && maxValue >= price) {
+                itemsData.push(product);
+              }
+            })
+
+          }
+
+        })
+      }
     })
     const list2 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
     setData(list2);

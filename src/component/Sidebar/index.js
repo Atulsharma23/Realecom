@@ -5,20 +5,12 @@ import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import FilterAltOffIcon from "@mui/icons-material/FilterAltOff";
 import Banner1 from '../../assets/images/Banner1.jpg'
-
 import { Link } from "react-router-dom";
-
-
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
-
-
-
-
 const Sidebar = (props) => {
   const [totalLength, setTotalLength] = useState([]);
   const [allData, setAllData] = useState(props.data);
-  const [value, setValue] = useState([0, 6000]);
+  const [value, setValue] = useState([0, 60000]);
 
   const [value2, setValue2] = useState(0);
 
@@ -47,24 +39,14 @@ const Sidebar = (props) => {
     setValue2(price)
   }, [props.currentCatData])
 
-
-
-
-
-
-
   useEffect(() => {
     props.filterByPrice(value[0], value[1])
-
   }, [value])
-
   return (
     <div className="sidebar">
       <div className="card border-0 shadow ">
         <h3>Category</h3>
         <div className="catList">
-
-
           {props.data && props.data.length !== 0 && props.data.map((item, index) => {
             // Check if item exists and item.cat_name is defined
             if (item && item.cat_name !== undefined) {
@@ -96,11 +78,8 @@ const Sidebar = (props) => {
 
         <div className="Range-selector">
           <Box className="range-area" sx={{ width: 300 }}>
-            <RangeSlider value={value} onInput={setValue} min={0} max={6000} step={5} />
-          </Box>
-        </div>
-
-        <div className="d-flex pt-2 pb-2 priceRange">
+            <RangeSlider value={value} onInput={setValue} min={0} max={60000} step={5} />
+            <div className="d-flex pt-2 pb-2 priceRange">
           <span>
             From:<strong className="text-success">Rs:{value[0]}</strong>
           </span>
@@ -108,6 +87,10 @@ const Sidebar = (props) => {
             To:<strong className="text-success">Rs:{value[1]}</strong>
           </span>
         </div>
+          </Box>
+        </div>
+
+       
 
         <div className="filters">
           <h5>Color</h5>
