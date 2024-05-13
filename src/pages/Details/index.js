@@ -130,7 +130,7 @@ const Details = () => {
                                     <span className='oldp'>$56</span>
                                 </div>
                             </div>
-                            <p className='priceSec-details'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima nisi modi, quasi, odio minus dolore impedit fuga eum eligendi.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima nisi modi, quasi, odio minus dolore impedit fuga eum eligendi.</p>
+                            <p className='priceSec-details'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima nisi modi, quasi, odio minus dolore impedit fuga eum eligendi.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima ni    si modi, quasi, odio minus dolore impedit fuga eum eligendi.</p>
                             <div className='ProductSize d-flex align-items-center'>
                                 <span>Size / Weight:</span>
                                 <ul className="list list-inline mb-0 pl-4">
@@ -499,11 +499,11 @@ const Details = () => {
 
                     </div>
                 </div>
-                <br/>
+                <br />
                 <div className="relatedproduts pt-5 pb-4">
-            
+
                     <h3><strong>Related products</strong></h3>
-                    <br/>
+                    <br />
                     <Slider {...related} className="row productRow">
                         <div className="item">
                             <Product tag="sale" className="yyyy" />
