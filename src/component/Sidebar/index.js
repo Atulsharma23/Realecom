@@ -5,15 +5,44 @@ import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import FilterAltOffIcon from "@mui/icons-material/FilterAltOff";
 import Banner1 from '../../assets/images/Banner1.jpg'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { FormControlLabel, RadioGroup } from "@mui/material";
+import Radio from "@mui/material/Radio";
+import FormControl from "@mui/material";
+import FormLabel from "@mui/material";
+
+
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const Sidebar = (props) => {
   const [totalLength, setTotalLength] = useState([]);
   const [allData, setAllData] = useState(props.data);
   const [value, setValue] = useState([0, 60000]);
-
   const [value2, setValue2] = useState(0);
+  const [brandFilters, setBrandFilters] = React.useState([]);
+  const [ratingsArr, setRatings] = React.useState([]);
 
+  let { id } = useParams();
+  var brands = [];
+  var ratings = [];
+
+
+  useEffect(() => {
+    brands = [];
+    props.currentCatData.length !== 0 &&
+      props.currentCatData.map((item, index) => {
+        brands.push(item.brand);
+        ratings.push(parseFloat(item.rating))
+      })
+
+    const list2 = brands.filter((item, index) =>
+      brands.indexOf(item) === index);
+    setBrandFilters(list2);
+
+    const ratings_ = ratings.filter((item, index) => ratings.indexOf(item) === index)
+    setRatings(ratings_)
+
+
+  }, [id])
   useEffect(() => {
     const lengthArr = allData.map((item) => {
       if (item.items && item.items.length > 0) {
@@ -34,7 +63,6 @@ const Sidebar = (props) => {
         if (prodPrice > price) {
           price = prodPrice
         }
-
       })
     setValue2(price)
   }, [props.currentCatData])
@@ -42,6 +70,18 @@ const Sidebar = (props) => {
   useEffect(() => {
     props.filterByPrice(value[0], value[1])
   }, [value])
+
+
+
+
+  const filterByBrand = (keyword) => {
+    props.filterByBrand(keyword)
+  }
+  const filterByRating = (keyword) => {
+    props.filterByRating(parseFloat(keyword))
+
+  }
+
   return (
     <div className="sidebar">
       <div className="card border-0 shadow ">
@@ -80,173 +120,66 @@ const Sidebar = (props) => {
           <Box className="range-area" sx={{ width: 300 }}>
             <RangeSlider value={value} onInput={setValue} min={0} max={60000} step={5} />
             <div className="d-flex pt-2 pb-2 priceRange">
-          <span>
-            From:<strong className="text-success">Rs:{value[0]}</strong>
-          </span>
-          <span className="right-area">
-            To:<strong className="text-success">Rs:{value[1]}</strong>
-          </span>
-        </div>
+              <span>
+                From:<strong className="text-success">Rs:{value[0]}</strong>
+              </span>
+              <span className="right-area">
+                To:<strong className="text-success">Rs:{value[1]}</strong>
+              </span>
+            </div>
           </Box>
         </div>
-
-       
-
         <div className="filters">
-          <h5>Color</h5>
-          <ul>
-            <li>
-              {" "}
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Red(56)
-            </li>
+          <h5>Filter By Brand</h5>
+          <ul className="mb-0">
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue="female"
+              name="radio-buttons-group"
+            >
+  {
+                brandFilters.length !== 0 &&
+                brandFilters.map((item, index) => {
+                  return (
+                    <li key={index}>
+                      <FormControlLabel value={item} control={<Radio onChange={() => filterByBrand(item)} />} label={item} />
+                    </li>
+                  )
 
-            <li>
-              {" "}
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Green (78)
-            </li>
+                })
+              }
 
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Blue(54)
-            </li>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Blue(54)
-            </li>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Blue(54)
-            </li>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Blue(54)
-            </li>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Blue(54)
-            </li>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Blue(54)
-            </li>
+
+
+
+            </RadioGroup>
+
           </ul>
         </div>
         <div className="filters-two mb-0">
-          <h5>Item Condition</h5>
+          <h5>Filter By Ratings</h5>
           <ul>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              New (1506)
-            </li>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Refurbished (27)
-            </li>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Used (45)
-            </li>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Used (45)
-            </li>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Used (45)
-            </li>
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Used (45)
-            </li>
-
-            <li>
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                color="success"
-              />
-              Used (45)
-            </li>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue="female"
+              name="radio-buttons-group"
+            >
+              {
+                ratingsArr.length !== 0 &&
+                ratingsArr.map((item, index) => {
+                  return (
+                    <li key={index}>
+                      <FormControlLabel value={item} control={<Radio onChange={() => filterByRating(item)} />} label={item} />
+                    </li>
+                  )
+                })
+              }
+            </RadioGroup>
           </ul>
         </div>
         <button className="filter-button"><FilterAltOffIcon />Filters</button>
       </div>
       <img src={Banner1} className="w-100" />
-
-
     </div>
   );
 };

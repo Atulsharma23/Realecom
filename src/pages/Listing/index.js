@@ -64,7 +64,7 @@ const Listing = (props) => {
         }
       }
       else {
-       item.items  && item.items.length !== 0 && item.items.map((item_, index_) => {
+        item.items && item.items.length !== 0 && item.items.map((item_, index_) => {
           if (item_.cat_name.replace(/[^A-Za-z]/g, "-").toLowerCase() == id.replace(/[^A-Za-z]/g, "-").toLowerCase()) {
             item_.products.map((product) => {
 
@@ -82,6 +82,75 @@ const Listing = (props) => {
     const list2 = itemsData.filter((item, index) => itemsData.indexOf(item) === index);
     setData(list2);
   }
+
+
+  const filterByBrand = (keyword) => {
+    props.data && props.data.length !== 0 && props.data.map((item, index) => {
+      if (props.single === true) {
+        item.items && item.items.length !== 0 && item.items.map((item_) => {
+          item_.products && item_.products.length !== 0 && item_.products.map((item__) => {
+            if (item__.brand.toLowerCase() === keyword.toLowerCase()) {
+              itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
+              console.log(itemsData, "chcel")
+
+            }
+          })
+
+        })
+      } else {
+        item.items && item.items.length !== 0 && item.items.map((item_) => {
+          item_.products && item_.products.length !== 0 && item_.products.map((item__) => {
+            if (item__.brand.toLowerCase() === keyword.toLowerCase()) {
+              itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
+            }
+          })
+
+        })
+
+      }
+
+    })
+    const list2 = itemsData.filter((item, index) =>
+      itemsData.indexOf(item) === index)
+    setData(list2);
+  }
+
+
+  const filterByRating = (keyword) => {
+    props.data && props.data.length !== 0 && props.data.map((item, index) => {
+      if (props.single === true) {
+        item.items && item.items.length !== 0 && item.items.map((item_) => {
+          item_.products && item_.products.length !== 0 && item_.products.map((item__) => {
+            let rating = parseFloat(item__.rating)
+            console.log(rating, "rating cehck")
+
+            if (rating === keyword) {
+              itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
+            }
+          })
+
+        })
+      } else {
+        item.items && item.items.length !== 0 && item.items.map((item_) => {
+          item_.products && item_.products.length !== 0 && item_.products.map((item__) => {
+            let rating = parseFloat(item__.rating)
+            if (rating === keyword) {
+              itemsData.push({ ...item__, parentCatName: item.cat_name, subCatName: item_.cat_name })
+            }
+          })
+
+        })
+
+      }
+
+    })
+    const list2 = itemsData.filter((item, index) =>
+      itemsData.indexOf(item) === index)
+    setData(list2);
+  }
+
+
+
   return (
     <section>
       <div className="listingPage">
@@ -123,9 +192,9 @@ const Listing = (props) => {
             <div className="row">
               <div className="col-md-3 SidebarWrapper">
                 {
-                  <Sidebar data={props.data} currentCatData={data} filterByPrice={filterByPrice} />
+                  data.length !== 0 &&
+                  <Sidebar data={props.data} currentCatData={data} filterByPrice={filterByPrice} filterByBrand={filterByBrand} filterByRating={filterByRating} />
                 }
-
               </div>
               <div className="col-md-9 rightContent home-products pt-0">
 
