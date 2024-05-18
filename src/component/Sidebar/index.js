@@ -114,7 +114,7 @@ const Sidebar = (props) => {
         </div>
       </div>
       <div className="card-two border-0 shadow   ">
-        <h3>Fill by price</h3>
+        <h3>Search by price</h3>
 
         <div className="Range-selector">
           <Box className="range-area" sx={{ width: 300 }}>
@@ -137,7 +137,7 @@ const Sidebar = (props) => {
               defaultValue="female"
               name="radio-buttons-group"
             >
-  {
+              {
                 brandFilters.length !== 0 &&
                 brandFilters.map((item, index) => {
                   return (

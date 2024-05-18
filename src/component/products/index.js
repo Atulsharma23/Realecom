@@ -11,6 +11,7 @@ const Product = (props) => {
   const [productData, setProductData] = useState();
 
   useEffect(() => {
+    window.scrollTo(0,0);
     setProductData(props.item);
   })
   return (
@@ -21,7 +22,7 @@ const Product = (props) => {
       {
 
         productData !== undefined && <>
-          <Link>
+          <Link to={`/products/${productData.id}`}>
             <div className="imageWrapper" >
               <duv className="p-4 wrapper">
                 <img

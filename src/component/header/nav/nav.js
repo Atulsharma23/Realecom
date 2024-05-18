@@ -45,11 +45,14 @@ const Nav = (props) => {
                               return (
                                 <li key={itemIndex}>
                                   <Button >
-                                    <a
-                                      href={`/cat/${item.cat_name.toLowerCase().replace(/\s/g, '-')}/${item.cat_name.toLowerCase().replace(/\s/g, '-')}`}
-                                      onClick={() => sessionStorage.setItem('cat', item.cat_name.toLowerCase())} >
-                                      {item.cat_name}
-                                    </a>
+                                    {item.cat_name !== null ? (
+                                      <a
+                                        href={`/cat/${item.cat_name.toLowerCase().replace(/\s/g, '-')}/${item.cat_name.toLowerCase().replace(/\s/g, '-')}`}
+                                        onClick={() => sessionStorage.setItem('cat', item.cat_name.toLowerCase())}
+                                      >
+                                        {item.cat_name}
+                                      </a>
+                                    ) : null}
 
                                   </Button>
                                 </li>
