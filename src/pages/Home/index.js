@@ -25,6 +25,13 @@ const Home = (props) => {
     autoplay: 1000,
     centerMode: true,
   };
+
+  const [prodCat, setProdCat] = useState({
+    parentCat: sessionStorage.getItem('parentCat'),
+    subCatName: sessionStorage.getItem('subCatName')
+
+  })
+
   const catArr = [];
   useEffect(() => {
     productData.length !== 0 && productData.map((item) => {
@@ -46,17 +53,23 @@ const Home = (props) => {
     const arr = [];
     setactiveTabData(arr);
     if (productData && productData.length !== 0) {
-      productData.map((item, index) => {
+      productData.forEach((item) => {
         if (item.items && item.items.length !== 0) {
-          item.items.map((item_, index) => {
+          item.items.forEach((item_) => {
             if (item_.cat_name === activeTab) {
-              setactiveTabData(item_.products);
+              if (item_.products && item_.products.length !== 0) {
+                item_.products.forEach((product) => {
+                  arr.push({ ...product, parentCatName: item.cat_name, subCatName: item_.cat_name });
+                });
+              }
+              setactiveTabData(arr);
             }
           });
         }
       });
     }
-  }, [activeTab, activeTabData]);
+  }, [activeTab, productData]);
+
 
   const Bestarr = [];
   useEffect(() => {
@@ -96,6 +109,8 @@ const Home = (props) => {
                   return (
                     <li className="list-inline-item" key={index}>
                       <a className={`cursor text-capitalize ${activeTabIndex === index ? 'act' : ''}`}
+
+
                         onClick={() => {
                           setActiveTabIndex(index)
                           setactiveTab(item)

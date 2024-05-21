@@ -27,28 +27,20 @@ function App() {
   }
   return (
     productData.length !== 0 &&
-
-
     <div className="App">
       <Router>
         <Header data={productData} />
-
         <Routes>
           <Route path="/" element={<Home data={productData} />} />
           <Route path="/About" element={<About />} />
           <Route path="/cat/:id" element={<Listing data={productData} single={true} />} />
           <Route path="/cat/:id/:id" element={<Listing data={productData} single={false} />} />
-
           <Route path="*" element={<Notfound />} />
-          <Route path="products/Details" element={<Details data={productData} />} />
-
-
-
+          <Route path="products/:id" element={<Details data={productData} />} />
         </Routes>
         <Footer />
       </Router>
     </div>
   );
 }
-
 export default App;

@@ -11,17 +11,27 @@ const Product = (props) => {
   const [productData, setProductData] = useState();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setProductData(props.item);
   })
+  const setProductCat = () => {
+    sessionStorage.setItem('parentCat', productData.parentCatName)
+    sessionStorage.setItem('subCatName', productData.subCatName)
+
+  }
+
+
+
+
   return (
-    <div className="productthumb">
+    <div className="productthumb" onClick={setProductCat}>
       {props.tag !== null && props.tag !== undefined && (
         <span className={`badge ${props.tag}`}>{props.tag}</span>
       )}
       {
 
         productData !== undefined && <>
-          <Link>
+          <Link to={`/products/${productData.id}`}>
             <div className="imageWrapper" >
               <duv className="p-4 wrapper">
                 <img
