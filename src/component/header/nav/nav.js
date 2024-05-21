@@ -11,6 +11,7 @@ const Nav = (props) => {
   useEffect(() => {
     SetNavData(props.data)
   })
+
   return (
     <div className="nav d-flex align-items-center">
       <div className="container-fluid ">
