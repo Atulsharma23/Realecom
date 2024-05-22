@@ -50,44 +50,6 @@
     text-decoration: none;
 }
 
-.counterSection2 {
-    width: 80px;
-    height: 50px;
-    border: 1px solid #3bb77e;
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 4px;
-}
-
-.counterSection2 input {
-    width: 60px;
-    height: 40px;
-    border: 0px;
-    outline: none !important;
-    font-size: 20px;
-    text-align: center;
-}
-
-.counterSection2 {
-    position: relative;
-}
-
-.counterSection2 .arrow {
-    position: absolute;
-    cursor: pointer;
-    opacity: 0.5;
-}
-
-.counterSection2 .arrow.plus {
-    top: -2px;
-    right: 1px;
-}
-
-.counterSection2 .arrow.minus {
-    bottom: -2px;
-    right: 1px;
-
-}
 .cart-prize{
     margin-left: auto;
     margin-bottom: 0px;
