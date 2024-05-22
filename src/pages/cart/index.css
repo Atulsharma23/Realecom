@@ -1,0 +1,101 @@
+.cartSection {
+    width: 100%;
+    height: auto;
+    padding: 35px 50px;
+}
+
+.clear {
+    margin-left: auto;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.clear svg {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.cartWrapper .table th {
+    background-color: #f1f1f1 !important;
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.cartWrapper .table tbody td {
+    vertical-align: middle;
+    
+}
+
+.cartWrapper .table tbody td span{
+    font-weight: 600;
+    font-size: 25px;
+}
+.cartWrapper .table tbody td .img {
+    width: 100px;
+    padding: 10px;
+    border: 2px solid rgb(173, 172, 172);
+    border-radius: 5px;
+}
+
+.cartWrapper .table tbody .info {
+    padding: 16px;
+}
+
+.cartWrapper .table tbody td .info a {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.cartWrapper .table tbody td .info a:hover {
+    text-decoration: none;
+}
+
+.counterSection2 {
+    width: 80px;
+    height: 50px;
+    border: 1px solid #3bb77e;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 4px;
+}
+
+.counterSection2 input {
+    width: 60px;
+    height: 40px;
+    border: 0px;
+    outline: none !important;
+    font-size: 20px;
+    text-align: center;
+}
+
+.counterSection2 {
+    position: relative;
+}
+
+.counterSection2 .arrow {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.counterSection2 .arrow.plus {
+    top: -2px;
+    right: 1px;
+}
+
+.counterSection2 .arrow.minus {
+    bottom: -2px;
+    right: 1px;
+
+}
+.cart-prize{
+    margin-left: auto;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+.card h5{
+    color: rgb(163, 159, 159) !important;
+}
+.tell{
+    margin-top: 110px;
+}
