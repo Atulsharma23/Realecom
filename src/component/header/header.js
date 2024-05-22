@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../header/header.css";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 import IconCompare from "../../assets/images/icon-compare.svg";
 import IconHeart from "../../assets/images/icon-heart.svg";
@@ -120,7 +121,7 @@ const Header = (props) => {
                           <span className="badge bg-success rounded-circle">
                             3
                           </span>
-                          Cart
+                        <Link to="/cart">  Cart</Link>
                         </span>
                       </li>
                       <li className="list-inline-item">
