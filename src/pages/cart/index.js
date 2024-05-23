@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./index.css";
 import QuantityBox from "../../component/quantityBox";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
@@ -6,23 +6,64 @@ import { Link } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import PaidIcon from "@mui/icons-material/Paid";
+import { MyContext } from "../../App";
+import axios from "axios";
 
 const Cart = () => {
+  const [cartItems, setCartItems] = useState([]);
+  const context = useContext(MyContext);
+
+  useEffect(() => {
+    getCartData("http://localhost:3000/cartItems");
+  }, []); // Run only once when the component mounts
+
+  const getCartData = async (url) => {
+    try {
+      const response = await axios.get(url);
+      setCartItems(response.data);
+    } catch (error) {
+      console.log(error, "Error hai yr");
+    }
+  };
+
+  const deleteItem = async (id) => {
+    const response = await axios.delete(
+      `http://localhost:3000/cartItems/${id}`
+    );
+    if (response !== null) {
+      getCartData("http://localhost:3000/cartItems");
+      context.removeItemsFromCart(id);
+    }
+  };
+  const emptyCart = () => {
+    let response = null;
+    cartItems.length !== 0 &&
+      cartItems.map((item) => {
+        response = axios.delete(
+          `http://localhost:3000/cartItems/${parseInt(item.id)}`
+        );
+      });
+    if (response !== null) {
+      getCartData("http://localhost:3000/cartItems");
+    }
+
+    context.emptyCart();
+  };
   return (
     <>
       <ul className="breadcrumb breadcrumb2 mb-0">
         <li>
-          <a href="/">Home/</a>{" "}
+          <a href="/">Home/</a>
         </li>
         <li>
           <a className="text-capitalize" href="/cat/groceries">
             shop/
-          </a>{" "}
+          </a>
         </li>
         <li>
           <a className="text-capitalize" href="/cart">
             cart
-          </a>{" "}
+          </a>
         </li>
       </ul>
       <div className="cartSection mb-5">
@@ -32,9 +73,12 @@ const Cart = () => {
               <div className="d-flex align-items-center w-100">
                 <div className="left">
                   <h1 className="hd mb-0">Your Cart</h1>
-                  <p>There are 3 products in your cart</p>
+                  <p>There are {cartItems.length} products in your cart</p>
                 </div>
-                <span className="clear text-g d-flex align-items-center">
+                <span
+                  className="clear text-g d-flex align-items-center"
+                  onClick={emptyCart}
+                >
                   <DeleteOutlineIcon />
                   clear cart
                 </span>
@@ -42,132 +86,69 @@ const Cart = () => {
 
               <div className="cartWrapper mt-4">
                 <div className="table-responsive">
-                  <table className="table   ">
+                  <table className="table">
                     <thead>
                       <tr>
-                        <th>Product </th>
-                        <th>Unit Price </th>
-                        <th>Quantity </th>
-                        <th>SubTotal </th>
-                        <th>Remove </th>
+                        <th>Product</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>SubTotal</th>
+                        <th>Remove</th>
                       </tr>
                     </thead>
-
                     <tbody>
-                      <tr>
-                        <td>
-                          <div className="d-flex align-items-center">
-                            <div className="img">
-                              <img
-                                src="https://www.jiomart.com/images/product/original/491432711/moong-dal-2-kg-product-images-o491432711-p491432711-0-202205191636.jpg?im=Resize=(420,420)"
-                                className="w-100"
-                              />
-                            </div>
-                            <div className="info pl-4">
-                              <Link>
-                                <h4>field roast 50g peanut butter</h4>{" "}
-                              </Link>
-                              <Rating
-                                name="half-rating-read"
-                                value={5}
-                                readOnly
-                              />
-                            </div>
-                          </div>
-                        </td>
-
-                        <td>
-                          {" "}
-                          <span className="text-g">$2.51</span>
-                        </td>
-                        <QuantityBox />
-
-                        <td>
-                          <span className="text-g">$2.51</span>
-                        </td>
-
-                        <td>
-                          <DeleteOutlineIcon />
-                        </td>
-                      </tr>
-                    </tbody>
-
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div className="d-flex align-items-center">
-                            <div className="img">
-                              <img
-                                src="https://www.jiomart.com/images/product/original/491432711/moong-dal-2-kg-product-images-o491432711-p491432711-0-202205191636.jpg?im=Resize=(420,420)"
-                                className="w-100"
-                              />
-                            </div>
-                            <div className="info pl-4">
-                              <Link>
-                                <h4>field roast 50g peanut butter</h4>{" "}
-                              </Link>
-                              <Rating
-                                name="half-rating-read"
-                                value={5}
-                                readOnly
-                              />
-                            </div>
-                          </div>
-                        </td>
-
-                        <td>
-                          {" "}
-                          <span className="text-g">$2.51</span>
-                        </td>
-                        <QuantityBox />
-
-                        <td>
-                          <span className="text-g">$2.51</span>
-                        </td>
-
-                        <td>
-                          <DeleteOutlineIcon />
-                        </td>
-                      </tr>
-                    </tbody>
-
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div className="d-flex align-items-center">
-                            <div className="img">
-                              <img
-                                src="https://www.jiomart.com/images/product/original/491432711/moong-dal-2-kg-product-images-o491432711-p491432711-0-202205191636.jpg?im=Resize=(420,420)"
-                                className="w-100"
-                              />
-                            </div>
-                            <div className="info pl-4">
-                              <Link>
-                                <h4>field roast 50g peanut butter</h4>{" "}
-                              </Link>
-                              <Rating
-                                name="half-rating-read"
-                                value={5}
-                                readOnly
-                              />
-                            </div>
-                          </div>
-                        </td>
-
-                        <td>
-                          {" "}
-                          <span className="text-g">$2.51</span>
-                        </td>
-                        <QuantityBox />
-
-                        <td>
-                          <span className="text-g">$2.51</span>
-                        </td>
-
-                        <td>
-                          <DeleteOutlineIcon />
-                        </td>
-                      </tr>
+                      {cartItems.length === 0 ? (
+                        <tr>
+                          <td colSpan="5" className="text-center">
+                            No items added to cart
+                          </td>
+                        </tr>
+                      ) : (
+                        cartItems.map((item) => (
+                          <tr key={item.id}>
+                            <td>
+                              <div className="d-flex align-items-center">
+                                <Link to={`/products/${item.id}`}>
+                                  <div className="img">
+                                    <img
+                                      src={item.catImg + "?im=Resize=(100,100)"}
+                                      className="w-100"
+                                      alt={item.productName}
+                                    />
+                                  </div>
+                                </Link>
+                                <div className="info pl-4">
+                                  <Link to={`/products/${item.id}`}>
+                                    <h4>{item.productName.slice(0, 20)}</h4>
+                                  </Link>
+                                  <Rating
+                                    name="half-rating-read"
+                                    value={parseFloat(item.rating)}
+                                    readOnly
+                                  />
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <span className="text-g">
+                                Rs. {parseFloat(item.price.split(",").join(""))}
+                              </span>
+                            </td>
+                            <QuantityBox />
+                            <td>
+                              <span className="text-g">Rs. {item.price}</span>
+                            </td>
+                            <td>
+                              <span
+                                className="deletecart"
+                                onClick={() => deleteItem(item.id)}
+                              >
+                                <DeleteOutlineIcon />
+                              </span>
+                            </td>
+                          </tr>
+                        ))
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -176,27 +157,24 @@ const Cart = () => {
             <div className="col-md-5 pl-5 tell">
               <div className="card p-4">
                 <div className="d-flex align-items-center mb-3">
-                  <h5 className="mb-0 ">Sub Total</h5>
+                  <h5 className="mb-0">Sub Total</h5>
                   <h3 className="cart-prize">
-                    {" "}
                     <span className="text-g">$2.51</span>
                   </h3>
                 </div>
                 <div className="d-flex align-items-center mb-3">
-                  <h5 className="mb-0 ">Shipping</h5>
+                  <h5 className="mb-0">Shipping</h5>
                   <h3 className="cart-prize">
-                    {" "}
                     <span>Free</span>
                   </h3>
                 </div>
                 <div className="d-flex align-items-center mb-3">
-                  <h5 className="mb-0 ">Estimate for</h5>
-                  <h3 className="cart-prize"> United Kingdom</h3>
+                  <h5 className="mb-0">Estimate for</h5>
+                  <h3 className="cart-prize">United Kingdom</h3>
                 </div>
                 <div className="d-flex align-items-center mb-3">
-                  <h5 className="mb-0 ">Total</h5>
+                  <h5 className="mb-0">Total</h5>
                   <h3 className="cart-prize">
-                    {" "}
                     <span className="text-g">$2.51</span>
                   </h3>
                 </div>

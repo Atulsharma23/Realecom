@@ -113,7 +113,7 @@ const Listing = (props) => {
     const list2 = itemsData.filter((item, index) =>
       itemsData.indexOf(item) === index)
     setData(list2);
-    window.scrollTo(0, 0)
+   
   }
 
 
@@ -148,7 +148,7 @@ const Listing = (props) => {
     const list2 = itemsData.filter((item, index) =>
       itemsData.indexOf(item) === index)
     setData(list2);
-    window.scrollTo(0, 0)
+ 
 
   }
 

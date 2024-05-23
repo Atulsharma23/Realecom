@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext} from "react";
 import "./style.css";
 import Rating from "@mui/material/Rating";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -7,42 +7,47 @@ import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Link } from "react-router-dom";
 import { colors } from "@mui/material";
+
+
+import { MyContext } from "../../App";
+
 const Product = (props) => {
   const [productData, setProductData] = useState();
+  const context = useContext(MyContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setProductData(props.item);
-  })
+  });
+
   const setProductCat = () => {
-    sessionStorage.setItem('parentCat', productData.parentCatName)
-    sessionStorage.setItem('subCatName', productData.subCatName)
+    sessionStorage.setItem("parentCat", productData.parentCatName);
+    sessionStorage.setItem("subCatName", productData.subCatName);
+  };
 
-  }
-
-
-
+  const addToCart = (item) => {
+    console.log(item, "item addeed successfullly");
+    context.addToCart(item);
+  };
 
   return (
     <div className="productthumb" onClick={setProductCat}>
       {props.tag !== null && props.tag !== undefined && (
         <span className={`badge ${props.tag}`}>{props.tag}</span>
       )}
-      {
-
-        productData !== undefined && <>
+      {productData !== undefined && (
+        <>
           <Link to={`/products/${productData.id}`}>
-            <div className="imageWrapper" >
+            <div className="imageWrapper">
               <duv className="p-4 wrapper">
                 <img
-                  src={productData.catImg + '?im=Resize=(420,420)'}
+                  src={productData.catImg + "?im=Resize=(420,420)"}
                   className="w-100"
                   alt="dd"
                 />
               </duv>
 
               <div className="overlay transition">
-
                 <ul className="list list-inline mb-0">
                   <li className="list-inline-item">
                     <a className="cursor" tooltip="Add to Wishlist">
@@ -53,12 +58,10 @@ const Product = (props) => {
                   <li className="list-inline-item">
                     <a className="cursor" tooltip="Compare">
                       <CompareArrowsIcon />
-
                     </a>
                   </li>
                   <li className="list-inline-item">
                     <a className="cursor" tooltip="Quickview">
-
                       <RemoveRedEyeIcon />
                     </a>
                   </li>
@@ -68,47 +71,40 @@ const Product = (props) => {
           </Link>
 
           <div className="info">
-
             <span className="d-block catName">{productData.brand}</span>
-            <h4 className="title">
-
-              {productData.productName.slice(0, 20)}
-            </h4>
+            <h4 className="title">{productData.productName.slice(0, 20)}</h4>
             <Rating
               name="half-rating-read"
               value={productData.rating}
               readOnly
             />
             <span className="brand d-block text-p">
-              By<Link className="text-p">
-                NestFood</Link>
+              By<Link className="text-p">NestFood</Link>
             </span>
             <div className="d-flex align-items-center mt-3">
-
               <div className="d-flex align-items-center">
-
                 <div className="adjustment">
-                  <span className="price text-p font-weight-bold"> ${productData.price}</span>{" "}
-
-                  <span className="oldprice"
-                    style={{ color: 'red' }}> ${productData.oldPrice}</span>
-                  <button className="rice">
+                  <span className="price text-p font-weight-bold">
+                    {" "}
+                    ${productData.price}
+                  </span>{" "}
+                  <span className="oldprice" style={{ color: "red" }}>
+                    {" "}
+                    ${productData.oldPrice}
+                  </span>
+                  <button
+                    className="rice"
+                    onClick={() => addToCart(productData)}
+                  >
                     <AddShoppingCartIcon /> Add
-                  </button> </div>
-
-
+                  </button>{" "}
+                </div>
               </div>
             </div>
           </div>
         </>
-      }
-
-
-
-
-
-
-    </div >
+      )}
+    </div>
   );
 };
 export default Product;

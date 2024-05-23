@@ -18,8 +18,13 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Nav from "./nav/nav";
 import Select from "../selectDrop/select";
 import axios from "axios";
+import { useContext } from "react";
+import { MyContext } from "../../App";
+
 const Header = (props) => {
   const [isOpenDropDown, setisOpenDropDown] = useState(false);
+  const context = useContext(MyContext);
+
   const [categories, setCategories] = useState([
     "Wines and Drinks",
     "Clothing",
@@ -53,8 +58,6 @@ const Header = (props) => {
       console.log("error in get data");
     }
   };
-
-
 
   return (
     <>
@@ -109,7 +112,7 @@ const Header = (props) => {
                           {" "}
                           <img src={IconHeart} alt="test" />
                           <span className="badge bg-success rounded-circle">
-                            3
+                            3{" "}
                           </span>
                           Wishlist
                         </span>
@@ -119,9 +122,15 @@ const Header = (props) => {
                           {" "}
                           <img src={IconCart} alt="test" />
                           <span className="badge bg-success rounded-circle">
-                            3
+                            {context.cartItems.length}
                           </span>
-                        <Link to="/cart">  Cart</Link>
+                          <Link
+                            to="/cart"
+                            style={{ color: "black", textDecoration: "none" }}
+                          >
+                            {" "}
+                            Cart{" "}
+                          </Link>
                         </span>
                       </li>
                       <li className="list-inline-item">
