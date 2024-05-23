@@ -19,18 +19,22 @@
 .cartWrapper .table th {
     background-color: #f1f1f1 !important;
     border-radius: 2px;
-    padding: 10px;
+    padding: 20px;
+    font-size: 25px;
 }
 
 .cartWrapper .table tbody td {
     vertical-align: middle;
-    
+
+
 }
 
-.cartWrapper .table tbody td span{
+
+.cartWrapper .table tbody td span {
     font-weight: 600;
     font-size: 25px;
 }
+
 .cartWrapper .table tbody td .img {
     width: 100px;
     padding: 10px;
@@ -50,14 +54,20 @@
     text-decoration: none;
 }
 
-.cart-prize{
+.cart-prize {
     margin-left: auto;
     margin-bottom: 0px;
     font-weight: bold;
 }
-.card h5{
+
+.card h5 {
     color: rgb(163, 159, 159) !important;
 }
-.tell{
+
+.tell {
     margin-top: 110px;
+}
+.deletecart svg{
+    font-size: 52px;
+    cursor: pointer;
 }

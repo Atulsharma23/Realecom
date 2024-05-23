@@ -128,3 +128,6 @@ header .headerTabs li span.badge {
 .dropdownMenu li button :hover {
   background: #f1f1f1 !important;
 }
+.badge link{
+  text-decoration: none;
+}
