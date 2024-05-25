@@ -49,6 +49,14 @@ const Cart = () => {
 
     context.emptyCart();
   };
+
+  const updateCart = (items) => {
+    setCartItems(items);
+  };
+  // const updateCart = (items) => {
+  //   props.updateCart(items);
+  // };
+
   return (
     <>
       <ul className="breadcrumb breadcrumb2 mb-0">
@@ -134,10 +142,21 @@ const Cart = () => {
                                 Rs. {parseFloat(item.price.split(",").join(""))}
                               </span>
                             </td>
-                            <QuantityBox />
+                            <QuantityBox
+                              item={item}
+                              cartItems={cartItems}
+                              index={item.index}
+                              updateCart={updateCart}
+                            />
+
                             <td>
-                              <span className="text-g">Rs. {item.price}</span>
+                              <span className="text-g">
+                                Rs.{" "}
+                                {parseFloat(item.price.split(",").join("")) *
+                                  parseInt(item.quantity)}
+                              </span>
                             </td>
+
                             <td>
                               <span
                                 className="deletecart"
@@ -159,7 +178,17 @@ const Cart = () => {
                 <div className="d-flex align-items-center mb-3">
                   <h5 className="mb-0">Sub Total</h5>
                   <h3 className="cart-prize">
-                    <span className="text-g">$2.51</span>
+                    <span className="text-g">
+                      Rs.{" "}
+                      {cartItems.length !== 0 ?
+                        cartItems
+                          .map(
+                            (item) =>
+                              parseInt(item.price.split(",").join("")) *
+                              item.quantity
+                          )
+                          .reduce((total, value) => total + value, 0):0}
+                    </span>
                   </h3>
                 </div>
                 <div className="d-flex align-items-center mb-3">
@@ -175,7 +204,18 @@ const Cart = () => {
                 <div className="d-flex align-items-center mb-3">
                   <h5 className="mb-0">Total</h5>
                   <h3 className="cart-prize">
-                    <span className="text-g">$2.51</span>
+                    <span className="text-g">
+                      {" "}
+                      Rs.{" "}
+                      {cartItems.length !== 0 ?
+                        cartItems
+                          .map(
+                            (item) =>
+                              parseInt(item.price.split(",").join("")) *
+                              item.quantity
+                          )
+                          .reduce((total, value) => total + value, 0):0}
+                    </span>
                   </h3>
                 </div>
                 <br />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./style.css";
 import Rating from "@mui/material/Rating";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -8,11 +8,11 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Link } from "react-router-dom";
 import { colors } from "@mui/material";
 
-
 import { MyContext } from "../../App";
 
 const Product = (props) => {
   const [productData, setProductData] = useState();
+  const [isAdded, setIsAdded] = useState(false);
   const context = useContext(MyContext);
 
   useEffect(() => {
@@ -28,6 +28,7 @@ const Product = (props) => {
   const addToCart = (item) => {
     console.log(item, "item addeed successfullly");
     context.addToCart(item);
+    setIsAdded(true);
   };
 
   return (
@@ -96,7 +97,7 @@ const Product = (props) => {
                     className="rice"
                     onClick={() => addToCart(productData)}
                   >
-                    <AddShoppingCartIcon /> Add
+                    <AddShoppingCartIcon /> {isAdded == true ? "Added" : "Add"}
                   </button>{" "}
                 </div>
               </div>
