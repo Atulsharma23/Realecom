@@ -180,14 +180,15 @@ const Cart = () => {
                   <h3 className="cart-prize">
                     <span className="text-g">
                       Rs.{" "}
-                      {cartItems.length !== 0 ?
-                        cartItems
-                          .map(
-                            (item) =>
-                              parseInt(item.price.split(",").join("")) *
-                              item.quantity
-                          )
-                          .reduce((total, value) => total + value, 0):0}
+                      {cartItems.length !== 0
+                        ? cartItems
+                            .map(
+                              (item) =>
+                                parseInt(item.price.split(",").join("")) *
+                                item.quantity
+                            )
+                            .reduce((total, value) => total + value, 0)
+                        : 0}
                     </span>
                   </h3>
                 </div>
@@ -207,14 +208,15 @@ const Cart = () => {
                     <span className="text-g">
                       {" "}
                       Rs.{" "}
-                      {cartItems.length !== 0 ?
-                        cartItems
-                          .map(
-                            (item) =>
-                              parseInt(item.price.split(",").join("")) *
-                              item.quantity
-                          )
-                          .reduce((total, value) => total + value, 0):0}
+                      {cartItems.length !== 0
+                        ? cartItems
+                            .map(
+                              (item) =>
+                                parseInt(item.price.split(",").join("")) *
+                                item.quantity
+                            )
+                            .reduce((total, value) => total + value, 0)
+                        : 0}
                     </span>
                   </h3>
                 </div>

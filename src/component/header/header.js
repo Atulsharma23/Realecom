@@ -20,6 +20,7 @@ import Select from "../selectDrop/select";
 import axios from "axios";
 import { useContext } from "react";
 import { MyContext } from "../../App";
+import SignUp from "../../pages/SignUp";
 
 const Header = (props) => {
   const [isOpenDropDown, setisOpenDropDown] = useState(false);
@@ -134,15 +135,21 @@ const Header = (props) => {
                         </span>
                       </li>
                       <li className="list-inline-item">
+                        <Link to="/SignIn">
+                          <button className="filter-button">Sign In</button>
+                        </Link>
+                      </li>
+
+                      {/* <li className="list-inline-item">
                         <span
                           onClick={() => setisOpenDropDown(!isOpenDropDown)}
                         >
                           {" "}
                           <img src={IconUser} alt="test" />
                           Account
-                        </span>
+                        </span> */}
 
-                        {isOpenDropDown !== false && (
+                      {/* {isOpenDropDown !== false && (
                           <ul className="dropdownMenu">
                             <li>
                               <Button className="align-items-center">
@@ -181,7 +188,7 @@ const Header = (props) => {
                             </li>
                           </ul>
                         )}
-                      </li>
+                      </li> */}
                     </ul>
                   </ClickAwayListener>
                 </div>
