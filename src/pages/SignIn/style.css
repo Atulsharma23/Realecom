@@ -1,0 +1,40 @@
+.loginWrapper{
+    padding: 45px 0px;
+}
+.SignIn{
+    background-color: rgb(191, 202, 198);
+}
+.loginWrapper .card{
+    width: 700px;
+    margin: auto;
+    padding: 30px;
+    border: 0px !important;
+}
+.loginWrapper .card  .MuiInputBase-root{
+    font-size: 2rem;
+}
+.loginWrapper .card input{
+    font-size: 2rem;
+
+}
+.loginWrapper .card .email {
+    font-weight: 600;
+    font-size: 35px;
+}
+.loginWrapper .card .icon {
+    position: absolute;
+    top: 35px;
+    right: 18px;
+}
+.imageofgoogle{
+    width: 42px;
+    margin-right: 14px;
+    border-radius: 74px;
+}
+.googlebutton{
+    padding: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #3bb77e;
+    color: aliceblue;
+}

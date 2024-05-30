@@ -9,6 +9,8 @@ import Footer from "./component/footer/footer";
 import Notfound from "./pages/Notfound";
 import Details from "./pages/Details";
 import Cart from "./pages/cart";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 import { useEffect, useState, createContext } from "react";
 import axios from "axios";
 
@@ -89,6 +91,9 @@ function App() {
                 element={<Details data={productData} />}
               />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/signIn" element={<SignIn />} />
+
+              <Route path="/signUp" element={<SignUp />} />
             </Routes>
             <Footer />
           </MyContext.Provider>
