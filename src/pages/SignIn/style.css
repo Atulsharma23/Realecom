@@ -4,6 +4,9 @@
 .SignIn{
     background-color: rgb(191, 202, 198);
 }
+/* .input label{
+    font-size: 2rem;
+} */
 .loginWrapper .card{
     width: 700px;
     margin: auto;

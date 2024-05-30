@@ -1,15 +1,53 @@
 import React, { useState } from "react";
 import "./style.css";
+
 import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../../firebase";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+const auth = getAuth(app);
+
 const SignIn = () => {
   const [show, setShow] = useState(false);
   const setVisibility = () => {
     setShow(!show);
+  };
+  const [showLoader, setShowLoader] = useState(false);
+  const [formFields, setFormFields] = useState({
+    email: "",
+    password: "",
+  });
+  const SignIn = () => {
+    setShowLoader(true);
+      signInWithEmailAndPassword(auth,formFields.email, formFields.password)
+      .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user;
+        // ...
+        setShowLoader(false);
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+  };
+
+  const onChangeField = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setFormFields({
+      ...formFields,
+      [name]: value,
+    });
+    console.log(formFields, "form fields");
   };
   return (
     <div>
@@ -25,6 +63,13 @@ const SignIn = () => {
         <div className="container loginWrapper">
           <div className="card shadow">
             <h2 className="email">Sign In</h2>
+            <Backdrop
+              className="loader"
+              sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open={showLoader}
+            >
+              <CircularProgress color="inherit" />
+            </Backdrop>
             <form>
               <Box
                 component="form"
@@ -41,6 +86,8 @@ const SignIn = () => {
                     type="email"
                     label="Email Address"
                     className="w-100"
+                    onChange={onChangeField}
+                    value={formFields.email}
                   />
                 </div>
 
@@ -52,6 +99,8 @@ const SignIn = () => {
                       name="password"
                       label="Password"
                       className="w-100 mt-4"
+                      onChange={onChangeField}
+                      value={formFields.password}
                     />
 
                     <Button className="icon" onClick={setVisibility}>
@@ -61,7 +110,9 @@ const SignIn = () => {
                   </div>
                 </div>
 
-                <button className="filter-button mt-4 w-100">Sign In</button>
+                <button className="filter-button mt-4 w-100" onClick={SignIn}>
+                  Sign In
+                </button>
                 <div className="form-group mb-4 w-100 ">
                   <p className="text-center">OR</p>
                 </div>
@@ -75,7 +126,10 @@ const SignIn = () => {
                 </button>
               </Box>
               <p className="text-center">
-                If you donot have account?<Link to="/SignUp">SignUp</Link>
+                If you donot have account?
+                <b>
+                  <Link to="/SignUp">SignUp</Link>
+                </b>
               </p>
             </form>
           </div>

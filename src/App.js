@@ -21,7 +21,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
     getProducts();
-    getCartData("http://localhost:3000/cartItems");
+    getCartData("http://localhost:3001/cartItems");
   }, []);
   const getCartData = async (url) => {
     try {
@@ -33,7 +33,7 @@ function App() {
   };
   const getProducts = async () => {
     try {
-      await axios.get("http://localhost:3000/productData").then((response) => {
+      await axios.get("http://localhost:3001/productData").then((response) => {
         setProductData(response.data);
       });
     } catch (error) {
@@ -45,7 +45,7 @@ function App() {
     item.quantity = 1;
     try {
       await axios
-        .post("http://localhost:3000/cartItems", item)
+        .post("http://localhost:3001/cartItems", item)
         .then((response) => {
           setCartItems([...cartItems, { ...item, quantity: 1 }]);
         });
