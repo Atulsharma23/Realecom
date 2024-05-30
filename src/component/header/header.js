@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../header/header.css";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
@@ -18,15 +18,16 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Nav from "./nav/nav";
 import Select from "../selectDrop/select";
 import axios from "axios";
-import { useContext } from "react";
 import { MyContext } from "../../App";
-import SignUp from "../../pages/SignUp";
+import { signOut as firebaseSignOut, getAuth } from "firebase/auth";
+import { app } from "../../firebase";
 
 const Header = (props) => {
   const [isOpenDropDown, setisOpenDropDown] = useState(false);
   const context = useContext(MyContext);
+  const auth = getAuth(app);
 
-  const [categories, setCategories] = useState([
+  const [categories] = useState([
     "Wines and Drinks",
     "Clothing",
     "Fresh Seafood",
@@ -39,25 +40,32 @@ const Header = (props) => {
     "Milks and Diaries",
   ]);
 
-  const countriesList = [];
+  const [countriesList, setCountriesList] = useState([]);
+
   useEffect(() => {
     getCountry("https://countriesnow.space/api/v0.1/countries/");
   }, []);
 
   const getCountry = async (url) => {
     try {
-      await axios.get(url).then((res) => {
-        if (res !== null) {
-          {
-            res.data.data.map((item, i) => {
-              countriesList.push(item.country);
-            });
-          }
-        }
-      });
+      const res = await axios.get(url);
+      if (res && res.data && res.data.data) {
+        const countries = res.data.data.map((item) => item.country);
+        setCountriesList(countries);
+      }
     } catch (error) {
-      console.log("error in get data");
+      console.log("Error in fetching data", error);
     }
+  };
+
+  const handleSignOut = () => {
+    firebaseSignOut(auth)
+      .then(() => {
+        context.signOut();
+      })
+      .catch((error) => {
+        console.log("Error signing out", error);
+      });
   };
 
   return (
@@ -78,7 +86,6 @@ const Header = (props) => {
                       icon={false}
                     />
                   </div>
-
                   <div className="search">
                     <input type="text" placeholder="search for items..." />
                     <SearchIcon className="searchIcon cursor" />
@@ -100,8 +107,7 @@ const Header = (props) => {
                     <ul className="list list-inline mb-0 headerTabs">
                       <li className="list-inline-item">
                         <span>
-                          {" "}
-                          <img src={IconCompare} alt="test" />
+                          <img src={IconCompare} alt="compare" />
                           <span className="badge bg-success rounded-circle">
                             3
                           </span>
@@ -110,85 +116,80 @@ const Header = (props) => {
                       </li>
                       <li className="list-inline-item">
                         <span>
-                          {" "}
-                          <img src={IconHeart} alt="test" />
+                          <img src={IconHeart} alt="wishlist" />
                           <span className="badge bg-success rounded-circle">
-                            3{" "}
+                            3
                           </span>
                           Wishlist
                         </span>
                       </li>
                       <li className="list-inline-item">
                         <span>
-                          {" "}
-                          <img src={IconCart} alt="test" />
+                          <img src={IconCart} alt="cart" />
                           <span className="badge bg-success rounded-circle">
-                            {context.cartItems.length}
+                            {context.cartItems?.length || 0}
                           </span>
                           <Link
                             to="/cart"
                             style={{ color: "black", textDecoration: "none" }}
                           >
-                            {" "}
-                            Cart{" "}
+                            Cart
                           </Link>
                         </span>
                       </li>
-                      <li className="list-inline-item">
-                        <Link to="/SignIn">
-                          <button className="filter-button">Sign In</button>
-                        </Link>
-                      </li>
-
-                      {/* <li className="list-inline-item">
-                        <span
-                          onClick={() => setisOpenDropDown(!isOpenDropDown)}
-                        >
-                          {" "}
-                          <img src={IconUser} alt="test" />
-                          Account
-                        </span> */}
-
-                      {/* {isOpenDropDown !== false && (
-                          <ul className="dropdownMenu">
-                            <li>
-                              <Button className="align-items-center">
-                                {" "}
-                                <PersonIcon />
-                                My Account
-                              </Button>
-                            </li>
-                            <li>
-                              <Button className="align-items-center">
-                                {" "}
-                                <PlaceIcon />
-                                Order Tracking
-                              </Button>
-                            </li>
-                            <li>
-                              <Button className="align-items-center">
-                                {" "}
-                                <FavoriteBorderIcon />
-                                My Wishlist
-                              </Button>
-                            </li>{" "}
-                            <li>
-                              <Button className="align-items-center">
-                                {" "}
-                                <SettingsIcon />
-                                Setting
-                              </Button>
-                            </li>{" "}
-                            <li>
-                              <Button className="align-items-center">
-                                {" "}
-                                <LogoutIcon />
-                                Sign out
-                              </Button>
-                            </li>
-                          </ul>
-                        )}
-                      </li> */}
+                      {context.isLogin === "true" ? (
+                        <li className="list-inline-item">
+                          <span
+                            onClick={() => setisOpenDropDown(!isOpenDropDown)}
+                          >
+                            <img src={IconUser} alt="account" />
+                            Account
+                          </span>
+                          {isOpenDropDown && (
+                            <ul className="dropdownMenu">
+                              <li>
+                                <Button className="align-items-center">
+                                  <PersonIcon />
+                                  My Account
+                                </Button>
+                              </li>
+                              <li>
+                                <Button className="align-items-center">
+                                  <PlaceIcon />
+                                  Order Tracking
+                                </Button>
+                              </li>
+                              <li>
+                                <Button className="align-items-center">
+                                  <FavoriteBorderIcon />
+                                  My Wishlist
+                                </Button>
+                              </li>
+                              <li>
+                                <Button className="align-items-center">
+                                  <SettingsIcon />
+                                  Setting
+                                </Button>
+                              </li>
+                              <li>
+                                <Button
+                                  className="align-items-center"
+                                  onClick={handleSignOut}
+                                >
+                                  <LogoutIcon />
+                                  Sign out
+                                </Button>
+                              </li>
+                            </ul>
+                          )}
+                        </li>
+                      ) : (
+                        <li className="list-inline-item">
+                          <Link to="/SignIn">
+                            <button className="filter-button">Sign In</button>
+                          </Link>
+                        </li>
+                      )}
                     </ul>
                   </ClickAwayListener>
                 </div>
@@ -201,4 +202,5 @@ const Header = (props) => {
     </>
   );
 };
+
 export default Header;

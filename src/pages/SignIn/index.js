@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import "./style.css";
-
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
-import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../firebase";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+
 const auth = getAuth(app);
 
 const SignIn = () => {
@@ -19,24 +18,32 @@ const SignIn = () => {
   const setVisibility = () => {
     setShow(!show);
   };
+  const navigate = useNavigate();
+
   const [showLoader, setShowLoader] = useState(false);
   const [formFields, setFormFields] = useState({
     email: "",
     password: "",
   });
-  const SignIn = () => {
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
     setShowLoader(true);
-      signInWithEmailAndPassword(auth,formFields.email, formFields.password)
+    signInWithEmailAndPassword(auth, formFields.email, formFields.password)
       .then((userCredential) => {
-        // Signed in
-        var user = userCredential.user;
-        // ...
         setShowLoader(false);
+        localStorage.setItem("isLogin", true);
+        navigate("/");
       })
       .catch((error) => {
+        setShowLoader(false);
         var errorCode = error.code;
         var errorMessage = error.message;
-        // ...
+        console.error(
+          "Error signing in with password and email",
+          errorCode,
+          errorMessage
+        );
       });
   };
 
@@ -47,15 +54,15 @@ const SignIn = () => {
       ...formFields,
       [name]: value,
     });
-    console.log(formFields, "form fields");
   };
+
   return (
     <div>
       <section className="SignIn">
-        <div className="container-fluid ">
-          <ul class="breadcrumb breadcrumb2 mb-0">
+        <div className="container-fluid">
+          <ul className="breadcrumb breadcrumb2 mb-0">
             <li>
-              <Link to="/">Home/</Link>{" "}
+              <Link to="/">Home/</Link>
             </li>
             <li>Sign In</li>
           </ul>
@@ -70,9 +77,9 @@ const SignIn = () => {
             >
               <CircularProgress color="inherit" />
             </Backdrop>
-            <form>
+            <form onSubmit={handleSignIn}>
               <Box
-                component="form"
+                component="div"
                 sx={{
                   "& > :not(style)": { m: 1, width: "25ch" },
                 }}
@@ -90,8 +97,7 @@ const SignIn = () => {
                     value={formFields.email}
                   />
                 </div>
-
-                <div className="form-group input mb-4 w-100 ">
+                <div className="form-group input mb-4 w-100">
                   <div className="position-relative">
                     <TextField
                       id="password"
@@ -102,18 +108,21 @@ const SignIn = () => {
                       onChange={onChangeField}
                       value={formFields.password}
                     />
-
-                    <Button className="icon" onClick={setVisibility}>
-                      {" "}
+                    <Button
+                      className="icon"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setVisibility();
+                      }}
+                    >
                       {show ? <VisibilityOffIcon /> : <VisibilityIcon />}
                     </Button>
                   </div>
                 </div>
-
-                <button className="filter-button mt-4 w-100" onClick={SignIn}>
+                <button className="filter-button mt-4 w-100" type="submit">
                   Sign In
                 </button>
-                <div className="form-group mb-4 w-100 ">
+                <div className="form-group mb-4 w-100">
                   <p className="text-center">OR</p>
                 </div>
                 <button className="googlebutton mt-4 w-100" variant="outlined">
@@ -126,9 +135,9 @@ const SignIn = () => {
                 </button>
               </Box>
               <p className="text-center">
-                If you donot have account?
+                If you do not have an account?
                 <b>
-                  <Link to="/SignUp">SignUp</Link>
+                  <Link to="/SignUp"> SignUp</Link>
                 </b>
               </p>
             </form>
@@ -138,4 +147,5 @@ const SignIn = () => {
     </div>
   );
 };
+
 export default SignIn;
