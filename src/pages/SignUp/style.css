@@ -4,11 +4,15 @@
 .SignIn{
     background-color: rgb(191, 202, 198);
 }
+/* .input label{
+    font-size: 2rem;
+} */
 .loginWrapper .card{
     width: 700px;
     margin: auto;
     padding: 30px;
     border: 0px !important;
+    /* overflow: hidden; */
 }
 .loginWrapper .card  .MuiInputBase-root{
     font-size: 2rem;
@@ -37,4 +41,8 @@
     font-weight: 600;
     background-color: #3bb77e;
     color: aliceblue;
+}
+.loader{
+    /* position: absolute !important; */
+    background: rgba(96, 93, 93, 0.5) !important;
 }

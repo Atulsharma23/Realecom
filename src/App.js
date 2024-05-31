@@ -19,10 +19,15 @@ const MyContext = createContext();
 function App() {
   const [productData, setProductData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [isLogin, setIsLogin] = useState();
+
   useEffect(() => {
     getProducts();
-    getCartData("http://localhost:3000/cartItems");
+    getCartData("http://localhost:3001/cartItems");
+    const is_Login = localStorage.getItem("isLogin");
+    setIsLogin(is_Login);
   }, []);
+
   const getCartData = async (url) => {
     try {
       const response = await axios.get(url);
@@ -33,7 +38,7 @@ function App() {
   };
   const getProducts = async () => {
     try {
-      await axios.get("http://localhost:3000/productData").then((response) => {
+      await axios.get("http://localhost:3001/productData").then((response) => {
         setProductData(response.data);
       });
     } catch (error) {
@@ -45,7 +50,7 @@ function App() {
     item.quantity = 1;
     try {
       await axios
-        .post("http://localhost:3000/cartItems", item)
+        .post("http://localhost:3001/cartItems", item)
         .then((response) => {
           setCartItems([...cartItems, { ...item, quantity: 1 }]);
         });
@@ -62,11 +67,23 @@ function App() {
     setCartItems([]);
   };
 
+  const signIn = () => {
+    localStorage.getItem("isLogin");
+    setIsLogin(true);
+  };
+
+  const signOut = () => {
+    localStorage.removeItem("isLogin");
+    setIsLogin(false);
+  };
   const value = {
     cartItems,
+    isLogin,
+    signOut,
     addToCart,
     removeItemsFromCart,
     emptyCart,
+    signIn,
   };
   return (
     productData.length !== 0 && (
