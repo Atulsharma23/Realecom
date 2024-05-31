@@ -19,11 +19,13 @@ const MyContext = createContext();
 function App() {
   const [productData, setProductData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [isLogin, setIsLogin] = useState(localStorage.getItem("isLogin") || "false");
+  const [isLogin, setIsLogin] = useState();
 
   useEffect(() => {
     getProducts();
     getCartData("http://localhost:3001/cartItems");
+    const is_Login = localStorage.getItem("isLogin");
+    setIsLogin(is_Login);
   }, []);
 
   const getCartData = async (url) => {
@@ -34,11 +36,11 @@ function App() {
       console.log(error, "Error hai yr");
     }
   };
-
   const getProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/productData");
-      setProductData(response.data);
+      await axios.get("http://localhost:3001/productData").then((response) => {
+        setProductData(response.data);
+      });
     } catch (error) {
       alert(error, "error in getting product");
     }
@@ -47,8 +49,11 @@ function App() {
   const addToCart = async (item) => {
     item.quantity = 1;
     try {
-      await axios.post("http://localhost:3001/cartItems", item);
-      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+      await axios
+        .post("http://localhost:3001/cartItems", item)
+        .then((response) => {
+          setCartItems([...cartItems, { ...item, quantity: 1 }]);
+        });
     } catch (error) {
       console.log(error, "error in adding item to the cart");
     }
@@ -58,26 +63,28 @@ function App() {
     const arr = cartItems.filter((obj) => obj.id !== id);
     setCartItems(arr);
   };
-
   const emptyCart = () => {
     setCartItems([]);
   };
 
-  const signOut = () => {
-    localStorage.removeItem("isLogin");
-    setIsLogin("false");
+  const signIn = () => {
+    localStorage.getItem("isLogin");
+    setIsLogin(true);
   };
 
+  const signOut = () => {
+    localStorage.removeItem("isLogin");
+    setIsLogin(false);
+  };
   const value = {
     cartItems,
     isLogin,
-    setIsLogin, // Provide setIsLogin to context
     signOut,
     addToCart,
     removeItemsFromCart,
     emptyCart,
+    signIn,
   };
-
   return (
     productData.length !== 0 && (
       <div className="App">
@@ -87,12 +94,22 @@ function App() {
             <Routes>
               <Route path="/" element={<Home data={productData} />} />
               <Route path="/About" element={<About />} />
-              <Route path="/cat/:id" element={<Listing data={productData} single={true} />} />
-              <Route path="/cat/:id/:id" element={<Listing data={productData} single={false} />} />
+              <Route
+                path="/cat/:id"
+                element={<Listing data={productData} single={true} />}
+              />
+              <Route
+                path="/cat/:id/:id"
+                element={<Listing data={productData} single={false} />}
+              />
               <Route path="*" element={<Notfound />} />
-              <Route path="products/:id" element={<Details data={productData} />} />
+              <Route
+                path="products/:id"
+                element={<Details data={productData} />}
+              />
               <Route path="/cart" element={<Cart />} />
               <Route path="/signIn" element={<SignIn />} />
+
               <Route path="/signUp" element={<SignUp />} />
             </Routes>
             <Footer />
@@ -102,6 +119,5 @@ function App() {
     )
   );
 }
-
 export default App;
 export { MyContext };

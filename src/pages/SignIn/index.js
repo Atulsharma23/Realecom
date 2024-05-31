@@ -11,6 +11,9 @@ import { app } from "../../firebase";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
+import { useContext } from "react";
+import { MyContext } from "../../App";
+
 const auth = getAuth(app);
 
 const SignIn = () => {
@@ -25,6 +28,7 @@ const SignIn = () => {
     email: "",
     password: "",
   });
+  const context = useContext(MyContext);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -34,6 +38,8 @@ const SignIn = () => {
         setShowLoader(false);
         localStorage.setItem("isLogin", true);
         navigate("/");
+
+        context.SignIn();
       })
       .catch((error) => {
         setShowLoader(false);
