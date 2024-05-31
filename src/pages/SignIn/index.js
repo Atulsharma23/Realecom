@@ -51,10 +51,10 @@ const SignIn = () => {
         context.SignIn();
       })
       .catch((error) => {
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
+        const errorCode = error.code;
+        const errorMessage = error.message;
         // const email = error.customData.email;
-        // const credential = GoogleAuthProvider.credentialFromError(error);
+        const credential = GoogleAuthProvider.credentialFromError(error);
       });
   };
 

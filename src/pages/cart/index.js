@@ -18,7 +18,7 @@ const Cart = () => {
 
   useEffect(() => {
     if (context.isLogin === "true") {
-      getCartData("http://localhost:3000/cartItems");
+      getCartData("http://localhost:3001/cartItems");
     } else {
       navigate("/");
     }
@@ -35,10 +35,10 @@ const Cart = () => {
 
   const deleteItem = async (id) => {
     const response = await axios.delete(
-      `http://localhost:3000/cartItems/${id}`
+      `http://localhost:3001/cartItems/${id}`
     );
     if (response !== null) {
-      getCartData("http://localhost:3000/cartItems");
+      getCartData("http://localhost:3001/cartItems");
       context.removeItemsFromCart(id);
     }
   };
@@ -47,11 +47,11 @@ const Cart = () => {
     cartItems.length !== 0 &&
       cartItems.map((item) => {
         response = axios.delete(
-          `http://localhost:3000/cartItems/${parseInt(item.id)}`
+          `http://localhost:3001/cartItems/${parseInt(item.id)}`
         );
       });
     if (response !== null) {
-      getCartData("http://localhost:3000/cartItems");
+      getCartData("http://localhost:3001/cartItems");
     }
 
     context.emptyCart();
