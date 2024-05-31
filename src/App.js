@@ -13,19 +13,23 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import { useEffect, useState, createContext } from "react";
 import axios from "axios";
+import loader from "./assets/images/loading.gif";
 
 const MyContext = createContext();
 
 function App() {
   const [productData, setProductData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isLogin, setIsLogin] = useState();
 
   useEffect(() => {
     getProducts();
     getCartData("http://localhost:3001/cartItems");
     const is_Login = localStorage.getItem("isLogin");
+    console.log(is_Login, "check the login state");
     setIsLogin(is_Login);
+    signIn();
   }, []);
 
   const getCartData = async (url) => {
@@ -40,6 +44,12 @@ function App() {
     try {
       await axios.get("http://localhost:3001/productData").then((response) => {
         setProductData(response.data);
+
+
+      setTimeout(()=>{
+        setIsLoading(false);
+
+      },2000)
       });
     } catch (error) {
       alert(error, "error in getting product");
@@ -68,8 +78,8 @@ function App() {
   };
 
   const signIn = () => {
-    localStorage.getItem("isLogin");
-    setIsLogin(true);
+    const is_Login = localStorage.getItem("isLogin");
+    setIsLogin(is_Login);
   };
 
   const signOut = () => {
@@ -91,6 +101,12 @@ function App() {
         <Router>
           <MyContext.Provider value={value}>
             <Header data={productData} />
+            {isLoading === true && (
+              <div className="Loader">
+                <img src={loader} />{" "}
+              </div>
+            )}
+
             <Routes>
               <Route path="/" element={<Home data={productData} />} />
               <Route path="/About" element={<About />} />

@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./index.css";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+
 import QuantityBox from "../../component/quantityBox";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { Link } from "react-router-dom";
@@ -12,9 +14,14 @@ import axios from "axios";
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const context = useContext(MyContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getCartData("http://localhost:3000/cartItems");
+    if (context.isLogin === "true") {
+      getCartData("http://localhost:3000/cartItems");
+    } else {
+      navigate("/");
+    }
   }, []); // Run only once when the component mounts
 
   const getCartData = async (url) => {
