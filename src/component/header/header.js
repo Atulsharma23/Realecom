@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../header/header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 import IconCompare from "../../assets/images/icon-compare.svg";
 import IconHeart from "../../assets/images/icon-heart.svg";
@@ -26,6 +26,7 @@ const Header = (props) => {
   const [isOpenDropDown, setisOpenDropDown] = useState(false);
   const context = useContext(MyContext);
   const auth = getAuth(app);
+  const navigate = useNavigate();
 
   const [categories] = useState([
     "Wines and Drinks",
@@ -62,6 +63,8 @@ const Header = (props) => {
     firebaseSignOut(auth)
       .then(() => {
         context.signOut();
+        navigate("/");
+
       })
       .catch((error) => {
         console.log("Error signing out", error);
