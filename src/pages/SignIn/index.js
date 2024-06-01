@@ -53,7 +53,7 @@ const SignIn = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // const email = error.customData.email;
+        const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
       });
   };
@@ -61,25 +61,24 @@ const SignIn = () => {
   const handleSignIn = (e) => {
     e.preventDefault();
     setShowLoader(true);
+  
     signInWithEmailAndPassword(auth, formFields.email, formFields.password)
       .then((userCredential) => {
         setShowLoader(false);
+        const user = userCredential.user;
+  
         localStorage.setItem("isLogin", true);
-
         navigate("/");
-        context.SignIn();
       })
       .catch((error) => {
         setShowLoader(false);
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.error(
-          "Error signing in with password and email",
-          errorCode,
-          errorMessage
-        );
+        const errorCode = error.code;
+        const errorMessage = error.message;
+  
+        alert(`Error signing in with password and email: ${errorCode} - ${errorMessage}`);
       });
   };
+  
 
   const onChangeField = (e) => {
     const name = e.target.name;
