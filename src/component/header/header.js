@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../header/header.css";
 import { Link, useNavigate } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../assets/images/logo.svg";
 import IconCompare from "../../assets/images/icon-compare.svg";
 import IconHeart from "../../assets/images/icon-heart.svg";
@@ -10,6 +11,7 @@ import Button from "@mui/material/Button";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PlaceIcon from "@mui/icons-material/Place";
+import AddLocationIcon from '@mui/icons-material/AddLocation';
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -64,7 +66,6 @@ const Header = (props) => {
       .then(() => {
         context.signOut();
         navigate("/");
-
       })
       .catch((error) => {
         console.log("Error signing out", error);
@@ -77,10 +78,24 @@ const Header = (props) => {
         <header>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-sm-2">
-                <img src={Logo} alt="logo" />
+              <div className="col-sm-2 part1 d-flex align-items-center">
+                <Link to="/">
+                  {" "}
+                  <img src={Logo} alt="logo" />
+                </Link>
+                <div className="menutoggle Location  mr-2">
+                <AddLocationIcon />
+                </div>
+                <div className="menutoggle search mr-2">
+                <SearchIcon />
+                </div>
+
+                <div className="menutoggle ml-auto">
+
+                  <MenuIcon />
+                </div>
               </div>
-              <div className="col-sm-5">
+              <div className="col-sm-5 part2">
                 <div className="headersearch d-flex align-items-center">
                   <div>
                     <Select
@@ -95,7 +110,7 @@ const Header = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-5 d-flex align-items-center">
+              <div className="col-sm-5 d-flex align-items-center part3">
                 <div className="ml-auto d-flex align-items-center">
                   <div className="second-dropdown">
                     <Select

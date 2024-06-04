@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import "./responsive.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./component/header/header";
 import Home from "./pages/Home/index";
@@ -128,7 +129,7 @@ function App() {
 
               <Route path="/signUp" element={<SignUp />} />
             </Routes>
-            <Footer />
+            {/* <Footer /> */}
           </MyContext.Provider>
         </Router>
       </div>

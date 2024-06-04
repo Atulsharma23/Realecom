@@ -95,7 +95,7 @@ const Home = (props) => {
 
 
   return (
-    <div>
+    <div style={{display:"none"}}>
       <HomeSlider />
       <CatSlider data={productData} />
       <Banners />
