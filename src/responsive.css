@@ -1,0 +1,33 @@
+@media only screen and (min-width:320px) and (max-width:767px) {
+  .headerWrapper .part1 {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  .headerWrapper .menutoggle {
+    margin-left: auto;
+  }
+
+  .headerWrapper .part1 .menutoggle {
+    width: 40px;
+  }
+
+  .headerWrapper .part1 .menutoggle svg {
+    font-size: 35px !important;
+  }
+
+  
+  .menutoggle.Location {
+    margin-left: 155px;
+  }
+
+  .headerWrapper .part2 {
+    display: none !important;
+  }
+
+  .headerWrapper .part3 {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width:320px) and (max-width:992px) {}

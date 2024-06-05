@@ -18,7 +18,7 @@ const Cart = () => {
 
   useEffect(() => {
     if (context.isLogin === "true") {
-      getCartData("http://localhost:3001/cartItems");
+      getCartData("http://localhost:3002/cartItems");
     } else {
       navigate("/");
     }
@@ -47,11 +47,11 @@ const Cart = () => {
     cartItems.length !== 0 &&
       cartItems.map((item) => {
         response = axios.delete(
-          `http://localhost:3001/cartItems/${parseInt(item.id)}`
+          `http://localhost:3002/cartItems/${parseInt(item.id)}`
         );
       });
     if (response !== null) {
-      getCartData("http://localhost:3001/cartItems");
+      getCartData("http://localhost:3002/cartItems");
     }
 
     context.emptyCart();
