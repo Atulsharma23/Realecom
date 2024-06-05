@@ -43,7 +43,7 @@ function App() {
   };
   const getProducts = async () => {
     try {
-      await axios.get("http://localhost:3001/productData").then((response) => {
+      await axios.get("http://localhost:3002/productData").then((response) => {
         setProductData(response.data);
 
 
