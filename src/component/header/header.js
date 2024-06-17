@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import "../header/header.css";
 import { Link, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -11,11 +11,11 @@ import Button from "@mui/material/Button";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PlaceIcon from "@mui/icons-material/Place";
-import AddLocationIcon from '@mui/icons-material/AddLocation';
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LogoutIcon from "@mui/icons-material/Logout";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Nav from "./nav/nav";
 import Select from "../selectDrop/select";
@@ -26,6 +26,9 @@ import { app } from "../../firebase";
 
 const Header = (props) => {
   const [isOpenDropDown, setisOpenDropDown] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [openSearch, setOpenSearch] = useState(false);
+  const searchInput = useRef()
   const context = useContext(MyContext);
   const auth = getAuth(app);
   const navigate = useNavigate();
@@ -71,7 +74,15 @@ const Header = (props) => {
         console.log("Error signing out", error);
       });
   };
-
+  const openSearch1 = () => {
+    setOpenSearch(true)
+    searchInput.current.focus();
+  }
+  const closeSearch = () => {
+    setOpenSearch(false)
+    searchInput.current.blur();
+    searchInput.current.value = "";
+  }
   return (
     <>
       <div className="headerWrapper">
@@ -83,20 +94,39 @@ const Header = (props) => {
                   {" "}
                   <img src={Logo} alt="logo" />
                 </Link>
-                <div className="menutoggle Location  mr-2">
-                <AddLocationIcon />
-                </div>
-                <div className="menutoggle search mr-2">
-                <SearchIcon />
-                </div>
+                {windowWidth < 992 &&
+                  <div className="mt-auto d-flex align">
 
-                <div className="menutoggle ml-auto">
+                    {windowWidth < 992 &&
+                      <div className="second-dropdown mr-3">
+                        <Select
+                          data={countriesList}
+                          placeholder={"Your Location"}
+                          icon={<FmdGoodIcon />}
+                        />
+                      </div>
+                    }
 
-                  <MenuIcon />
-                </div>
+
+                    <div className="menutoggle search mr-2">
+                      <SearchIcon onClick={openSearch1} />
+                    </div>
+
+                    <div className="menutoggle ml-auto">
+
+                      <MenuIcon />
+                    </div>
+                  </div>
+                }
               </div>
               <div className="col-sm-5 part2">
-                <div className="headersearch d-flex align-items-center">
+                <div className={`headersearch d-flex align-items-center ${openSearch === true ? 'open' : ''}`}>
+                  {
+                    windowWidth < 992 && <div className="closed-Search">
+                      <ArrowBackIosIcon onClick={closeSearch} />
+
+                    </div>
+                  }
                   <div>
                     <Select
                       data={categories}
@@ -105,7 +135,7 @@ const Header = (props) => {
                     />
                   </div>
                   <div className="search">
-                    <input type="text" placeholder="search for items..." />
+                    <input type="text" placeholder="search for items..." ref={searchInput} />
                     <SearchIcon className="searchIcon cursor" />
                   </div>
                 </div>

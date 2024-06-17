@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     getProducts();
-    getCartData("http://localhost:3001/cartItems");
+    getCartData("http://localhost:3002/cartItems");
     const is_Login = localStorage.getItem("isLogin");
     console.log(is_Login, "check the login state");
     setIsLogin(is_Login);
@@ -61,7 +61,7 @@ function App() {
     item.quantity = 1;
     try {
       await axios
-        .post("http://localhost:3001/cartItems", item)
+        .post("http://localhost:3002/cartItems", item)
         .then((response) => {
           setCartItems([...cartItems, { ...item, quantity: 1 }]);
         });
