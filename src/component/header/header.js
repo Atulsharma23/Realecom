@@ -94,8 +94,8 @@ const Header = (props) => {
   }
   return (
     <>
-      <div className="headerWrapper">
-        <header>
+      <div className="headerWrapper fixed">
+        <header className="headerhai">
           <div className="container-fluid">
             <div className="row">
               <div className="col-sm-2 part1 d-flex align-items-center">
