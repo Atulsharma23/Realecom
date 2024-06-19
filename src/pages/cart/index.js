@@ -35,10 +35,10 @@ const Cart = () => {
 
   const deleteItem = async (id) => {
     const response = await axios.delete(
-      `http://localhost:3001/cartItems/${id}`
+      `http://localhost:3002/cartItems/${id}`
     );
     if (response !== null) {
-      getCartData("http://localhost:3001/cartItems");
+      getCartData("http://localhost:3002/cartItems");
       context.removeItemsFromCart(id);
     }
   };
