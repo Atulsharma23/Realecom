@@ -47,10 +47,10 @@ function App() {
         setProductData(response.data);
 
 
-      setTimeout(()=>{
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
 
-      },2000)
+        }, 2000)
       });
     } catch (error) {
       alert(error, "error in getting product");
