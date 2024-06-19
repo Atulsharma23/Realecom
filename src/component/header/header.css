@@ -73,9 +73,9 @@ header .headerTabs li {
   position: relative;
 }
 
-header .headerTabs {
+/* header .headerTabs {
   padding-left: 40px;
-}
+} */
 
 header .headerTabs li span {
   font-size: 20px;

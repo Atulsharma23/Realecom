@@ -45,11 +45,12 @@
     background: #fff;
     align-items: flex-start !important;
     flex-direction: column !important;
-    padding: 30px;
+    padding: 70px !important;
     padding-top: 50px !important;
-    transition: 0.3s  all ease-in-out;
+    transition: 0.3s all ease-in-out;
   }
-  .headersearch.open{
+
+  .headersearch.open {
     opacity: 1;
     right: 0px;
   }
@@ -74,7 +75,7 @@
   .closed-Search {
     position: absolute;
     top: 15px;
-    left: 15px;
+    left: 35px;
     z-index: 100;
     cursor: pointer;
     width: 40px;
@@ -84,4 +85,86 @@
   .closed-Search svg {
     font-size: 25px !important;
   }
+
+  .myuserAcc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    bottom: 12px !important;
+    background-color: #3bb77e;
+    border-radius: 50%;
+  }
+
+  .myuserAcc svg {
+    font-size: 35px !important;
+    color: #fff !important;
+
+  }
+
+  .d-flex {
+    display: flex !important;
+    align-items: center;
+  }
+
+  /* .loginWrapper .card {
+    width: 613px;
+    margin: auto;
+
+    top: 45px;
+  } */
+  nav {
+    width: 80% !important;
+    height: 100% !important;
+    position: fixed;
+    top: 0px;
+    right: -100%;
+    background: #fff;
+    z-index: 1000;
+    transition: all 0.3s;
+    opacity: 0;
+  }
+
+  nav.open {
+    opacity: 1;
+    right: 0px;
+  }
+
+  nav ul li {
+    width: 100% !important;
+    margin: 0px !important;
+  }
+
+  nav ul li button {
+    width: 100% !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+
+  .nav nav ul li button a {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 24px !important;
+  }
+
+  nav ul li button a svg {
+    margin-left: auto !important;
+    font-size: 30px !important;
+  }
+
+  .navbaroverlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: block;
+  }
+
+
 }

@@ -15,7 +15,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LogoutIcon from "@mui/icons-material/Logout";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Nav from "./nav/nav";
 import Select from "../selectDrop/select";
@@ -26,9 +27,10 @@ import { app } from "../../firebase";
 
 const Header = (props) => {
   const [isOpenDropDown, setisOpenDropDown] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [openSearch, setOpenSearch] = useState(false);
-  const searchInput = useRef()
+  const [isOpenNav, setIsOpenNav] = useState(false);
+  const searchInput = useRef();
   const context = useContext(MyContext);
   const auth = getAuth(app);
   const navigate = useNavigate();
@@ -75,13 +77,20 @@ const Header = (props) => {
       });
   };
   const openSearch1 = () => {
-    setOpenSearch(true)
+    setOpenSearch(true);
     searchInput.current.focus();
-  }
+  };
   const closeSearch = () => {
-    setOpenSearch(false)
+    setOpenSearch(false);
     searchInput.current.blur();
     searchInput.current.value = "";
+  };
+  const openNav = () => {
+    setIsOpenNav(true)
+  }
+  const CloseNav =()=>{
+    setIsOpenNav(false)
+
   }
   return (
     <>
@@ -94,39 +103,57 @@ const Header = (props) => {
                   {" "}
                   <img src={Logo} alt="logo" />
                 </Link>
-                {windowWidth < 992 &&
+                {windowWidth < 992 && (
                   <div className="mt-auto d-flex align">
-
-                    {windowWidth < 992 &&
-                      <div className="second-dropdown mr-3">
+                    {windowWidth < 992 && (
+                      <div className="second-dropdown mr-2">
                         <Select
                           data={countriesList}
                           placeholder={"Your Location"}
                           icon={<FmdGoodIcon />}
                         />
                       </div>
-                    }
-
+                    )}
 
                     <div className="menutoggle search mr-2">
                       <SearchIcon onClick={openSearch1} />
                     </div>
-
-                    <div className="menutoggle ml-auto">
-
-                      <MenuIcon />
+                    <ul className="list list-inline mb-0 headerTabs pl-0 mr-4">
+                      <li className="list-inline-item">
+                        <span>
+                          <img className="cart" src={IconCart} alt="cart" />
+                          <span className="badge bg-success rounded-circle">
+                            {context.cartItems?.length || 0}
+                          </span>
+                          <Link
+                            to="/cart"
+                            style={{ color: "black", textDecoration: "none" }}
+                          ></Link>
+                        </span>
+                      </li>
+                    </ul>
+                    <div className="menutoggle ml-auto  mr-2" >
+                      <MenuIcon onClick={openNav} />
                     </div>
+
+                    {context.isLogin === "true" && (
+                      <div className="myuserAcc">
+                        <PersonOutlineOutlinedIcon />
+                      </div>
+                    )}
                   </div>
-                }
+                )}
               </div>
               <div className="col-sm-5 part2">
-                <div className={`headersearch d-flex align-items-center ${openSearch === true ? 'open' : ''}`}>
-                  {
-                    windowWidth < 992 && <div className="closed-Search">
+                <div
+                  className={`headersearch d-flex align-items-center ${openSearch === true ? "open" : ""
+                    }`}
+                >
+                  {windowWidth < 992 && (
+                    <div className="closed-Search">
                       <ArrowBackIosIcon onClick={closeSearch} />
-
                     </div>
-                  }
+                  )}
                   <div>
                     <Select
                       data={categories}
@@ -135,7 +162,11 @@ const Header = (props) => {
                     />
                   </div>
                   <div className="search">
-                    <input type="text" placeholder="search for items..." ref={searchInput} />
+                    <input
+                      type="text"
+                      placeholder="search for items..."
+                      ref={searchInput}
+                    />
                     <SearchIcon className="searchIcon cursor" />
                   </div>
                 </div>
@@ -245,7 +276,7 @@ const Header = (props) => {
             </div>
           </div>
         </header>
-        <Nav data={props.data} />
+        <Nav data={props.data} openNav={isOpenNav}  CloseNav={CloseNav}/>
       </div>
     </>
   );
