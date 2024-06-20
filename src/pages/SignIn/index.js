@@ -173,22 +173,21 @@ const SignIn = () => {
                 </div>
               </div>
 
-              <div className="form-group mt-5 mb-4 w-100">
-                <Button className="filter-button mt-4 w-100" onClick={signIn}>
+                <button className="filter-button mt-4 w-100" onClick={signIn}>
                   Sign In
-                </Button>
-              </div>
+                </button>
+          
 
               <div className="form-group mt-5 mb-4 w-100 signInOr">
                 <p className="text-center">OR</p>
-                <Button
-                  className="w-100"
+                <button
+                  className="filter-button mt-4 w-100"
                   variant="outlined"
                   onClick={signInWithGoogle}
                 >
                   <img src="" />
                   Sign In with Google
-                </Button>
+                </button>
               </div>
 
               <p className="text-center">

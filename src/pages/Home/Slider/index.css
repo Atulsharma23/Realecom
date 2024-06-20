@@ -24,10 +24,12 @@
 
 .slick-arrow.slick-next {
   right: 2% !important;
+  z-index: 100;
 }
 
 .slick-arrow.slick-prev {
   left: 2% !important;
+  z-index: 100;
 }
 
 .slick-prev:before {
