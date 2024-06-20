@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./nav.css";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import GridViewIcon from "@mui/icons-material/GridView";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
+import { MyContext } from "../../../App";
 
 const Nav = (props) => {
   const [NavData, SetNavData] = useState([]);
   const [isOpenNav, setIsOpenNav] = useState(false);
+  const CloseNav = () => {
+    props.CloseNav();
+
+  }
+  const context = useContext(MyContext);
 
   useEffect(() => {
     SetNavData(props.data);
@@ -241,6 +247,23 @@ const Nav = (props) => {
                     </Button>
                   </li>
                 </ul>
+                {
+                  isOpenNav && <>
+                    {
+                      context.isLogin !== "true" &&
+                      <div className="bhi ">
+
+
+                        <Link to="/SignIn">
+                          <button className="filter-button  mt-4 w-100" onClick={CloseNav}>Sign In</button>
+                        </Link>
+
+                      </div>
+                    }
+
+
+                  </>
+                }
               </nav>
             </div>
             <div className="col-sm-1 part3 d-flex align-items-center">

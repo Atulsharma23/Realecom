@@ -88,7 +88,7 @@ const Header = (props) => {
   const openNav = () => {
     setIsOpenNav(true)
   }
-  const CloseNav =()=>{
+  const CloseNav = () => {
     setIsOpenNav(false)
 
   }
@@ -104,8 +104,8 @@ const Header = (props) => {
                   <img src={Logo} alt="logo" />
                 </Link>
                 {windowWidth < 992 && (
-                  <div className="mt-auto d-flex align">
-                    {windowWidth < 992 && (
+                  <div className="part8 mt-auto d-flex align">
+                    {/* {windowWidth < 992 && (
                       <div className="second-dropdown mr-2">
                         <Select
                           data={countriesList}
@@ -113,7 +113,7 @@ const Header = (props) => {
                           icon={<FmdGoodIcon />}
                         />
                       </div>
-                    )}
+                    )} */}
 
                     <div className="menutoggle search mr-2">
                       <SearchIcon onClick={openSearch1} />
@@ -171,7 +171,7 @@ const Header = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-5 d-flex align-items-center part3">
+              <div className="col-sm-5 d-flex align-items-center part3 res-hide">
                 <div className="ml-auto d-flex align-items-center">
                   <div className="second-dropdown">
                     <Select
@@ -276,7 +276,7 @@ const Header = (props) => {
             </div>
           </div>
         </header>
-        <Nav data={props.data} openNav={isOpenNav}  CloseNav={CloseNav}/>
+        <Nav data={props.data} openNav={isOpenNav} CloseNav={CloseNav} />
       </div>
     </>
   );
